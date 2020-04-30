@@ -29,7 +29,6 @@ class PayController extends Controller
 
         //lưu vào database
 
-        //
         return view('users.pay.savePayment')
             ->with('shipping_email',$shipping_email)
             ->with('shipping_name',$shipping_name)
