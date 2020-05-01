@@ -8,17 +8,19 @@ use Illuminate\Support\Facades\Redirect;
 
 class PayController extends Controller
 {
-    public function noteDetail(){
+    public function noteDetail()
+    {
 
         $customerInformation = DB::table('customer')
-            ->where('id_customer',Session::get('id_customer'))
+            ->where('id_customer', Session::get('id_customer'))
             ->get()
             ->first();
 
-        return view('users.pay.noteDetail')->with('customerInformation',$customerInformation);
+        return view('users.pay.noteDetail')->with('customerInformation', $customerInformation);
     }
 
-    public function saveCustomerPayment(Request $request){
+    public function saveCustomerPayment(Request $request)
+    {
         $shipping_email = $request->shipping_email;
         $shipping_name = $request->shipping_name;
         $shipping_address = $request->shipping_address;
@@ -30,12 +32,12 @@ class PayController extends Controller
         //lưu vào database
 
         return view('users.pay.savePayment')
-            ->with('shipping_email',$shipping_email)
-            ->with('shipping_name',$shipping_name)
-            ->with('shipping_address',$shipping_address)
-            ->with('shipping_phone',$shipping_phone)
-            ->with('shipping_notes',$shipping_notes)
-            ->with('payment_option',$payment_option)
-            ->with('id_customer',$id_customer);
+            ->with('shipping_email', $shipping_email)
+            ->with('shipping_name', $shipping_name)
+            ->with('shipping_address', $shipping_address)
+            ->with('shipping_phone', $shipping_phone)
+            ->with('shipping_notes', $shipping_notes)
+            ->with('payment_option', $payment_option)
+            ->with('id_customer', $id_customer);
     }
 }

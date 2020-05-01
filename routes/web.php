@@ -41,6 +41,11 @@ Route::get('/save-cart','CartController@addToCart');
 Route::get('/show-cart','CartController@showCart');
 Route::get('/update-cart-quantity','CartController@updateCart');
 Route::get('/delete-from-cart/{rowID}','CartController@deleteFromCart');
+
 //pay
 Route::get('/pay','PayController@noteDetail');
 Route::get('/save-customer-payment','PayController@saveCustomerPayment');
+
+//user personal information
+Route::get('/change-information','UserInformationController@changeUserInformation');
+Route::get('/alter-user-information','UserInformationController@alterUserInformation');
