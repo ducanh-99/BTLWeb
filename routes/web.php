@@ -12,9 +12,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 //Đăng nhập
 Route::get('/login','LoginController@login');
 Route::get('/login-check','LoginController@login_check');
