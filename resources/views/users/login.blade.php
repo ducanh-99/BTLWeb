@@ -3,6 +3,7 @@
     <form action="{{URL::to('/login-check')}}" method="GET">
         <input type="text" name="email_account" placeholder="Tài khoản"/>
         <input type="password" name="password_account" placeholder="Password"/>
+        <input type="checkbox" name="isAdmin" id="isAdmin"><label for="isAdmin">Tôi là admin</label>
         <span>
 								<input type="checkbox" class="checkbox">
 								Ghi nhớ đăng nhập

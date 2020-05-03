@@ -10,7 +10,7 @@
                 <p>Điền thông tin người nhận hàng</p>
                 <div class="form-one">
                     <form action="{{URL::to('/save-customer-payment')}}" method="GET">
-                        <input type="hidden" value="{{$customerInformation->id_customer}}" name="id" >
+                        <input type="hidden" value="{{$customerInformation->id_customer}}" name="id_customer" >
                         <input type="text" name="shipping_email" placeholder="Email" value="{{$customerInformation->email}}">
                         <input type="text" name="shipping_name" placeholder="Họ và tên" value="{{$customerInformation->name}}">
                         <input type="text" name="shipping_address" placeholder="Địa chỉ" value="{{$customerInformation->address}}">

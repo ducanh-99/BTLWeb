@@ -10,26 +10,38 @@ class LoginController extends Controller
     public function login_check(Request $request){
         $email = $request->email_account;
         $password = $request->password_account;
-        $result = DB::table('customer')->where('email',$email)->where('password',$password)->first();
-
-
-        if($result){
-            Session::put('id_customer',$result->id_customer);
-            return Redirect::to('/login-successful');
-        }else{
-            return Redirect::to('/login-failed');
+        $isAdmin = $request->isAdmin;
+        if(!$isAdmin) { //nếu ko phải admin
+            $resultUser = DB::table('customer')->where('email', $email)->where('password', $password)->first();
+            if($resultUser){    //nếu người dùng đăng nhập đúng
+                Session::put('id_customer',$resultUser->id_customer);
+                Session::remove('id_admin');
+                return view('users.home');
+            } else{
+                return Redirect::to('/login');
+            }
         }
-    }
-
-    public function loginSuccessful(){
-        return view('users.home');
-    }
-
-    public function loginFailed(){
-        return view('users.login');
+        else { //nếu là admin
+            $resultAdmin = DB::table('admininfo')->where('email', $email)->where('password', $password)->first();
+            if($resultAdmin){   //nếu admin đăng nhập đúng
+                Session::put('id_admin',$resultAdmin->id_admin);
+                Session::remove('id_customer');
+                return view('users.home');
+            } else{
+                return Redirect::to('/login');
+            }
+        }
     }
 
     public function login(){
         return view('users.login');
+    }
+
+    public function logout(){
+        if(Session::get('id_customer')) {
+            Session::forget('id_customer');
+            return redirect('login');
+        }
+        else return redirect('/');
     }
 }

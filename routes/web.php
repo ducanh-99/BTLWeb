@@ -18,14 +18,11 @@ Route::get('/', function () {
 //Đăng nhập
 Route::get('/login','LoginController@login');
 Route::get('/login-check','LoginController@login_check');
-Route::get('/login-successful','LoginController@loginSuccessful');
-Route::get('/login-failed','LoginController@loginFailed');
+Route::get('/logout','LoginController@logout');
 
 //Đăng ký
 Route::get('/signup','SignupController@signup');
 Route::get('/signup-check','SignupController@signup_check');
-Route::get('/signup-successful','SignupController@signupSuccessful');
-Route::get('/signup-failed','SignupController@signupFailed');
 
 //Tìm kiếm
 Route::get('/search','SearchController@search');
@@ -50,3 +47,68 @@ Route::get('/save-customer-payment','PayController@saveCustomerPayment');
 //user personal information
 Route::get('/change-information','UserInformationController@changeUserInformation');
 Route::get('/alter-user-information','UserInformationController@alterUserInformation');
+
+//comment
+Route::get('/comment','ProductController@comment');
+Route::get('/rating','ProductController@rating');
+
+//Phía Admin
+//Thêm sản phẩm
+Route::get('/add-branch-category','AdminController\AddController@addBranchCategory');
+Route::get('/save-branch-category','AdminController\AddController@saveBranchCategory');
+
+Route::get('/add-main-category','AdminController\AddController@addMainCategory');
+Route::get('/save-main-category','AdminController\AddController@saveMainCategory');
+
+Route::get('/add-product','AdminController\AddController@addProduct');
+Route::get('/save-product','AdminController\AddController@saveProduct');
+//sửa, sóa branch
+Route::get('/all-branch-category','AdminController\ShowController@showAllBranchCategory');
+Route::get('/unactive-branch-category/{id_category_branch}','AdminController\DeleteController@unactiveBranchCategory');
+Route::get('/active-branch-category/{id_category_branch}','AdminController\DeleteController@activeBranchCategory');
+Route::get('/edit-branch-category/{id_category_branch}','AdminController\EditController@editBranchCategory');
+Route::get('/submit-edit-branch','AdminController\EditController@submitEditBranch');
+//sửa main
+Route::get('/all-main-category','AdminController\ShowController@showAllMainCategory');
+Route::get('/edit-main-category/{id_main}','AdminController\EditController@editMainCategory');
+Route::get('/submit-edit-main','AdminController\EditController@submitEditMain');
+//sửa, xóa product
+Route::get('/all-product','AdminController\ShowController@showAllProduct');
+Route::get('/unactive-product/{id_product}','AdminController\DeleteController@unactiveProduct');
+Route::get('/active-product/{id_product}','AdminController\DeleteController@activeProduct');
+Route::get('/edit-product/{id_product}','AdminController\EditController@editProduct');
+Route::get('/submit-edit-product','AdminController\EditController@submitEditProduct');
+//đơn hàng
+//đơn hàng chi tiết
+Route::get('/view-order-detail/{id_oder}','AdminController\OrderController@viewOrderDetail');
+Route::get('/edit-order-detail/{id_oder_detail}','AdminController\OrderController@editOrderDetail');
+Route::get('/submit-edit-order-detail','AdminController\OrderController@submitEditOrderDetail');
+//đơn hàng tổng quát
+Route::get('/view-order','AdminController\OrderController@viewOrder');
+Route::get('/approve-order/{id_oder}','AdminController\OrderController@approveOrder');
+Route::get('/unapprove-order/{id_oder}','AdminController\OrderController@unApproveOrder');
+Route::get('/succeed-order/{id_oder}','AdminController\OrderController@succeedOrder');
+
+//quản lý người dùng
+
+//hiển thị danh sách người dùng
+Route::get('/display-user','AdminController\UserController@displayUser');
+
+//block người dùng
+Route::get('/block-user/{id_customer}','AdminController\UserController@blockUser');
+Route::get('/unblock-user/{id_customer}','AdminController\UserController@unBlockUser');
+
+//xóa bình luận
+Route::get('/delete-comment/{id_comment}','AdminController\UserController@deleteComment');
+
+//thêm admin
+Route::get('/add-admin','AdminController\AdminController@addAdmin');
+Route::get('/save-admin','AdminController\AdminController@saveAdmin');
+
+//thay đổi thông tin cá nhân admin
+Route::get('/change-admin-information','AdminController\AdminController@changeAdminInformation');
+Route::get('/alter-admin-information','AdminController\AdminController@alterAdminInformation');
+
+//thống kê
+Route::get('/access-quantity','AdminController\StatisticController@accessQuantity');    //thống kê lượt truy cập
+Route::get('/revenue','AdminController\StatisticController@revenue');    //doanh thu
