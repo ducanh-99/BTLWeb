@@ -1,25 +1,42 @@
-<table>
-    <thead>
-    <tr>
-        <th>Id_category_branch</th>
-        <th>Id_category_main</th>
-        <th>name</th>
-        <th>descriptionf</th>
-        <th>image</th>
-        <th>status</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach($branchSearch as $key => $branchSearchValue) {{--$product chứa tất cả các bản ghi đã truy vấn, $key chứa chỉ số bản ghi, $productValue chứa từng bản ghi một--}}
+@extends('welcome')
 
-    <tr>
-        <td>{{ $branchSearchValue->id_category_branch }}</td>
-        <td>{{ $branchSearchValue->id_category_main }}</td>
-        <td><a href="{{URL::to('/product-result/'.$branchSearchValue->id_category_branch) }}">{{ $branchSearchValue->name }}</a></td>
-        <td>{{ $branchSearchValue->descriptionf }}</td>
-        <td>{{ $branchSearchValue->image }}</td>
-        <td>{{$branchSearchValue->status}}</td>
-    </tr>
-    @endforeach
-    </tbody>
-</table>
+@section('category_branch')
+<div id="content">
+  <div class="container">
+    <section class="bar">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">
+            <h2>{{$descriptionMain->name}}</h2>
+          </div>
+          <p class="lead">{{$descriptionMain->description}}</p>
+        </div>
+      </div>
+      <div class="row portfolio text-center">
+        @foreach($branchSearch as $branchSearchValue) {{--$product chứa tất cả các bản ghi đã truy vấn, $key chứa chỉ số bản ghi, $productValue chứa từng bản ghi một--}}
+        <!-- <div>
+          <img src="{{ URL::to('/') }}/public/image/{{$branchSearchValue->image}}" alt="">
+        </div>
+        <h3>{{$branchSearchValue->image}}</h3> -->
+        <div class="col-md-4">
+          <div class="box-image">
+            <div class="image"><img src="{{ URL::to('/') }}/public/image/{{$branchSearchValue->image}}" alt="" class="img-fluid">
+              <div class="overlay d-flex align-items-center justify-content-center">
+                <div class="content">
+                  <div class="name">
+                    <h3><a href="portfolio-detail.html" class="color-white">{{$branchSearchValue->name}}</a></h3>
+                  </div>
+                  <div class="text">
+                    <p class="buttons"><a href="{{URL::to('/product-result/'.$branchSearchValue->id_category_branch) }}" class="btn btn-template-outlined-white">View</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </section>
+  </div>
+</div>
+@endsection
