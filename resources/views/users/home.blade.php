@@ -1,7 +1,7 @@
 
 @extends('welcome')
 @section('content')    
-      <section style="background: url('img/photogrid.jpg') center center repeat; background-size: cover;" class="bar background-white relative-positioned">
+      <section style="background: url('public/frontend/img/photogrid.jpg') center center repeat; background-size: cover;" class="bar background-white relative-positioned">
             <div class="container">
               <!-- Carousel Start-->
               <div class="home-carousel">
