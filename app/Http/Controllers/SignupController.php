@@ -18,20 +18,12 @@ class SignupController extends Controller
 
 
         if($result){    //nếu email đã tồn tại (được tìm thấy trong csdl)
-            return Redirect::to('/signup-failed');
+            return Redirect::to('/signup');
         }else{  //nếu ko tìm thấy email trong csdl-> Hợp lệ
             Session::put('email',$email);
             DB::insert('insert into customer (name, email, password, phone_number, address, credit, status) values (?, ?, ?, ?, ?, ?, ?)', [$name, $email,$password, $phone, $address, $credit, 1]);
-            return Redirect::to('/signup-successful');
+            return view('users.home');
         }
-    }
-
-    public function signupSuccessful(){
-        return view('users.home');
-    }
-
-    public function signupFailed(){
-        return view('users.signup');
     }
 
     public function signup(){

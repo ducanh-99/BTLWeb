@@ -75,6 +75,7 @@
                                 <li>Thuế <span>{{Cart::tax().' '.'vnđ'}}</span></li>
                                 <li>Khuyến mại <span>{{Cart::discount().' '.'vnđ'}}</span></li>
                                 <li>Thành tiền <span>{{Cart::total().' '.'vnđ'}}</span></li>
+                                {{Cart::destroy()}}
                             </ul>
 
 

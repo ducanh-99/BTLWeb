@@ -57,3 +57,58 @@
             </div><!--/product-information-->
         </div>
     </div><!--/product-details-->
+    <div>
+        <h1>Đánh giá:</h1>
+        <h4>Đã có {{$queryy->ratequantity}} người dùng đánh giá</h4>
+        <h4>ĐTB: {{$queryy->rate}}</h4>
+        <form action="{{URL::to('/rating')}}" method="GET">
+            <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
+            <select name="point" id="point">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            <button type="submit">Chấm điểm</button>
+        </form>
+        <h1>Bình luận:</h1>
+        <?php
+            if(Session::get('id_customer')){
+        ?>
+                <form  action="{{URL::to('/comment')}}" method="GET">
+                    <textarea name="comment" placeholder="Bạn có suy nghĩ gì về sản phẩm ?" content="">
+                    </textarea>
+
+                    <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
+                    <input name="customerid_hidden" type="hidden" value="{{Session::get('id_customer')}}"/>
+                    <button type="submit">Gửi bình luận</button>
+                </form>
+        <?php
+            } else{
+                echo "Bạn phải đăng nhập để bình luận";
+            }
+            $commentList = DB::table('coment')
+                ->where('id_product',$queryy->id_product)
+                ->get();
+        ?>
+        @foreach($commentList as $eachCommentList)
+            <row>
+            <h5>Người dùng: {{$eachCommentList->id_customer}}</h5>
+            <h3>{{$eachCommentList->content}}</h3>
+                <?php
+                if(Session::get('id_admin')){
+                    ?>
+                    <a href="{{URL::to('/delete-comment/'.$eachCommentList->id_coment)}}">Xóa bình luận</a>
+                    <?php
+                }
+                ?>
+            </row>
+        @endforeach
+    </div>

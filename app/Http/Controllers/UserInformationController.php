@@ -45,5 +45,4 @@ class UserInformationController extends Controller
             return redirect('/');
         }
     }
-
 }
