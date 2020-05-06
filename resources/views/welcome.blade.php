@@ -28,7 +28,7 @@
                     <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
                   </ul>
-                  <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a href="customer-register.html" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Sign Up</span></a></div>
+                  <div class="login"><a href="{{URL::to('/login')}}" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a href="{{URL::to('/signup')}}" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Sign Up</span></a></div>
                   <ul class="social-custom list-inline">
                     <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -41,7 +41,7 @@
           </div>
         </div>
 
-        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
+        <!-- <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
             <div role="document" class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -49,7 +49,7 @@
       
                   <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body"> -->
                  @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -57,12 +57,12 @@
                         <a href="{{ route('login') }}">Login</a>
                     @endauth
                 @endif
-                  <p class="text-center text-muted">Not registered yet?</p>
+                  <!-- <p class="text-center text-muted">Not registered yet?</p>
                   <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
 
           <header class="nav-holder make-sticky">
@@ -139,7 +139,8 @@
             </div>
           </header>
           <!-- Navbar End-->
-
+        @yield('login')
+        @yield('signup')
         @yield('content')
         @yield('category_main')
         @yield('category_branch')
