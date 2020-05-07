@@ -14,7 +14,9 @@ class LoginController extends Controller
         if(!$isAdmin) { //nếu ko phải admin
             $resultUser = DB::table('customer')->where('email', $email)->where('password', $password)->first();
             if($resultUser){    //nếu người dùng đăng nhập đúng
+                Session::put('login', true);
                 Session::put('id_customer',$resultUser->id_customer);
+                // Session::put('name',$resultUser->name);
                 Session::remove('id_admin');
                 return view('users.home');
             } else{
@@ -28,7 +30,7 @@ class LoginController extends Controller
                 Session::remove('id_customer');
                 return view('users.home');
             } else{
-                return Redirect::to('/login');
+                return Redirect::to('/login')->with('fail', 'Đăng nhập không thành công, sai username hoặc password.');
             }
         }
     }
@@ -39,6 +41,7 @@ class LoginController extends Controller
 
     public function logout(){
         if(Session::get('id_customer')) {
+            Session::forget('login');
             Session::forget('id_customer');
             return redirect('login');
         }

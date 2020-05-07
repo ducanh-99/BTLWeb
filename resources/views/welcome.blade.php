@@ -16,6 +16,7 @@
   </head>
   <body>
   <div id="all">
+        @if(!Session::has('login') && Session::get('login') == false)
         <div class="top-bar">
           <div class="container">
             <div class="row d-flex align-items-center">
@@ -40,7 +41,7 @@
             </div>
           </div>
         </div>
-
+        @endif
         <!-- <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
             <div role="document" class="modal-dialog">
               <div class="modal-content">
@@ -67,7 +68,7 @@
 
           <header class="nav-holder make-sticky">
             <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-              <div class="container"><a href="test.html" class="navbar-brand home"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="Alease logo" class="d-none d-md-inline-block"><img src="{{('public/frontend/img/rsz_11logo.png')}}" alt="Alease logo" class="d-inline-block d-md-none"><span class="sr-only">Alease - go to homepage</span></a>
+              <div class="container"><a href="{{URL::to('/home')}}" class="navbar-brand home"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="Alease logo" class="d-none d-md-inline-block"><img src="{{('public/frontend/img/rsz_11logo.png')}}" alt="Alease logo" class="d-inline-block d-md-none"><span class="sr-only">Alease - go to homepage</span></a>
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <div id="navigation" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav ml-auto">
@@ -118,12 +119,20 @@
                         <li class="dropdown-item"><a href="contact3.html" class="nav-link">Washing Machine</a></li>
                       </ul>
                     </li>
-                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Contact <b class="caret"></b></a>
+                    <!-- <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Contact <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li class="dropdown-item"><a href="contact.html" class="nav-link">supports</a></li>
                         <li class="dropdown-item"><a href="contact2.html" class="nav-link">Questions</a></li>
                       </ul>
+                    </li> -->
+                    @if(Session::has('login') && Session::get('login') == true)
+                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="contact.html" class="nav-link">Profile</a></li>
+                        <li class="dropdown-item"><a href="{{URL::to('/logout')}}" class="nav-link">Log Out</a></li>
+                      </ul>
                     </li>
+                    @endif
                     <!-- ========== Contact dropdown end ==================-->
                   </ul>
                 </div>
