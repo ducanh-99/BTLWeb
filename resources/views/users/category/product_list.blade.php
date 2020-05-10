@@ -1,8 +1,24 @@
-@extends('welcome')
+@extends('welcome', ['app' => $app])
 @section('product')
+<div id="heading-breadcrumbs">
+  <div class="container">
+    <div class="row d-flex align-items-center flex-wrap">
+      <div class="col-md-7">
+        <h1 class="h2">{{$nameBranch->name}}</h1>
+      </div>
+      <div class="col-md-5">
+        <ul class="breadcrumb d-flex justify-content-end">
+          <li class="breadcrumb-item"><a href="{{URL::to('/home')}}">Home</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="content">
   <div class="container">
     <section class="bar">
+      <!-- Show info branch -->
       <div class="row">
         <div class="col-md-12">
           <div class="heading">
@@ -11,7 +27,9 @@
           <p class="lead">{{$nameBranch->descriptionf}}</p>
         </div>
       </div>
+      <!-- End show info branch -->
       <div class="row portfolio text-center">
+        <!-- Show category -->
         @foreach($productSearch as $key => $productSearchValue) {{--$product chứa tất cả các bản ghi đã truy vấn, $key chứa chỉ số bản ghi, $productValue chứa từng bản ghi một--}}
         <!-- <h2>{{ URL::to('/') }}/public/image/{{$url}}{{$productSearchValue->image}}</h2>     -->
         <div class="col-md-3">

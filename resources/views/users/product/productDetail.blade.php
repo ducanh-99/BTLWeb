@@ -1,65 +1,84 @@
-
-    <div class="product-details"><!--product-details-->
-        <div class="col-sm-5">
-            <div class="view-product"> {{--Chứa ảnh sản phẩm--}}
-                <img src="{{URL::to('/public/uploads/product/'.$queryy->image)}}" alt=""/>
-                <h3>ALEASE</h3>
-            </div>
-            <div id="similar-product" class="carousel slide" data-ride="carousel">
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-
-                    <div class="item active">
-                        <a href=""><img src="{{URL::to('public/frontend/images/similar1.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('public/frontend/images/similar2.jpg')}}" alt=""></a>
-                        <a href=""><img src="{{URL::to('public/frontend/images/similar3.jpg')}}" alt=""></a>
-                    </div>
-
-
+@extends('welcome')
+@section('product_detail')
+<div id="heading-breadcrumbs">
+  <div class="container">
+    <div class="row d-flex align-items-center flex-wrap">
+      <div class="col-md-7">
+        <h1 class="h2">{{$queryy->name}}</h1>
+      </div>
+      <div class="col-md-5">
+        <ul class="breadcrumb d-flex justify-content-end">
+          <li class="breadcrumb-item"><a href="{{URL::to('/home')}}">Home</a></li>
+          <li class="breadcrumb-item"> <a href="{{URL::to('/branch-result/'.$queryy->id_category_main)}}">{{$categoryMainOnly->name}}</a> </li>
+          <li class="breadcrumb-item"> <a href="{{URL::to('/product-result/'.$queryy->id_category_branch)}}">{{$categoryBranchOnly->name}}</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="content">
+    <div class="container">
+        <div class="col-lg-9">
+            <p></p>
+            <p class="goToDescription"><a href="#details" class="scroll-to text-uppercase">Scroll to product details</a></p>
+            <div id="productMain" class="row">
+                <div class="col-sm-6">
+                  <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
+                    <div> <img src="{{ URL::to('/') }}/public/image/{{$categoryMainOnly->name}}/{{$categoryBranchOnly->name}}/{{$queryy->image}}" alt="" class="img-fluid"></div>
+                  </div>
                 </div>
-
-                <!-- Controls -->
-                <a class="left item-control" href="#similar-product" data-slide="prev">
-                    <i class="fa fa-angle-left"></i>
-                </a>
-                <a class="right item-control" href="#similar-product" data-slide="next">
-                    <i class="fa fa-angle-right"></i>
-                </a>
+                <div class="col-sm-6">
+                  <div class="box">
+                    <form  action="{{URL::to('/save-cart')}}" method="GET">
+                      <div class="sizes">
+                        <h3>The number of renting</h3>
+                        <select class="bs-select">
+                          @for ($i = 1; $i <= $queryy->amount; $i++)
+                          <option value="small">{{$i}}</option>
+                          @endfor
+                        </select>
+                        @if ($queryy->amount == 1)
+                          <h6>There is 1 products available</h6>
+                        @else
+                          <h6>There are {{$queryy->amount}} products available</h6>
+                        @endif
+                      </div>
+                      <!-- <input name="quantity" type="number" min="1" value="1"/> -->
+					  <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
+                      <p class="price">{{$queryy->price}} $</p>
+                      <p class="text-center">
+                        <button type="submit" class="btn btn-template-outlined"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                        <button type="submit" data-toggle="tooltip" data-placement="top" title="Add to wishlist" class="btn btn-default"><i class="fa fa-heart-o"></i></button>
+                      </p>
+                    </form>
+                  </div>
+                </div>
             </div>
-
+            <div id="details" class="box mb-4 mt-4">
+                <p></p>
+                <h4>{{$queryy->description}}</h4>
+            </div>
         </div>
-        <div class="col-sm-7">
-            <div class="product-information"><!--/product-information-->
-                <img src="images/product-details/new.jpg" class="newarrival" alt=""/>
-                <h2>Sản phẩm: {{$queryy->name}}</h2>
-                <p>Mã ID: {{$queryy->id_product}}</p>
-                <img src="images/product-details/rating.png" alt=""/>
-
-                <form action="{{URL::to('/save-cart')}}" method="GET">  {{--Gửi số lượng mua và nút thêm giỏ hàng vào--}}
-                    <span>
-									<span>Giá: {{number_format($queryy->price).' VNĐ'}}</span>
-                                    <br>
-									<span>Kho: {{number_format($queryy->amount)}}</span>
-                        <h5>Số lượng mua: </h5>
-									<input name="quantity" type="number" min="1" value="1"/>
-									<input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
-									<button type="submit" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Thêm giỏ hàng
-									</button>
-
-								</span>
-                </form>
-                <p><b>Loại:</b> {{$categoryMainOnly->name}}</p>
-                <p><b>Danh mục:</b> {{$categoryBranchOnly->name}}</p>
-                <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt=""/></a>
-            </div><!--/product-information-->
-        </div>
-    </div><!--/product-details-->
+        <!-- <div class="row">
+            <div class = "col-sm-3"></div>
+            <div class = "col-sm-6">
+            <section>
+                <div class="project owl-carousel"> {{--Chứa ảnh sản phẩm--}}
+                    <div class="item">
+                        <img src="{{ URL::to('/') }}/public/image/{{$categoryMainOnly->name}}/{{$categoryBranchOnly->name}}/{{$queryy->image}}" alt="" class="img-fluid"    />
+                    </div>
+                </div>
+            </section>
+            </div>
+            <div class = "col-sm-3"></div>
+        </div> -->
     <div>
-        <h1>Đánh giá:</h1>
-        <h4>Đã có {{$queryy->ratequantity}} người dùng đánh giá</h4>
+        <h1>Rating:</h1>
+        @if( $queryy->ratequantity == 0 || $queryy->ratequantity == 1)
+            <h4>There was {{$queryy->ratequantity}} user rating</h4>
+        @else
+            <h4>There were {{$queryy->ratequantity}} users rating</h4>
+        @endif
         <h4>ĐTB: {{$queryy->rate}}</h4>
         <form action="{{URL::to('/rating')}}" method="GET">
             <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
@@ -76,39 +95,50 @@
                 <option>9</option>
                 <option>10</option>
             </select>
-            <button type="submit">Chấm điểm</button>
+            <?php
+            if (Session::get('id_customer')) {
+            ?>
+                <button type="submit" class="btn-template-main">Chấm điểm</button>
+            <?php
+            } else{
+                echo "You must sign in to rating";
+            }
+            ?>
         </form>
         <h1>Bình luận:</h1>
         <?php
-            if(Session::get('id_customer')){
-        ?>
+        if (Session::get('id_customer')) {
+            ?>
                 <form  action="{{URL::to('/comment')}}" method="GET">
-                    <textarea name="comment" placeholder="Bạn có suy nghĩ gì về sản phẩm ?" content="">
+                    <textarea name="comment" placeholder="What do you think about our product?" content="">
                     </textarea>
-
                     <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
                     <input name="customerid_hidden" type="hidden" value="{{Session::get('id_customer')}}"/>
-                    <button type="submit">Gửi bình luận</button>
+                    <button type="submit" class="btn-template-main">Gửi bình luận</button>
                 </form>
         <?php
-            } else{
-                echo "Bạn phải đăng nhập để bình luận";
-            }
-            $commentList = DB::table('coment')
-                ->where('id_product',$queryy->id_product)
-                ->get();
+        } else {
+            echo "You must sign in to comment";
+        }
+        $commentList = DB::table('coment')
+            ->where('id_product', $queryy->id_product)
+            ->get();
         ?>
         @foreach($commentList as $eachCommentList)
             <row>
             <h5>Người dùng: {{$eachCommentList->id_customer}}</h5>
             <h3>{{$eachCommentList->content}}</h3>
                 <?php
-                if(Session::get('id_admin')){
-                    ?>
-                    <a href="{{URL::to('/delete-comment/'.$eachCommentList->id_coment)}}">Xóa bình luận</a>
-                    <?php
-                }
-                ?>
+        if (Session::get('id_admin')) {
+            ?>
+            <a href="{{URL::to('/delete-comment/'.$eachCommentList->id_coment)}}">Xóa bình luận</a>
+            <?php
+        }
+        ?>
             </row>
         @endforeach
     </div>
+    </div>
+</div>
+
+@endsection
