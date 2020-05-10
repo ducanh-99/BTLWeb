@@ -16,6 +16,7 @@
   </head>
   <body>
   <div id="all">
+        @if(!Session::has('login') && Session::get('login') == false)
         <div class="top-bar">
           <div class="container">
             <div class="row d-flex align-items-center">
@@ -40,7 +41,7 @@
             </div>
           </div>
         </div>
-
+        @endif
         <!-- <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
             <div role="document" class="modal-dialog">
               <div class="modal-content">
@@ -119,12 +120,20 @@
                         <li class="dropdown-item"><a href="{{URL::to('/product-result/1')}}" class="nav-link">Washing Machine</a></li>
                       </ul>
                     </li>
-                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Contact <b class="caret"></b></a>
+                    <!-- <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Contact <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li class="dropdown-item"><a href="contact.html" class="nav-link">supports</a></li>
                         <li class="dropdown-item"><a href="contact2.html" class="nav-link">Questions</a></li>
                       </ul>
+                    </li> -->
+                    @if(Session::has('login') && Session::get('login') == true)
+                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="contact.html" class="nav-link">Profile</a></li>
+                        <li class="dropdown-item"><a href="{{URL::to('/logout')}}" class="nav-link">Log Out</a></li>
+                      </ul>
                     </li>
+                    @endif
                     <!-- ========== Contact dropdown end ==================-->
                   </ul>
                 </div>
