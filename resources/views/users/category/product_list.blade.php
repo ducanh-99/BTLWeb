@@ -9,6 +9,7 @@
       <div class="col-md-5">
         <ul class="breadcrumb d-flex justify-content-end">
           <li class="breadcrumb-item"><a href="{{URL::to('/home')}}">Home</a></li>
+          <li class="breadcrumb-item"> <a href="{{URL::to('/branch-result/'.$idMain->id_category_main)}}">{{$idMain->name}}</a> </li>
         </ul>
       </div>
     </div>
@@ -41,7 +42,12 @@
                     <h3><a href="portfolio-detail.html" class="color-white">{{$productSearchValue->name}}</a></h3>
                   </div>
                   <div class="text">
-                    <p class="buttons"><a href="{{URL::to('/detail/'.$productSearchValue->id_product) }}" class="btn btn-template-outlined-white">Add to Cart</a>
+                    <p class="buttons"><a href="{{URL::to('/detail/'.$productSearchValue->id_product) }}" class="btn btn-template-outlined-white">Show Detail</a>
+                    <form  action="{{URL::to('/save-cart')}}" method="GET">
+                      <input type="hidden" name = "quantity" value = "1"/>
+                      <input name="productid_hidden" type="hidden" value="{{$productSearchValue->id_product}}"/>
+                      <p class="bottons"><button type="submit" class="btn btn-template-outlined-white"><i class="fa fa-shopping-cart"></i> Add to cart</button></p>
+                    </form>
                   </div>
                 </div>
               </div>

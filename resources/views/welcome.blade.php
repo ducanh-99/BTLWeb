@@ -76,9 +76,10 @@
                     <li class="nav-item dropdown active"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Home <b class="caret"></b></a>
                       <ul class="dropdown-menu"> 
                       <li class="dropdown-item"><a href="{{URL::to('/home')}}" class="nav-link">Home</a></li>
-                        <li class="dropdown-item"><a href="index2.html" class="nav-link">Application</a></li>
-                        <li class="dropdown-item"><a href="index3.html" class="nav-link">Startup</a></li>
-                        <li class="dropdown-item"><a href="index4.html" class="nav-link">Agency</a></li>
+                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/1')}}" class="nav-link">Application</a></li>
+                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/2')}}" class="nav-link">TV & Audio</a></li>
+                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/3')}}" class="nav-link">Technology</a></li>
+                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/4')}}" class="nav-link">Furniture</a></li>
                       </ul> 
                     </li> 
                     <!-- ==========TV & Audio ===============-->
@@ -156,6 +157,7 @@
         @yield('category_branch')
         @yield('product')
         @yield('product_detail')
+        @yield('cart')
         <!-- FOOTER -->
         <footer class="main-footer">
           <div class="container">

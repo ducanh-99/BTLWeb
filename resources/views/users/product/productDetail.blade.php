@@ -28,13 +28,16 @@
                   </div>
                 </div>
                 <div class="col-sm-6">
-                  <div class="box">
+                  <!-- <div class="box"> -->
                     <form  action="{{URL::to('/save-cart')}}" method="GET">
                       <div class="sizes">
                         <h3>The number of renting</h3>
-                        <select class="bs-select">
+                        <div>
+                          <input class="form-control" type="number" id="example-number-input"/>
+                        </div>
+                        <select name = "quantity" class="bs-select">
                           @for ($i = 1; $i <= $queryy->amount; $i++)
-                          <option value="small">{{$i}}</option>
+                          <option value="{{$i}}">{{$i}}</option>
                           @endfor
                         </select>
                         @if ($queryy->amount == 1)
@@ -43,15 +46,14 @@
                           <h6>There are {{$queryy->amount}} products available</h6>
                         @endif
                       </div>
-                      <!-- <input name="quantity" type="number" min="1" value="1"/> -->
-					  <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
+					            <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
                       <p class="price">{{$queryy->price}} $</p>
                       <p class="text-center">
                         <button type="submit" class="btn btn-template-outlined"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                         <button type="submit" data-toggle="tooltip" data-placement="top" title="Add to wishlist" class="btn btn-default"><i class="fa fa-heart-o"></i></button>
                       </p>
                     </form>
-                  </div>
+                  <!-- </div> -->
                 </div>
             </div>
             <div id="details" class="box mb-4 mt-4">
@@ -83,17 +85,9 @@
         <form action="{{URL::to('/rating')}}" method="GET">
             <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
             <select name="point" id="point">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
+              @for ($i = 0; $i <= 10; $i++)
+                <option>{{$i}}</option>
+              @endfor
             </select>
             <?php
             if (Session::get('id_customer')) {
@@ -105,7 +99,7 @@
             }
             ?>
         </form>
-        <h1>Bình luận:</h1>
+        <h1>Comment:</h1>
         <?php
         if (Session::get('id_customer')) {
             ?>
@@ -126,8 +120,9 @@
         ?>
         @foreach($commentList as $eachCommentList)
             <row>
+            
             <h5>Người dùng: {{$eachCommentList->id_customer}}</h5>
-            <h3>{{$eachCommentList->content}}</h3>
+            <h3><i class="fa fa-comment" aria-hidden="true"></i>{{$eachCommentList->content}}</h3>
                 <?php
         if (Session::get('id_admin')) {
             ?>
