@@ -17,7 +17,7 @@
                         <div class="col-md-7"><img src="img/1-main-image-PAR01.jpg" alt="" class="img-fluid  "></div>
                       </div>
                     </div>
-                    <div class="item">
+                    <!-- <div class="item">
                       <div class="row">
                         <div class="col-md-7 text-center"><img src="img/template-mac.png" alt="" class="img-fluid"></div>
                         <div class="col-md-5">
@@ -30,22 +30,20 @@
                           </ul>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="item">
                       <div class="row">
                         <div class="col-md-5 text-right">
-                          <h1>Design</h1>
+                          <h1>Easily decorate your home</h1>
                           <ul class="list-unstyled">
-                            <li>Clean and elegant design</li>
-                            <li>Full width and boxed mode</li>
-                            <li>Easily readable Roboto font and awesome icons</li>
-                            <li>7 preprepared colour variations</li>
+                            <li>Diverse products</li>
+                            <li>Many different prices</li>
                           </ul>
                         </div>
                         <div class="col-md-7"><img src="img/template-easy-customize.png" alt="" class="img-fluid"></div>
                       </div>
                     </div>
-                    <div class="item">
+                    <!-- <div class="item">
                       <div class="row">
                         <div class="col-md-7"><img src="img/template-easy-code.png" alt="" class="img-fluid"></div>
                         <div class="col-md-5">
@@ -56,7 +54,7 @@
                           </ul>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -122,12 +120,12 @@
         <!-- ============================== -->
         <section class="bar background-pentagon no-mb text-md-center">
           <div class="container">
-            <div class="heading text-center">
+            <!-- <div class="heading text-center">
               <h2>Testimonials</h2>
             </div>
-            <p class="lead">We have worked with many clients and we always like to hear they come out from the cooperation happy and satisfied. Have a look what our clients said about us.</p>
+            <p class="lead">We have worked with many clients and we always like to hear they come out from the cooperation happy and satisfied. Have a look what our clients said about us.</p> -->
             <!-- Carousel Start-->
-            <ul class="owl-carousel testimonials list-unstyled equal-height">
+            <!-- <ul class="owl-carousel testimonials list-unstyled equal-height">
               <li class="item">
                 <div class="testimonial d-flex flex-wrap">
                   <div class="text">
@@ -214,12 +212,12 @@
                   </div>
                 </div>
               </li>
-            </ul>
+            </ul> -->
             <!-- Carousel End-->
           </div>
 
         </section>
-        <section style="background: url(img/fixed-background-2.jpg) center top no-repeat; background-size: cover;" class="bar no-mb color-white text-center bg-fixed relative-positioned">
+        <!-- <section style="background: url(img/fixed-background-2.jpg) center top no-repeat; background-size: cover;" class="bar no-mb color-white text-center bg-fixed relative-positioned">
           <div class="dark-mask"></div>
           <div class="container">
             <div class="icon icon-outlined icon-lg"><i class="fa fa-file-code-o"></i></div>
@@ -227,66 +225,66 @@
             <p class="lead">We have prepared for you more than 40 different HTML pages, including 5 variations of homepage.</p>
             <p class="text-center"><a href="index2.html" class="btn btn-template-outlined-white btn-lg">See another homepage</a></p>
           </div>
-        </section>
+        </section> -->
         <section class="bg-white bar">
           <div class="container">
             <div class="heading text-center">
-              <h2>From the blog</h2>
+              <h2>Products</h2>
             </div>
-            <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. <a href="blog.html">Check our blog</a></p>
+            <!-- <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. <a href="blog.html">Check our blog</a></p> -->
             <div class="row">
               <div class="col-lg-3">
                 <div class="home-blog-post">
-                  <div class="image"><img src="img/portfolio-4.jpg" alt="..." class="img-fluid">
+                  <div class="image"><img src="{{ URL::to('/') }}/public/image/tv & audio/TVs/n5500_si_hisense_television_01_l-1.jpg" alt="..." class="img-fluid">
                     <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
                   </div>
                   <div class="text">
-                    <h4><a href="#">Fashion Now </a></h4>
-                    <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                    <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
+                    <h4><a href="#">TV & Audio </a></h4>
+                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
                   </div>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="home-blog-post">
-                  <div class="image"><img src="img/portfolio-3.jpg" alt="..." class="img-fluid">
+                  <div class="image"><img src="{{ URL::to('/') }}/public/image/technology/Computing/ASUS-Chromebook-Flip-C213-1.jpg" alt="..." class="img-fluid">
                     <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
                   </div>
                   <div class="text">
-                    <h4><a href="#">What to do</a></h4>
-                    <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                    <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
+                    <h4><a href="#">Technology</a></h4>
+                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
                   </div>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="home-blog-post">
-                  <div class="image"><img src="img/portfolio-5.jpg" alt="..." class="img-fluid">
+                  <div class="image"><img src="{{ URL::to('/') }}/public/image/Furniture/Dining Room/Carina-Dining-Set.jpg" height="172px" alt="..." class="img-fluid">
                     <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
                   </div>
                   <div class="text">
-                    <h4><a href="#">5 ways to look awesome</a></h4>
-                    <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                    <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
+                    <h4><a href="#">Furniture</a></h4>
+                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
                   </div>
                 </div>
               </div>
               <div class="col-lg-3">
                 <div class="home-blog-post">
-                  <div class="image"><img src="img/portfolio-6.jpg" alt="..." class="img-fluid">
+                  <div class="image"><img src="{{ URL::to('/') }}/public/image/Applications/Cookers & Microwaves/Daewoo-KOC9Q4T-e1518714988146.jpg"  height="172px" alt="..." class="img-fluid">
                     <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
                   </div>
                   <div class="text">
-                    <h4><a href="#">Fashion Now </a></h4>
-                    <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p>
-                    <p class="intro">Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
+                    <h4><a href="#">Application</a></h4>
+                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section class="bar bg-gray">
+        <!-- <section class="bar bg-gray">
           <div class="container">
             <div class="heading text-center">
               <h2>Our Clients</h2>
@@ -300,15 +298,15 @@
               <li class="item"><img src="img/customer-6.png" alt="" class="img-fluid"></li>
             </ul>
           </div>
-        </section>
+        </section> -->
         <!-- GET IT-->
         <div class="get-it">
           <div class="container">
             <div class="row">
               <div class="col-lg-8 text-center p-3">
-                <h3>Do you want cool website like this one?</h3>
+                <h3>Do you want a fully furnished home?</h3>
               </div>
-              <div class="col-lg-4 text-center p-3">   <a href="#" class="btn btn-template-outlined-white">Buy this template now</a></div>
+              <div class="col-lg-4 text-center p-3">   <a href="#" class="btn btn-template-outlined-white">Please come with us</a></div>
             </div>
           </div>
         </div>

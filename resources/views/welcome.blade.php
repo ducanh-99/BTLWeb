@@ -66,7 +66,7 @@
           </div> -->
 
 
-          <header class="nav-holder make-sticky">
+          <header class="nav-holder make-sticky sticky">
             <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
               <div class="container"><a href="{{URL::to('/home')}}" class="navbar-brand home"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="Alease logo" class="d-none d-md-inline-block"><img src="{{('public/frontend/img/rsz_11logo.png')}}" alt="Alease logo" class="d-inline-block d-md-none"><span class="sr-only">Alease - go to homepage</span></a>
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
@@ -76,9 +76,9 @@
                     <li class="nav-item dropdown active"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Home <b class="caret"></b></a>
                       <ul class="dropdown-menu"> 
                       <li class="dropdown-item"><a href="{{URL::to('/home')}}" class="nav-link">Home</a></li>
-                        <li class="dropdown-item"><a href="index2.html" class="nav-link">Option 2: Application</a></li>
-                        <li class="dropdown-item"><a href="index3.html" class="nav-link">Option 3: Startup</a></li>
-                        <li class="dropdown-item"><a href="index4.html" class="nav-link">Option 4: Agency</a></li>
+                        <li class="dropdown-item"><a href="index2.html" class="nav-link">Application</a></li>
+                        <li class="dropdown-item"><a href="index3.html" class="nav-link">Startup</a></li>
+                        <li class="dropdown-item"><a href="index4.html" class="nav-link">Agency</a></li>
                       </ul> 
                     </li> 
                     <!-- ==========TV & Audio ===============-->
@@ -162,7 +162,7 @@
             <div class="row">
               <div class="col-lg-3">
                 <h4 class="h6">About Us</h4>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                <p>If you have a problem, please contact us.</p>
                 <hr>
                 <h4 class="h6">Join Our Monthly Newsletter</h4>
                 <form>
@@ -181,37 +181,32 @@
                   <li class="d-flex align-items-center">
                     <div class="image"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></div>
                     <div class="text">
-                      <h5 class="mb-0"> <a href="post.html">Blog post name</a></h5>
+                      <h5 class="mb-0"> <a href="post.html">recruit members</a></h5>
                     </div>
                   </li>
                   <li class="d-flex align-items-center">
                     <div class="image"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></div>
                     <div class="text">
-                      <h5 class="mb-0"> <a href="post.html">Blog post name</a></h5>
+                      <h5 class="mb-0"> <a href="post.html">No.1 company in the world</a></h5>
                     </div>
                   </li>
-                  <li class="d-flex align-items-center">
+                  <!-- <li class="d-flex align-items-center">
                     <div class="image"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></div>
                     <div class="text">
                       <h5 class="mb-0"> <a href="post.html">Very very long blog post name</a></h5>
                     </div>
-                  </li>
+                  </li> -->
                 </ul>
                 <hr class="d-block d-lg-none">
               </div>
               <div class="col-lg-3">
                 <h4 class="h6">Contact</h4>
-                <p class="text-uppercase"><strong>Universal Ltd.</strong><br>13/25 New Avenue <br>Newtown upon River <br>45Y 73J <br>England <br><strong>Great Britain</strong></p><a href="contact.html" class="btn btn-template-main">Go to contact page</a>
+                <p class="text-uppercase"><strong>Alease Ltd.</strong><br>1 Dai Co Viet <br>Hai Ba Trung <br>Ha Noi <br>VietNamese <br><strong>VietNam</strong></p><a href="contact.html" class="btn btn-template-main">Go to contact page</a>
                 <hr class="d-block d-lg-none">
               </div>
               <div class="col-lg-3">
                 <ul class="list-inline photo-stream">
-                  <li class="list-inline-item"><a href="#"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></a></li>
-                  <li class="list-inline-item"><a href="#"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="..." class="img-fluid"></a></li>
+                  <li class="list-inline-item"><img src="{{ URL::to('/') }}/public/frontend/img/payment.png" alt="..." class="img-fluid"></a></li>
                 </ul>
               </div>
             </div>
@@ -220,7 +215,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-lg-4 text-center-md">
-                  <p>&copy; 2020. Your company / name goes here</p>
+                  <p>&copy; 2020. Alease</p>
                 </div>
                 <div class="col-lg-8 text-right text-center-md">
                   <!-- Please do not remove the backlink to us unless you purchase the Attribution-free License at https://bootstrapious.com/donate. Thank you. -->
