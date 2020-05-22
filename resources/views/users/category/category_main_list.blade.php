@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('category_main')  
+@section('category_main')
 
 
 <div id="content">
@@ -12,6 +12,7 @@
                 <div class="heading">
                     <a href="{{URL::to('/branch-result/'.$mainSearchValue->id_category_main)}}">
                     <h2>{{$mainSearchValue->name}}</h2>
+                    </a>
                 </div>
                 <div>
                     <h5>{{$mainSearchValue->description}}</h5>

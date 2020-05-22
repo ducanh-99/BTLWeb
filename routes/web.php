@@ -51,6 +51,16 @@ Route::get('/alter-user-information','UserInformationController@alterUserInforma
 Route::get('/comment','ProductController@comment');
 Route::get('/rating','ProductController@rating');
 
+//đơn hàng
+//đơn hàng chi tiết của user
+Route::get('/user-view-order-detail/{id_oder}','OrderController@viewUserOrderDetail');
+//đơn hàng tổng quát của user
+Route::get('/user-view-order','OrderController@viewUserOrder');
+Route::get('/user-cancel-order/{id_oder}','OrderController@cancelUserOrder');
+
+//tin tức
+Route::get('/list-news-for-user','NewsController@listNewsForUser');
+Route::get('/detail-news-for-user/{id_news}','NewsController@detailNewsForUser');
 //Phía Admin
 //Thêm sản phẩm
 Route::get('/add-branch-category','AdminController\AddController@addBranchCategory');
@@ -87,7 +97,9 @@ Route::get('/view-order','AdminController\OrderController@viewOrder');
 Route::get('/approve-order/{id_oder}','AdminController\OrderController@approveOrder');
 Route::get('/unapprove-order/{id_oder}','AdminController\OrderController@unApproveOrder');
 Route::get('/succeed-order/{id_oder}','AdminController\OrderController@succeedOrder');
-
+//comment
+Route::get('/admin-comment','AdminController\AdminController@adminComment');
+Route::get('/delete-admin-comment/{id_admin_comment}','AdminController\AdminController@deleteAdminComment');
 //quản lý người dùng
 
 //hiển thị danh sách người dùng
@@ -103,6 +115,21 @@ Route::get('/delete-comment/{id_comment}','AdminController\UserController@delete
 //thêm admin
 Route::get('/add-admin','AdminController\AdminController@addAdmin');
 Route::get('/save-admin','AdminController\AdminController@saveAdmin');
+
+//tin tức
+//thêm tin tức
+Route::get('/add-news','AdminController\NewsController@addNews');
+Route::get('/save-news','AdminController\NewsController@saveNews');
+//hiển thị danh sách tin tức
+Route::get('/display-all-news','AdminController\NewsController@displayAllNews');
+
+//chỉnh sửa tin tức
+Route::get('/edit-news/{id_news}','AdminController\NewsController@editNews');
+Route::get('/submit-edit-news','AdminController\NewsController@submitEditNews');
+
+//xóa tin tức
+Route::get('/active-news/{id_news}','AdminController\NewsController@activeNews');
+Route::get('/unactive-news/{id_news}','AdminController\NewsController@unactiveNews');
 
 //thay đổi thông tin cá nhân admin
 Route::get('/change-admin-information','AdminController\AdminController@changeAdminInformation');

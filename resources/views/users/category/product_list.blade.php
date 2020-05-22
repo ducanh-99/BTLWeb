@@ -9,7 +9,7 @@
       <div class="col-md-5">
         <ul class="breadcrumb d-flex justify-content-end">
           <li class="breadcrumb-item"><a href="{{URL::to('/home')}}">Home</a></li>
-          <li class="breadcrumb-item"> <a href="{{URL::to('/branch-result/'.$idMain->id_category_main)}}">{{$idMain->name}}</a> </li>
+          <li class="breadcrumb-item"> <a href="{{URL::to('/branch-result/'.$MainOnly->id_category_main)}}">{{$MainOnly->name}}</a> </li>
         </ul>
       </div>
     </div>
@@ -39,7 +39,7 @@
               <div class="overlay d-flex align-items-center justify-content-center">
                 <div class="content">
                   <div class="name">
-                    <h3><a href="portfolio-detail.html" class="color-white">{{$productSearchValue->name}}</a></h3>
+                    <h3><a href="{{URL::to('/detail/'.$productSearchValue->id_product) }}" class="color-white">{{$productSearchValue->name}}</a></h3>
                   </div>
                   <div class="text">
                     <p class="buttons"><a href="{{URL::to('/detail/'.$productSearchValue->id_product) }}" class="btn btn-template-outlined-white">Show Detail</a>
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div>
-            <h5>{{$productSearchValue->description}}</h5>
+            <h5>{{$productSearchValue->name}}</h5>
           </div>
         </div>
         @endforeach

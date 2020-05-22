@@ -37,8 +37,8 @@ class SearchController extends Controller
         $categoryBranchOnly = DB::table('category_branch')
             ->where('id_category_branch', $query->id_category_branch);
 
-        $categoryMainOnly = $categoryMainOnly->first();
-        $categoryBranchOnly = $categoryBranchOnly->first();
+        $categoryMainOnly = $categoryMainOnly->first(); //trả về main cha của branch
+        $categoryBranchOnly = $categoryBranchOnly->first(); //trả về branch cha của product
 
 
         return view('users.product.productDetail')
