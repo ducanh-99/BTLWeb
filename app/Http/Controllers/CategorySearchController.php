@@ -22,20 +22,22 @@ class CategorySearchController extends Controller
         $descriptionMain = DB::table('category_main')->select('name', 'description')->where('id_category_main', $idMain)->first();
         return view('users.category.category_branch_list')
             ->with('branchSearch',$branchSearch)
-            ->with('descriptionMain', $descriptionMain)
-        ;
-
+            ->with('descriptionMain', $descriptionMain);
     }
 
     public function productSearch($id_branch){
         //select name, image, id_main, description
         $nameBranch = DB::table('category_branch')->select('name', 'image', 'id_category_main','descriptionf')->where('id_category_branch',$id_branch)->first();
-        
+        //trả về tên của branch có id = $id_branch
+
         $nameMain = DB::table('category_main')->select('name')->where('id_category_main', $nameBranch->id_category_main)->first();
-        
-        $productSearch = DB::table('product')->where('id_category_branch', $id_branch)->get();
+        //trả về tên main cha của branch có id = $id_branch
+
+        $productSearch = DB::table('product')->where('id_category_branch', $id_branch)->get();  //trả về các sản phẩm thuộc branch có id = $id_branch
+
+        $MainOnly = DB::table('category_main')->where('id_category_main', $nameBranch->id_category_main)->first(); //trả về main cha của branch có id = $id_branch
         // url get image of product
         $url = $nameMain->name . '/' . $nameBranch->name . '/';
-        return view('users.category.product_list',['productSearch'=>$productSearch, 'url'=>$url, 'nameBranch'=>$nameBranch]);
+        return view('users.category.product_list',['MainOnly'=>$MainOnly,'productSearch'=>$productSearch, 'url'=>$url, 'nameBranch'=>$nameBranch]);
     }
 }

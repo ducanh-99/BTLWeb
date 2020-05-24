@@ -26,9 +26,10 @@ class LoginController extends Controller
         else { //nếu là admin
             $resultAdmin = DB::table('admininfo')->where('email', $email)->where('password', $password)->first();
             if($resultAdmin){   //nếu admin đăng nhập đúng
+                Session::put('login', true);
                 Session::put('id_admin',$resultAdmin->id_admin);
                 Session::remove('id_customer');
-                return view('users.home');
+                return view('admin.welcomeAdmin');
             } else{
                 return Redirect::to('/login')->with('fail', 'Đăng nhập không thành công, sai username hoặc password.');
             }
@@ -40,9 +41,11 @@ class LoginController extends Controller
     }
 
     public function logout(){
-        if(Session::get('id_customer')) {
-            Session::forget('login');
-            Session::forget('id_customer');
+        if(Session::get('id_customer') || Session::get('id_admin')) {
+            Session::put('login', false);
+            Session::remove('login');
+            Session::remove('id_customer');
+            Session::remove('id_admin');
             return redirect('login');
         }
         else return redirect('/');

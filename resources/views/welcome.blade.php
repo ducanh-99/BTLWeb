@@ -17,7 +17,7 @@
   </head>
   <body>
   <div id="all">
-        @if(!Session::has('login') && Session::get('login') == false)
+
         <div class="top-bar">
           <div class="container">
             <div class="row d-flex align-items-center">
@@ -30,7 +30,38 @@
                     <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
                   </ul>
-                  <div class="login"><a href="{{URL::to('/login')}}" class="login-btn"><i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a href="{{URL::to('/signup')}}" class="signup-btn"><i class="fa fa-user"></i><span class="d-none d-md-inline-block">Sign Up</span></a></div>
+                    @if(!Session::has('login') && Session::get('login') == false)
+                  <div class="login">
+                      <a href="{{URL::to('/login')}}" class="login-btn">
+                          <i class="fa fa-sign-in"></i>
+                          <span class="d-none d-md-inline-block">Sign In</span>
+                      </a>
+                      <a href="{{URL::to('/signup')}}" class="signup-btn">
+                          <i class="fa fa-user"></i>
+                          <span class="d-none d-md-inline-block">Sign Up</span>
+                      </a>
+                  </div>
+                        @elseif(Session::get('id_admin'))
+                        <div class="login">
+                            <?php
+                            $nameAdmin = DB::table('admininfo')
+                                ->select('name')
+                                ->where('id_admin',Session::get('id_admin'))
+                                ->get()->first();
+                            ?>
+                                <span style="color: red" class="d-none d-md-inline-block">Xin chào {{$nameAdmin->name}} - Admin</span>
+                        </div>
+                    @elseif(Session::get('id_customer'))
+                        <div class="login">
+                            <?php
+                            $nameCustomer = DB::table('customer')
+                                ->select('name')
+                                ->where('id_customer',Session::get('id_customer'))
+                                ->get()->first();
+                            ?>
+                            <span class="d-none d-md-inline-block">Xin chào {{$nameCustomer->name}}</span>
+                        </div>
+                    @endif
                   <ul class="social-custom list-inline">
                     <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -42,13 +73,13 @@
             </div>
           </div>
         </div>
-        @endif
+
         <!-- <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
             <div role="document" class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <h4 id="login-modalLabel" class="modal-title">Customer Login</h4>
-      
+
                   <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body"> -->
@@ -75,53 +106,33 @@
                   <ul class="nav navbar-nav ml-auto">
                     <!-- ==========Home ===============-->
                     <li class="nav-item dropdown active"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Home <b class="caret"></b></a>
-                      <ul class="dropdown-menu"> 
+                      <ul class="dropdown-menu">
                       <li class="dropdown-item"><a href="{{URL::to('/home')}}" class="nav-link">Home</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/1')}}" class="nav-link">Application</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/2')}}" class="nav-link">TV & Audio</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/3')}}" class="nav-link">Technology</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/4')}}" class="nav-link">Furniture</a></li>
-                      </ul> 
-                    </li> 
-                    <!-- ==========TV & Audio ===============-->
-                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">TV & Audio<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/10')}}" class="nav-link">DVD, Blu-ray Players & Set-top Boxes</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/9')}}" class="nav-link">Soundbars, Audio & TV Stands</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/8')}}" class="nav-link">TVs</a></li>
-                      </ul>
-                    </li>                   
-                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Technology<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/12')}}" class="nav-link">Computing</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/11')}}" class="nav-link">Gaming</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/13')}}" class="nav-link">Mobile Phones</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/14')}}" class="nav-link">Tablets</a></li>
-                      </ul>
-                    </li>    
-                    <!-- ========== Furniture ==================-->
-                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Furniture<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/20')}}" class="nav-link">Bedroom Furniture</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/15')}}" class="nav-link">Crushed Velvet Sofas</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/18')}}" class="nav-link">Dining Room</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/16')}}" class="nav-link">Fabric Sofas</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/17')}}" class="nav-link">Leather Sofas</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/19')}}" class="nav-link">Beds</a></a></li>
+                          <?php
+                          $AllCategoryMain = DB::table('category_main')
+                              ->get();
+                          foreach ($AllCategoryMain as $EachOfAllCategoryMain){
+                          ?>
+                        <li class="dropdown-item"><a href="{{URL::to('/branch-result/'.$EachOfAllCategoryMain->id_category_main)}}" class="nav-link">{{$EachOfAllCategoryMain->name}}</a></li>
+                        <?php
+                        }
+                        ?>
                       </ul>
                     </li>
-                    <!-- ========== Application ==================-->
-                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Application <b class="caret"></b></a>
+                      @foreach($AllCategoryMain as $EachOfAllCategoryMain)
+                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">{{$EachOfAllCategoryMain->name}}<b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/7')}}" class="nav-link">Floorcare</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/6')}}" class="nav-link">Dishwashers</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/5')}}" class="nav-link">Cookers & Microwaves</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/4')}}" class="nav-link">Fridges & Freezers</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/3')}}" class="nav-link">Tumble Dryers</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/2')}}" class="nav-link">Washer Dryers</a></li>
-                        <li class="dropdown-item"><a href="{{URL::to('/product-result/1')}}" class="nav-link">Washing Machine</a></li>
+                          <?php
+                          $AllCategoryBranch = DB::table('category_branch')
+                              ->where('id_category_main',$EachOfAllCategoryMain->id_category_main)
+                              ->get();
+                          ?>
+                          @foreach($AllCategoryBranch as $EachOfAllCategoryBranch)
+                        <li class="dropdown-item"><a href="{{URL::to('/product-result/'.$EachOfAllCategoryBranch->id_category_branch)}}" class="nav-link">{{$EachOfAllCategoryBranch->name}}</a></li>
+                              @endforeach
                       </ul>
                     </li>
+                      @endforeach
                     <!-- <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Contact <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li class="dropdown-item"><a href="contact.html" class="nav-link">supports</a></li>
@@ -131,7 +142,10 @@
                     @if(Session::has('login') && Session::get('login') == true)
                     <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
                       <ul class="dropdown-menu">
-                        <li class="dropdown-item"><a href="contact.html" class="nav-link">Profile</a></li>
+                        <li class="dropdown-item"><a href="{{URL::to('/change-information')}}" class="nav-link">Profile</a></li>
+                          @if(Session::get('id_customer'))
+                         <li class="dropdown-item"><a href="{{URL::to('/user-view-order')}}" class="nav-link">Your Order</a></li>
+                          @endif
                         <li class="dropdown-item"><a href="{{URL::to('/logout')}}" class="nav-link">Log Out</a></li>
                       </ul>
                     </li>
@@ -209,7 +223,7 @@
               </div>
               <div class="col-lg-3">
                 <ul class="list-inline photo-stream">
-                  <li class="list-inline-item"><img src="{{ URL::to('/') }}/public/frontend/img/payment.png" alt="..." class="img-fluid"></a></li>
+                  <li class="list-inline-item"><a src="{{ URL::to('/') }}/public/frontend/img/payment.png" alt="..." class="img-fluid"></a></li>
                 </ul>
               </div>
             </div>
@@ -241,6 +255,6 @@
     <script src="{{asset('public/frontend/vendor/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('public/frontend/vendor/jquery.scrollto/jquery.scrollTo.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/front.js')}}"></script>
-  
+
   </body>
 </html>
