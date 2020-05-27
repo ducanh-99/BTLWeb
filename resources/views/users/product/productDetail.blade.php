@@ -110,20 +110,20 @@
                 if (Session::get('id_customer')) {
                 ?>
                 <form action="{{URL::to('/comment')}}" method="GET">
-                    <textarea name="comment" placeholder="What do you think about our product?" content="">
-                    </textarea>
+                    <textarea name="comment" placeholder="What do you think about our product?" rows="6" cols="50"></textarea>
                     <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
                     <input name="customerid_hidden" type="hidden" value="{{Session::get('id_customer')}}"/>
+                    <br>
                     <button type="submit" class="btn-template-main">Gửi bình luận user</button>
                 </form>
                 <?php
                 }else if (Session::get('id_admin')) {
                 ?>
                 <form action="{{URL::to('/admin-comment')}}" method="GET">
-                    <textarea name="comment" placeholder="What do you want to announce to users?" content="">
-                    </textarea>
+                    <textarea name="comment" placeholder="What do you want to announce to users?" rows="6" cols="50"></textarea>
                     <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
                     <input name="adminid_hidden" type="hidden" value="{{Session::get('id_admin')}}"/>
+                    <br>
                     <button type="submit" class="btn-template-main">Gửi bình luận admin</button>
                 </form>
                 <?php
@@ -142,9 +142,10 @@
                 ?>
                 @foreach($adminCommentList as $eachAdminCommentList)
                     <row>
+                        <hr>
+                        <h4 style="color:red;">Admin: {{$eachAdminCommentList->name}}</h4>
+                        <h5><i class="fa fa-comment" aria-hidden="true"></i>    {{$eachAdminCommentList->content}}</h5>
 
-                        <h5 style="color:red;">Admin: {{$eachAdminCommentList->name}}</h5>
-                        <h3><i class="fa fa-comment" aria-hidden="true"></i>{{$eachAdminCommentList->content}}</h3>
                         <?php
                         if (Session::get('id_admin') === $eachAdminCommentList->id_admin) {
                         ?>
@@ -164,15 +165,18 @@
                             ->get()->first();
                         if($user->status == 1){
                         ?>
-                        <h5 style="color: #2b527e">User: {{$eachCommentList->name}}</h5>
+                        <hr>
+                        <h4 style="color: #2b527e">User: {{$eachCommentList->name}}</h4>
                         <?php
                         } else if($user->status == 0){
                             ?>
-                            <h5 style="text-decoration: line-through;">User: {{$eachCommentList->name}}</h5>
+                            <hr>
+                            <h4><row style="text-decoration: line-through;">User: {{$eachCommentList->name}}</row> banned</h4>
                             <?php
                             }
                         ?>
-                        <h3><i class="fa fa-comment" aria-hidden="true"></i>{{$eachCommentList->content}}</h3>
+
+                        <h5><i class="fa fa-comment" aria-hidden="true"></i>    {{$eachCommentList->content}}</h5>
                         <?php
                         if (Session::get('id_admin')) {
                         ?>
@@ -183,6 +187,7 @@
                         }
                         ?>
                     </row>
+                    <hr><hr>
                 @endforeach
                 <h1>Sản phẩm tương đương</h1>
                 <div class="row portfolio text-center">
@@ -225,6 +230,7 @@
                 }
                 ?>
                 </div>
+                <hr><hr>
                 <h1>Bài viết liên quan</h1>
                 <div class="row portfolio text-center">
                 <?php
@@ -233,7 +239,7 @@
                 ->get();
                     foreach ($equalNews as $eachOfEqualNews){
                         ?>
-                    <h3><a href="{{URL::to('/detail-news-for-user/'.$eachOfEqualNews->id_news) }}" >{{$eachOfEqualNews->title}} ({{$eachOfEqualNews->publish_date}})</a></h3>
+                    <h3 style="color: orangered"><a href="{{URL::to('/detail-news-for-user/'.$eachOfEqualNews->id_news) }}" >{{$eachOfEqualNews->title}} ({{$eachOfEqualNews->publish_date}})</a></h3>
                     <?php
                         }
                         ?>

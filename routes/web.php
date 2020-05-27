@@ -61,6 +61,9 @@ Route::get('/user-cancel-order/{id_oder}','OrderController@cancelUserOrder');
 //tin tức
 Route::get('/list-news-for-user','NewsController@listNewsForUser');
 Route::get('/detail-news-for-user/{id_news}','NewsController@detailNewsForUser');
+
+//realtime chat
+Route::get('/chat','ChatController@chat');
 //Phía Admin
 //Thêm sản phẩm
 Route::get('/add-branch-category','AdminController\AddController@addBranchCategory');
@@ -138,3 +141,5 @@ Route::get('/alter-admin-information','AdminController\AdminController@alterAdmi
 //thống kê
 Route::get('/access-quantity','AdminController\StatisticController@accessQuantity');    //thống kê lượt truy cập
 Route::get('/revenue','AdminController\StatisticController@revenue');    //doanh thu
+//phiên
+Route::get('/view-all-session','AdminController\SessionController@viewAllSession');

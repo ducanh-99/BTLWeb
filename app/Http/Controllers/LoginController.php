@@ -16,7 +16,6 @@ class LoginController extends Controller
             if($resultUser){    //nếu người dùng đăng nhập đúng
                 Session::put('login', true);
                 Session::put('id_customer',$resultUser->id_customer);
-                // Session::put('name',$resultUser->name);
                 Session::remove('id_admin');
                 return view('users.home');
             } else{
@@ -43,7 +42,6 @@ class LoginController extends Controller
     public function logout(){
         if(Session::get('id_customer') || Session::get('id_admin')) {
             Session::put('login', false);
-            Session::remove('login');
             Session::remove('id_customer');
             Session::remove('id_admin');
             return redirect('login');
