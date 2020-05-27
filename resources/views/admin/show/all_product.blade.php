@@ -74,7 +74,7 @@
                                                                             <option value="1">Ngừng kinh doanh</option>
                                                                         </select>
                                                                     </div>
-                                                                
+
                                                                 <!-- /.card-body -->
 
                                                                     <div class="card-footer">
@@ -95,10 +95,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <!-- <th>Id_category_branch</th> -->
+                                    <th>Id_category_branch</th>
                                     <th>Name</th>
                                     <th>Description</th>
-                                    <!-- <th>image</th> -->
+                                    <th>image</th>
                                     <th>Amount</th>
                                     <th>Price</th>
                                     <th>Iscctive</th>
@@ -107,12 +107,18 @@
                             </thead>
                             <tbody>
                                 @foreach($allProduct as $eachProduct)
+                                    <?php
+                                    $categoryBranchOnly = DB::table('category_branch')->where('id_category_branch',$eachProduct->id_category_branch)->get()->first();   //chứa 1 bản ghi trong bảng branch
+                                    $categoryMainOnly = DB::table('category_main')->where('id_category_main',$categoryBranchOnly->id_category_main)->get()->first();
+                                    ?>
                                 <tr>
                                     <td>{{ $eachProduct->id_product }}</td>
-                                    <!-- <td>{{ $eachProduct->id_category_branch }}</td> -->
+                                    <td>{{ $eachProduct->id_category_branch }} {{$categoryBranchOnly->name}}</td>
                                     <td>{{ $eachProduct->name }}</td>
                                     <td>{{ $eachProduct->description }}</td>
-                                    <!-- <td>{{ $eachProduct->image }}</td> -->
+                                    <td><img
+                                            src="{{ URL::to('/') }}/public/image/{{$categoryMainOnly->name}}/{{$categoryBranchOnly->name}}/{{$eachProduct->image}}"
+                                            alt="" class="img-fluid"></td>
                                     <td>{{ $eachProduct->amount }}</td>
                                     <td>{{ $eachProduct->price }}</td>
                                     <td>
@@ -133,7 +139,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                
+
                             </tbody>
                         </table>
                     </div>

@@ -142,12 +142,17 @@
                             </thead>
                             <tbody>
                                 @foreach($allCategoryBranch as $eachCategoryBranch)
+                                    <?php
+                                    $categoryMainOnly = DB::table('category_main')->where('id_category_main',$eachCategoryBranch->id_category_main)->get()->first();    //chứa 1 bản ghi trong bảng main
+                                    ?>
                                     <tr>
                                         <td>{{ $eachCategoryBranch->id_category_branch }}</td>
-                                        <td>{{ $eachCategoryBranch->id_category_main }}</td>
+                                        <td>{{ $eachCategoryBranch->id_category_main }} {{$categoryMainOnly->name}}</td>
                                         <td>{{ $eachCategoryBranch->name }}</td>
                                         <td>{{ $eachCategoryBranch->descriptionf }}</td>
-                                        <td>{{ $eachCategoryBranch->image }}</td>
+                                        <td><img
+                                                src="{{ URL::to('/') }}/public/image/{{$eachCategoryBranch->image}}"
+                                                alt="" class="img-fluid"></td>
                                         <td>{{ $eachCategoryBranch->status }}
                                             <?php
                                             if($eachCategoryBranch->status == 1){

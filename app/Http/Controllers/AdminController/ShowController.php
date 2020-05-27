@@ -35,6 +35,7 @@ class ShowController extends Controller
         if (Session::get('id_admin')) {
             $allProduct = DB::table('product')
                 ->get();
+
             return view('admin.show.all_product')->with('allProduct', $allProduct);
         } else {
             return redirect('login');
