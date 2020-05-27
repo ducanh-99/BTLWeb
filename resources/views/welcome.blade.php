@@ -5,14 +5,15 @@
     <meta name="description" content="">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="{{asset('public/frontend/vendor/bootstrap/css/bootstrap.css')}}">
-  <link rel="stylesheet" href="{{asset('public/frontend/vendor/bootstrap/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{asset('public/frontend/vendor/font-awesome/css/font-awesome.min.css')}}">
-  <link rel="stylesheet" href="{{asset('public/frontend/vendor/bootstrap-select/css/bootstrap-select.min.css')}}">
-  <link rel="stylesheet" href="{{asset('public/frontend/vendor/owl.carousel/assets/owl.carousel.css')}}">
-  <link rel="stylesheet" href="{{asset('public/frontend/vendor/owl.carousel/assets/owl.theme.default.css')}}">
-  <link rel="stylesheet" href="{{asset('public/frontend/style.default.css')}}" id="theme-stylesheet">
-  <link rel="stylesheet" href="{{asset('public/frontend/custom.css')}}">
+    <link rel="shortcut icon" href="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{asset('public/frontend/vendor/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/vendor/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/vendor/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/vendor/owl.carousel/assets/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/vendor/owl.carousel/assets/owl.theme.default.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/style.default.css')}}" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{asset('public/frontend/custom.css')}}">
   </head>
   <body>
   <div id="all">
@@ -48,7 +49,7 @@
                                 ->where('id_admin',Session::get('id_admin'))
                                 ->get()->first();
                             ?>
-                                <span style="color: red" class="d-none d-md-inline-block">Xin chào {{$nameAdmin->name}} - Admin</span>
+                                <span style="color: red" class="d-none d-md-inline-block">Hello {{$nameAdmin->name}} - Admin</span>
                         </div>
                     @elseif(Session::get('id_customer'))
                         <div class="login">
@@ -99,7 +100,7 @@
 
           <header class="nav-holder make-sticky sticky">
             <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-              <div class="container"><a href="{{URL::to('/home')}}" class="navbar-brand home"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="Alease logo" class="d-none d-md-inline-block"><img src="{{('public/frontend/img/rsz_11logo.png')}}" alt="Alease logo" class="d-inline-block d-md-none"><span class="sr-only">Alease - go to homepage</span></a>
+              <div class="container"><a href="{{URL::to('/home')}}" class="navbar-brand home"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="Alease logo" class="d-none d-md-inline-block"><img src="{{ URL::to('/') }}/public/frontend/img/rsz_11logo.png" alt="Alease logo" class="d-inline-block d-md-none"><span class="sr-only">Alease - go to homepage</span></a>
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <div id="navigation" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav ml-auto">
@@ -109,7 +110,7 @@
                       <li class="dropdown-item"><a href="{{URL::to('/home')}}" class="nav-link">Home</a></li>
                           <?php
                           $AllCategoryMain = DB::table('category_main')
-                              ->get();
+                              ->get()->take(4);
                           foreach ($AllCategoryMain as $EachOfAllCategoryMain){
                           ?>
                         <li class="dropdown-item"><a href="{{URL::to('/branch-result/'.$EachOfAllCategoryMain->id_category_main)}}" class="nav-link">{{$EachOfAllCategoryMain->name}}</a></li>
