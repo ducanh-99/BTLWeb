@@ -49,7 +49,7 @@
                                 ->where('id_admin',Session::get('id_admin'))
                                 ->get()->first();
                             ?>
-                                <span style="color: red" class="d-none d-md-inline-block">Xin chào {{$nameAdmin->name}} - Admin</span>
+                                <span style="color: red" class="d-none d-md-inline-block">Hello {{$nameAdmin->name}} - Admin</span>
                         </div>
                     @elseif(Session::get('id_customer'))
                         <div class="login">
@@ -110,7 +110,7 @@
                       <li class="dropdown-item"><a href="{{URL::to('/home')}}" class="nav-link">Home</a></li>
                           <?php
                           $AllCategoryMain = DB::table('category_main')
-                              ->get();
+                              ->get()->take(4);
                           foreach ($AllCategoryMain as $EachOfAllCategoryMain){
                           ?>
                         <li class="dropdown-item"><a href="{{URL::to('/branch-result/'.$EachOfAllCategoryMain->id_category_main)}}" class="nav-link">{{$EachOfAllCategoryMain->name}}</a></li>
