@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use http\Exception;
 use Illuminate\Http\Request;
 use DB, Session, Cart;
 use Illuminate\Support\Facades\Redirect;
@@ -12,8 +13,8 @@ class OrderController extends Controller
     public function viewOrder()
     {
         if (Session::get('id_admin')) {
-            $allOrder = DB::table('oder')
-                ->get();
+                $allOrder = DB::table('oder')
+                    ->get();
             return view('admin.orderManagement.view_order')->with('allOrder', $allOrder);
         } else {
             return redirect('login');

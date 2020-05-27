@@ -65,6 +65,8 @@ Route::get('/detail-news-for-user/{id_news}','NewsController@detailNewsForUser')
 //realtime chat
 Route::get('/chat','ChatController@chat');
 //Phía Admin
+//welcome
+Route::get('/welcome-admin','LoginController@welcomeAdmin');
 //Thêm sản phẩm
 Route::get('/add-branch-category','AdminController\AddController@addBranchCategory');
 Route::get('/save-branch-category','AdminController\AddController@saveBranchCategory');

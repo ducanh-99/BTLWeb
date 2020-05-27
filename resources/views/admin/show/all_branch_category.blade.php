@@ -64,7 +64,7 @@
             <!-- /.card-header -->
                     <div class="card-body">
                         <!-- Form add new product -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add new main category</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add new branch category</button>
                             <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                                 <div class="modal-dialog modal-lg-12" role="document">
                                     <div class="modal-content">
@@ -78,7 +78,7 @@
                                                         <!-- general form elements -->
                                                             <div class="card-primary">
                                                                 <div class="card-header">
-                                                                    <h3 class="card-title">New Main Category</h3>
+                                                                    <h3 class="card-title">New branch Category</h3>
                                                                 </div>
                                                         <!-- /.card-header -->
                                                         <!-- form start -->
@@ -93,7 +93,7 @@
                                                                             <label>Branch Name</label>
                                                                             <input type="text" class="form-control" name="branch_name" id="branch_name" placeholder="Branch name">
                                                                     </div>
-                                                                    
+
                                                                     <div class="form-group">
                                                                     <label>Description branch</label>
                                                                     <textarea style="resize: none" rows="8" class="form-control" name="branch_descr"
@@ -166,7 +166,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                
+
                             </tbody>
                         </table>
                     </div>

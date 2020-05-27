@@ -42,7 +42,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{ URL::to('/welcome-admin') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -66,7 +66,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ URL::to('/') }}" class="brand-link">
       <!-- <img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> -->
       <span style="text-align: center">Aleasa</span>
@@ -86,7 +86,7 @@
                                 ->where('id_admin',Session::get('id_admin'))
                                 ->get()->first();
                             ?>
-          <a href="#" class="d-block">{{$nameAdmin->name}}</a>
+          <a href="{{ URL::to('/change-admin-information') }}" class="d-block">{{$nameAdmin->name}}</a>
         </div>
       </div>
 
@@ -99,7 +99,7 @@
               <p>
                 Management
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">3</span>
+                <span class="badge badge-info right">9</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -121,9 +121,47 @@
                   <p>Product management</p>
                 </a>
               </li>
+
+                <li class="nav-item">
+                    <a href="{{URL::to('/display-user')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>User Management</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{URL::to('/display-all-news')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>News Management</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{URL::to('/view-order')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Order Management</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{URL::to('/view-all-session')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Session Management</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{URL::to('/access-quantity')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Access Quantity ?</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{URL::to('/revenue')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Revenue</p>
+                    </a>
+                </li>
+
             </ul>
           </li>
-         
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -133,7 +171,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    
+
     @yield('all_product')
     @yield('all_main_category')
     @yield('all_branch_category')
@@ -141,8 +179,8 @@
     <!--  -->
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          
-  
+
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -150,7 +188,7 @@
     <strong>Copyright &copy; 2020 <a href="{{URL::to('/home')}}">Alease</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0 
+      <b>Version</b> 1.0
     </div>
   </footer>
 

@@ -1,9 +1,17 @@
-<div>
-    Liệt kê Order Khách hàng
-</div>
-<div class="table-responsive">
-    <table class="table table-striped b-t b-light">
-        <thead>
+@extends('admin.welcomeAdmin')
+@section('all_branch_category')
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">View All Users' Orders</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+
+                        <thead>
         <tr>
             <th>id_oder</th>
             <th>id_customer</th>
@@ -57,3 +65,8 @@
         </tbody>
     </table>
 </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection

@@ -14,6 +14,7 @@
         </tr>
         </thead>
         <tbody>
+
         @foreach($allUserOrder as $eachUserOrder)
             <tr>
                 <td>{{ $eachUserOrder->id_oder }}</td>
@@ -34,6 +35,7 @@
                 <td><a href="{{URL::to('/user-view-order-detail/'.$eachUserOrder->id_oder)}}">Xem chi tiết</a></td>
             </tr>
         @endforeach
+
         </tbody>
     </table>
 </div>

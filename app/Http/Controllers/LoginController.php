@@ -49,4 +49,11 @@ class LoginController extends Controller
         else return redirect('/');
     }
 
+    public function welcomeAdmin(){
+        if (Session::get('id_admin')){
+            return view('admin.welcomeAdmin');
+        } else {
+            return redirect('login');
+        }
+    }
 }
