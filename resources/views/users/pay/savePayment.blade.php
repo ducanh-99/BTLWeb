@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 
     <section id="cart_items">
+=======
+@extends('welcome')
+@section('savePayment')
+<section id="cart_items">
+>>>>>>> 2524e689c9861e9c3664e0485c68048b6b6ff84e
     <div class="container">
 
         <div class="review-payment">
@@ -83,4 +89,8 @@
 
     </div>
 </section> <!--/#cart_items-->
+<<<<<<< HEAD
 
+=======
+@endsection
+>>>>>>> 2524e689c9861e9c3664e0485c68048b6b6ff84e

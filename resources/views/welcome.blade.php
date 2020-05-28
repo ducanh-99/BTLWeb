@@ -41,7 +41,7 @@
                           <span class="d-none d-md-inline-block">Sign Up</span>
                       </a>
                   </div>
-                        @elseif(Session::get('id_admin'))
+                    @elseif(Session::get('id_admin'))
                         <div class="login">
                             <?php
                             $nameAdmin = DB::table('admininfo')
@@ -51,6 +51,10 @@
                             ?>
                                 <span style="color: red" class="d-none d-md-inline-block">Hello {{$nameAdmin->name}} - Admin</span>
                         </div>
+                        <div class="log out">
+                          
+                          <a href="{{URL::to('/logout')}}">Log out</a>
+                        </div>
                     @elseif(Session::get('id_customer'))
                         <div class="login">
                             <?php
@@ -59,7 +63,11 @@
                                 ->where('id_customer',Session::get('id_customer'))
                                 ->get()->first();
                             ?>
-                            <span class="d-none d-md-inline-block">Xin chào {{$nameCustomer->name}}</span>
+                            <span class="d-none d-md-inline-block">{{$nameCustomer->name}}</span>
+                        </div>
+                        <div class="log out">
+                          <i class="fa fa-log-out"></i>
+                          <a href="{{URL::to('/logout')}}">Log out</a>
                         </div>
                     @endif
                   <ul class="social-custom list-inline">
@@ -173,6 +181,8 @@
         @yield('product')
         @yield('product_detail')
         @yield('cart')
+        @yield('noteDetail')
+        @yield('savePayment')
         <!-- FOOTER -->
         <footer class="main-footer">
           <div class="container">
