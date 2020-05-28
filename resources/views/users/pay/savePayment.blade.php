@@ -1,3 +1,5 @@
+@extends('welcome')
+@section('savePayment')
 <section id="cart_items">
     <div class="container">
 
@@ -82,3 +84,4 @@
 
     </div>
 </section> <!--/#cart_items-->
+@endsection
