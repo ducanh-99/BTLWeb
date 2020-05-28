@@ -77,7 +77,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('public/backend/dist/img/1.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <?php
+            $AD = DB::table('admininfo')->where('id_admin',Session::get('id_admin'))->get()->first();
+            ?>
+          <img src="{{asset('public/image/AdminAvatar/'.$AD->avatar)}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <?php
@@ -99,7 +102,7 @@
               <p>
                 Management
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">9</span>
+                <span class="badge badge-info right">10</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -121,6 +124,13 @@
                   <p>Product management</p>
                 </a>
               </li>
+
+                <li class="nav-item">
+                    <a href="{{URL::to('/add-admin')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add Admin</p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="{{URL::to('/display-user')}}" class="nav-link">

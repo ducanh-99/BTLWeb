@@ -7,3 +7,4 @@
                 <h2 style="color: #0c5460">{{ $detailNews->context }}</h2>
 
 </div>
+

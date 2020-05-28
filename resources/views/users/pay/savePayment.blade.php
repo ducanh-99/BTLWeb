@@ -1,4 +1,5 @@
-<section id="cart_items">
+
+    <section id="cart_items">
     <div class="container">
 
         <div class="review-payment">
@@ -82,3 +83,4 @@
 
     </div>
 </section> <!--/#cart_items-->
+

@@ -11,4 +11,4 @@
         <input type="submit" value="Xác nhận" name="send_order_place" class="btn btn-primary btn-sm">
     </form>
 </div>
-<p>Lịch sử đơn hàng</p>
+

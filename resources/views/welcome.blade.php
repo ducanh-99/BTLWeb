@@ -30,7 +30,7 @@
                     <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
                   </ul>
-                    @if(!Session::has('login') && Session::get('login') == false)
+                    @if(Session::get('login') == false && Session::has('login') == false)
                   <div class="login">
                       <a href="{{URL::to('/login')}}" class="login-btn">
                           <i class="fa fa-sign-in"></i>
