@@ -90,10 +90,13 @@ class OrderController extends Controller
             $id_product = $request->id_product;
             $quantity = $request->quantity;
             $months = $request->months;
+            $id_partner_delivery = $request->id_partner_delivery;
+            $deposit = $request->deposit;
 
             DB::table('oder_detail')
                 ->where('id_oder_detail', $id_oder_detail)
-                ->update(['item_order' => $item_order, 'id_oder' => $id_oder, 'id_product' => $id_product, 'quantity' => $quantity, 'months' => $months]);
+                ->update(['item_order' => $item_order, 'id_oder' => $id_oder, 'id_product' => $id_product, 'quantity' => $quantity, 'months' => $months,
+                    'id_partner_delivery'=>$id_partner_delivery,'deposit'=>$deposit]);
             return Redirect::to('/view-order-detail/' . $id_oder);
         } else {
             return redirect('login');

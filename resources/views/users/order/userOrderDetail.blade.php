@@ -12,6 +12,9 @@
             <th>Số lượng</th>
             <th>Khuyến mại</th>
             <th>Số tháng thuê</th>
+            <th>Đối tác vận chuyển</th>
+            <th>Cọc</th>
+            <th>Ngày trả hàng</th>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +27,12 @@
                 <td>{{ $eachUserOrderDetail->quantity }}</td>
                 <td>{{ $eachUserOrderDetail->discount }}</td>
                 <td>{{ $eachUserOrderDetail->months }}</td>
+                <?php
+                $delivery =  DB::table('partner_delivery')->where('id_partner_delivery',$eachUserOrderDetail->id_partner_delivery)->get()->first();
+                ?>
+                <td>{{$delivery ->name }}</td>
+                <td>{{ $eachUserOrderDetail->deposit }}</td>
+                <td>{{ $eachUserOrderDetail->returned_date }}</td>
             </tr>
         @endforeach
         </tbody>

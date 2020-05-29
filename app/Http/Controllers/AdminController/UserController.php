@@ -42,6 +42,29 @@ class UserController extends Controller
             return redirect('login');
         }
     }
+    public function makeProvider($id_customer)
+    {
+        if (Session::get('id_admin')) {
+            DB::table('customer')
+                ->where('id_customer', $id_customer)
+                ->update(['isprovider' => 1]);
+            return back();
+        } else {
+            return redirect('login');
+        }
+    }
+
+    public function unmakeProvider($id_customer)
+    {
+        if (Session::get('id_admin')) {
+            DB::table('customer')
+                ->where('id_customer', $id_customer)
+                ->update(['isprovider' => 0]);
+            return back();
+        } else {
+            return redirect('login');
+        }
+    }
 
     public function deleteComment($id_comment)
     {

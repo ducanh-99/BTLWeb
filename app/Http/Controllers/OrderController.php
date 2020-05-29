@@ -22,7 +22,7 @@ class OrderController extends Controller
             $allUserOrder = DB::table('oder')
                 ->where('id_customer',Session::get('id_customer'))
                 ->get();
-            if(empty($allUserOrder)) {
+            if(!empty($allUserOrder)) {
                 return view('users.order.userOrder')->with('allUserOrder', $allUserOrder);
             }
             else {

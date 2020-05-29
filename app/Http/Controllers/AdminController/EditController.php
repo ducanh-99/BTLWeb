@@ -41,7 +41,7 @@ class EditController extends Controller
 
     public function editProduct($id_product)
     {
-        if (Session::get('id_admin')) {//tìm id
+        if (Session::get('id_admin') || Session::get('id_lease')) {//tìm id
             $edit_product = DB::table('product')->where('id_product', $id_product)->get()->first();
             //quăng sang trang edit
             return view('admin.update.edit_product')->with('edit_product', $edit_product);
@@ -52,7 +52,7 @@ class EditController extends Controller
 
     public function submitEditProduct(Request $request)
     {
-        if (Session::get('id_admin')) {
+        if (Session::get('id_admin')  || Session::get('id_lease')) {
             $id_product = $request->id_product;
             $id_category_branch = $request->id_category_branch;
             $product_name = $request->product_name;
@@ -61,10 +61,16 @@ class EditController extends Controller
             $product_amount = $request->product_amount;
             $product_price = $request->product_price;
             $product_isActive = $request->product_isActive;
+            $market_price = $request->market_price;
+            $id_province = $request->id_province;
+            $outlook = $request->outlook;
+            $repair_history = $request->repair_history;
 
             DB::table('product')->where('id_product', $id_product)
                 ->update(['id_category_branch' => $id_category_branch, 'name' => $product_name, 'description' => $product_descr,
-                    'image' => $product_image, 'amount' => $product_amount, 'price' => $product_price, 'isactive' => $product_isActive]);
+                    'image' => $product_image, 'amount' => $product_amount, 'price' => $product_price, 'isactive' => $product_isActive,
+                    'market_price' => $market_price,'id_customer' => Session::get('id_lease'),'id_province' => $id_province,
+                    'outlook' => $outlook,'repair_history' => $repair_history]);
 
             return Redirect::to('/all-product');
         } else {

@@ -10,6 +10,8 @@
             <th>Ngày đặt hàng</th>
             <th>Phê duyệt</th>
             <th>Ghi chú</th>
+            <th>Tỉnh thành</th>
+            <th>Thành tiền</th>
             <th>Xem chi tiết</th>
         </tr>
         </thead>
@@ -32,6 +34,12 @@
                     ?>
                 </td>
                 <td>{{ $eachUserOrder->note }}</td>
+
+                <?php
+                $provin = DB::table('province')->where('id_province',$eachUserOrder->id_province)->get()->first();
+                ?>
+                <td>{{ $provin->name }}</td>
+                <td>{{ $eachUserOrder->totalcost }}</td>
                 <td><a href="{{URL::to('/user-view-order-detail/'.$eachUserOrder->id_oder)}}">Xem chi tiết</a></td>
             </tr>
         @endforeach

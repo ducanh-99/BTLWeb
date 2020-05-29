@@ -17,6 +17,9 @@ class LoginController extends Controller
                 Session::put('login', true);
                 Session::put('id_customer',$resultUser->id_customer);
                 Session::remove('id_admin');
+                if($resultUser->isprovider == 1){
+                    Session::put('id_lease',$resultUser->id_customer);
+                }
                 return view('users.home');
             } else{
                 return Redirect::to('/login');
@@ -44,6 +47,7 @@ class LoginController extends Controller
             Session::put('login', false);
             Session::remove('id_customer');
             Session::remove('id_admin');
+           // Session::remove('id_lease');
             return redirect('login');
         }
         else return redirect('/');

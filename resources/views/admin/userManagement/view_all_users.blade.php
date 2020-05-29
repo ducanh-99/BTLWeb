@@ -21,6 +21,7 @@
                                 <th>address</th>
                                 <th>credit</th>
                                 <th>status</th>
+                                <th>isProvider?</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,6 +43,19 @@
                                         }else{ //if ($eachUser->_status==1) // active
                                         ?>
                                         <a href="{{URL::to('/block-user/'.$eachUser->id_customer)}}">Block</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>{{ $eachUser->isprovider }}
+                                        <?php
+                                        if($eachUser->isprovider == 0){ //chưa được phép cho thuê đồ
+                                        ?>
+                                        <a href="{{URL::to('/make-provider-user/'.$eachUser->id_customer)}}">Make Provider</a>
+                                        <?php
+                                        }else{ //if ($eachUser->isprovider==1) //được phép đăng sản phẩm cho thuê
+                                        ?>
+                                        <a href="{{URL::to('/unmake-provider-user/'.$eachUser->id_customer)}}">Unmake Provider</a>
                                         <?php
                                         }
                                         ?>

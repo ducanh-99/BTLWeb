@@ -17,8 +17,13 @@
                                 <th>id_oder</th>
                                 <th>id_product</th>
                                 <th>Số lượng</th>
+                                <th>Giảm giá</th>
                                 <th>Số tháng thuê</th>
+                                <th>Đối tác vận chuyển</th>
+                                <th>Đặt Cọc</th>
+                                <th>Ngày trả đồ</th>
                                 <th>Sửa</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -31,6 +36,12 @@
                                     <td>{{ $eachOrderDetail->quantity }}</td>
                                     <td>{{ $eachOrderDetail->discount }}</td>
                                     <td>{{ $eachOrderDetail->months }}</td>
+                                    <?php
+                                    $delivery =  DB::table('partner_delivery')->where('id_partner_delivery',$eachOrderDetail->id_partner_delivery)->get()->first();
+                                    ?>
+                                    <td>{{$delivery ->name }}</td>
+                                    <td>{{ $eachOrderDetail->deposit }}</td>
+                                    <td>{{ $eachOrderDetail->returned_date }}</td>
                                     <td><a href="{{URL::to('/edit-order-detail/'.$eachOrderDetail->id_oder_detail)}}">Sửa
                                             mặt hàng</a></td>
                                 </tr>

@@ -11,4 +11,6 @@
         <input type="submit" value="Xác nhận" name="send_order_place" class="btn btn-primary btn-sm">
     </form>
 </div>
-
+<div>
+    Đăng ký trở thành đối tác cho thuê đồ của alease
+</div>

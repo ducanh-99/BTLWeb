@@ -54,7 +54,15 @@
                                 @endif
                             </div>
                             <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
-                            <p class="price">{{$queryy->price}} $</p>
+                            <p class="price">Giá thuê: {{$queryy->price}} $ / tháng</p>
+                            <h6>Giá thị trường: {{$queryy->market_price}} $</h6>
+                            <?php
+                            $provin = DB::table('province')->where('id_province', $queryy->id_province)->get()->first();
+                            ?>
+                            <p>Tình trạng: {{$queryy->outlook}}%</p>
+                            <p>Lịch sử sửa chữa: {{$queryy->repair_history}}</p>
+                            <p>Số lần đã được thuê: {{$queryy->times_rent}}</p>
+                            <p>Có sẵn tại: {{$provin->name}}</p>
                             <p class="text-center">
                                 <button type="submit" class="btn btn-template-outlined"><i
                                         class="fa fa-shopping-cart"></i> Add to cart
@@ -63,7 +71,22 @@
                                         class="btn btn-default"><i class="fa fa-heart-o"></i></button>
                             </p>
                         </form>
-                        <!-- </div> -->
+                        <?php
+                        $cus = DB::table('customer')->where('id_customer', $queryy->id_customer)->get()->first();
+                        ?>
+                        <div>Cho thuê bởi: {{$cus->name}}</div>
+                        <div>Địa chỉ chủ sở hữu: {{$cus->address}}</div>
+                        <div>Số điện thoại: {{$cus->phone_number}}</div>
+                        @if($queryy->amount == 0)
+                            <div>Tình trạng: Đã được cho thuê hết</div>
+                        @endif
+                        @if($queryy->isactive == 0)
+                            <div>Tình trạng: Ngừng cho thuê</div>
+                        @endif
+                        @if($queryy->isactive == 1)
+                            <div>Tình trạng: Còn hàng</div>
+                    @endif
+                    <!-- </div> -->
                     </div>
                 </div>
                 <div id="details" class="box mb-4 mt-4">
@@ -110,7 +133,8 @@
                 if (Session::get('id_customer')) {
                 ?>
                 <form action="{{URL::to('/comment')}}" method="GET">
-                    <textarea name="comment" placeholder="What do you think about our product?" rows="6" cols="50"></textarea>
+                    <textarea name="comment" placeholder="What do you think about our product?" rows="6"
+                              cols="50"></textarea>
                     <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
                     <input name="customerid_hidden" type="hidden" value="{{Session::get('id_customer')}}"/>
                     <br>
@@ -120,7 +144,8 @@
                 }else if (Session::get('id_admin')) {
                 ?>
                 <form action="{{URL::to('/admin-comment')}}" method="GET">
-                    <textarea name="comment" placeholder="What do you want to announce to users?" rows="6" cols="50"></textarea>
+                    <textarea name="comment" placeholder="What do you want to announce to users?" rows="6"
+                              cols="50"></textarea>
                     <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
                     <input name="adminid_hidden" type="hidden" value="{{Session::get('id_admin')}}"/>
                     <br>
@@ -144,7 +169,7 @@
                     <row>
                         <hr>
                         <h4 style="color:red;">Admin: {{$eachAdminCommentList->name}}</h4>
-                        <h5><i class="fa fa-comment" aria-hidden="true"></i>    {{$eachAdminCommentList->content}}</h5>
+                        <h5><i class="fa fa-comment" aria-hidden="true"></i> {{$eachAdminCommentList->content}}</h5>
 
                         <?php
                         if (Session::get('id_admin') === $eachAdminCommentList->id_admin) {
@@ -169,81 +194,97 @@
                         <h4 style="color: #2b527e">User: {{$eachCommentList->name}}</h4>
                         <?php
                         } else if($user->status == 0){
-                            ?>
-                            <hr>
-                            <h4><row style="text-decoration: line-through;">User: {{$eachCommentList->name}}</row> banned</h4>
-                            <?php
-                            }
+                        ?>
+                        <hr>
+                        <h4>
+                            <row style="text-decoration: line-through;">User: {{$eachCommentList->name}}</row>
+                            banned
+                        </h4>
+                        <?php
+                        }
                         ?>
 
-                        <h5><i class="fa fa-comment" aria-hidden="true"></i>    {{$eachCommentList->content}}</h5>
+                        <h5><i class="fa fa-comment" aria-hidden="true"></i> {{$eachCommentList->content}}</h5>
                         <?php
                         if (Session::get('id_admin')) {
                         ?>
                         <a href="{{URL::to('/delete-comment/'.$eachCommentList->id_coment)}}">Xóa bình luận</a>
                         <a href="{{URL::to('/block-user/'.$eachCommentList->id_customer)}}">Block</a>
-                            <a href="{{URL::to('/unblock-user/'.$eachCommentList->id_customer)}}">Unblock</a>
+                        <a href="{{URL::to('/unblock-user/'.$eachCommentList->id_customer)}}">Unblock</a>
                         <?php
                         }
                         ?>
                     </row>
-                    <hr><hr>
+                    <hr>
+                    <hr>
                 @endforeach
                 <h1>Sản phẩm tương đương</h1>
                 <div class="row portfolio text-center">
-                <?php
-                $equalProduct = DB::table('product')
-                ->where('id_category_branch',$queryy->id_category_branch)
-                    ->take(8)
-                ->get();    //sp tương đương là các sp có cùng branch-category
-                $url = $categoryMainOnly->name . '/' . $categoryBranchOnly->name . '/';
+                    <?php
+                    $equalProduct = DB::table('product')
+                        ->where('id_category_branch', $queryy->id_category_branch)
+                        ->take(8)
+                        ->get();    //sp tương đương là các sp có cùng branch-category
+                    $url = $categoryMainOnly->name . '/' . $categoryBranchOnly->name . '/';
 
-                foreach ($equalProduct as $eachOfEqualProduct){
+                    foreach ($equalProduct as $eachOfEqualProduct){
                     ?>
 
-                <div class="col-md-3">
-                    <div class="box-image">
-                        <div class="image"><img src="{{ URL::to('/') }}/public/image/{{$url}}{{$eachOfEqualProduct->image}}" alt="" class="img-fluid">
-                            <div class="overlay d-flex align-items-center justify-content-center">
-                                <div class="content">
-                                    <div class="name">
-                                        <h3><a href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}" class="color-white">{{$eachOfEqualProduct->name}}</a></h3>
-                                    </div>
-                                    <div class="text">
-                                        <p class="buttons"><a href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}" class="btn btn-template-outlined-white">Show Detail</a>
-                                            <form  action="{{URL::to('/save-cart')}}" method="GET">
-                                                <input type="hidden" name = "quantity" value = "1"/>
-                                                <input name="productid_hidden" type="hidden" value="{{$eachOfEqualProduct->id_product}}"/>
-                                        <p class="bottons"><button type="submit" class="btn btn-template-outlined-white"><i class="fa fa-shopping-cart"></i> Add to cart</button></p>
-                                        </form>
+                    <div class="col-md-3">
+                        <div class="box-image">
+                            <div class="image"><img
+                                    src="{{ URL::to('/') }}/public/image/{{$url}}{{$eachOfEqualProduct->image}}" alt=""
+                                    class="img-fluid">
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <div class="content">
+                                        <div class="name">
+                                            <h3><a href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}"
+                                                   class="color-white">{{$eachOfEqualProduct->name}}</a></h3>
+                                        </div>
+                                        <div class="text">
+                                            <p class="buttons"><a
+                                                    href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}"
+                                                    class="btn btn-template-outlined-white">Show Detail</a>
+                                                <form action="{{URL::to('/save-cart')}}" method="GET">
+                                                    <input type="hidden" name="quantity" value="1"/>
+                                                    <input name="productid_hidden" type="hidden"
+                                                           value="{{$eachOfEqualProduct->id_product}}"/>
+                                            <p class="bottons">
+                                                <button type="submit" class="btn btn-template-outlined-white"><i
+                                                        class="fa fa-shopping-cart"></i> Add to cart
+                                                </button>
+                                            </p>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div>
+                            <h5>{{$eachOfEqualProduct->name}}</h5>
+                        </div>
                     </div>
-                    <div>
-                        <h5>{{$eachOfEqualProduct->name}}</h5>
-                    </div>
-                </div>
 
-                <?php
-                }
-                ?>
-                </div>
-                <hr><hr>
-                <h1>Bài viết liên quan</h1>
-                <div class="row portfolio text-center">
-                <?php
-                $equalNews = DB::table('news')
-                ->where('id_product',$queryy->id_product)
-                ->get();
-                    foreach ($equalNews as $eachOfEqualNews){
-                        ?>
-                    <h3 style="color: orangered"><a href="{{URL::to('/detail-news-for-user/'.$eachOfEqualNews->id_news) }}" >{{$eachOfEqualNews->title}} ({{$eachOfEqualNews->publish_date}})</a></h3>
                     <?php
-                        }
-                        ?>
+                    }
+                    ?>
                 </div>
+                <hr>
+                <hr>
+                <h1>Bài viết liên quan</h1>
+                    <?php
+                    $equalNews = DB::table('news')
+                        ->where('id_product', $queryy->id_product)
+                        ->get();
+                    foreach ($equalNews as $eachOfEqualNews){
+                    ?>
+                    <h4 style="color: orangered">
+                        <a href="{{URL::to('/detail-news-for-user/'.$eachOfEqualNews->id_news) }}">
+                            {{$eachOfEqualNews->title}}
+                            ({{$eachOfEqualNews->publish_date}})</a></h4>
+                    <?php
+                    }
+                    ?>
             </div>
         </div>
     </div>

@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Số lượng</label>
+                                <label>Số lượng: </label>
                                 <input type="text" name="product_amount" class="form-control" id="product_amount"
                                     placeholder="Số lượng">
                             </div>
@@ -141,10 +141,30 @@
                                 <label>Status</label>
                                 <select name="product_status" class="form-control input-sm m-bot15">
                                     <option value="0">Còn hàng</option>
-                                    <option value="1">Ngừng kinh doanh</option>
+                                    <option value="1">Tạm ngừng cho thuê</option>
                                 </select>
                             </div>
-                        
+
+                            <div class="form-group">
+                                <label>Giá thị trường: </label>
+                                <input type="text" name="market_price" class="form-control" id="market_price"
+                                       placeholder="Giá thị trường: ">
+                            </div>
+                            <div class="form-group">
+                                <label>id_province: </label>
+                                <input type="text" name="id_province" class="form-control" id="id_province"
+                                       placeholder="ID_Tỉnh: ">
+                            </div>
+                            <div class="form-group">
+                                <label>Tình trạng: </label>
+                                <input type="text" name="outlook" class="form-control" id="outlook"
+                                       placeholder="Tình trạng: ">
+                            </div>
+                            <div class="form-group">
+                                <label>Lịch sử sửa chữa: </label>
+                                <textarea type="text" name="repair_history" class="form-control" id="repair_history">Số lần đã sửa chữa:</textarea>
+                            </div>
+
                         <!-- /.card-body -->
 
                             <div class="card-footer">

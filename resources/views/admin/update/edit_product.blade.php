@@ -48,11 +48,31 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Trạng tháo</label>
+                                <label>Trạng thái</label>
                                 <select name="product_isActive" class="form-control input-sm m-bot15">
                                     <option value="0">Ngừng kinh doanh</option>
                                     <option value="1">Còn hàng</option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Giá thị trường: </label>
+                                <input type="text" name="market_price" class="form-control" id="market_price"
+                                       value="{{$edit_product->market_price}}">
+                            </div>
+                            <div class="form-group">
+                                <label>id_province: </label>
+                                <input type="text" name="id_province" class="form-control" id="id_province"
+                                       value="{{$edit_product->id_province}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Tình trạng: </label>
+                                <input type="text" name="outlook" class="form-control" id="outlook"
+                                       value="{{$edit_product->outlook}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Lịch sử sửa chữa: </label>
+                                <textarea type="text" name="repair_history" class="form-control" id="repair_history">{{$edit_product->repair_history}}</textarea>
                             </div>
 
                             <button type="submit" name="edit_submit" class="btn btn-info">Xác nhận sửa product</button>

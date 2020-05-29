@@ -36,7 +36,8 @@ Route::get('/product-result/{id_branch}','CategorySearchController@productSearch
 //cart
 Route::get('/save-cart','CartController@addToCart');
 Route::get('/show-cart','CartController@showCart');
-Route::get('/update-cart-quantity','CartController@updateCart');
+Route::get('/update-cart-quantity','CartController@updateCartQuantity');
+
 Route::get('/delete-from-cart/{rowID}','CartController@deleteFromCart');
 
 //pay
@@ -113,7 +114,9 @@ Route::get('/display-user','AdminController\UserController@displayUser');
 //block người dùng
 Route::get('/block-user/{id_customer}','AdminController\UserController@blockUser');
 Route::get('/unblock-user/{id_customer}','AdminController\UserController@unBlockUser');
-
+//cấp quyền cho thuê đồ
+Route::get('/make-provider-user/{id_customer}','AdminController\UserController@makeProvider');
+Route::get('/unmake-provider-user/{id_customer}','AdminController\UserController@unmakeProvider');
 //xóa bình luận
 Route::get('/delete-comment/{id_comment}','AdminController\UserController@deleteComment');
 

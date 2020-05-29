@@ -61,7 +61,7 @@ class AddController extends Controller
 
     public function addProduct()
     {
-        if (Session::get('id_admin')) {
+        if (Session::get('id_admin') || Session::get('id_lease')) {
             return view('admin.add.add_product');
         } else {
             return redirect('login');
@@ -70,7 +70,7 @@ class AddController extends Controller
 
     public function saveProduct(Request $request)
     {
-        if (Session::get('id_admin')) {
+        if (Session::get('id_admin') || Session::get('id_lease')) {
             $id_category_branch = $request->id_category_branch;
             $product_name = $request->product_name;
             $product_descr = $request->product_descr;
@@ -78,9 +78,15 @@ class AddController extends Controller
             $product_amount = $request->product_amount;
             $product_price = $request->product_price;
             $product_status = $request->product_status;
+            $market_price = $request->market_price;
+            $id_province = $request->id_province;
+            $outlook = $request->outlook;
+            $repair_history = $request->repair_history;
 
-            DB::insert('insert into product (id_category_branch,name,description,image,amount,price,isActive,rate,ratequantity) values (?,?,?,?,?,?,?,?,?)'
-                , [$id_category_branch, $product_name, $product_descr, $product_image, $product_amount, $product_price, $product_status, 0, 0]);
+            DB::insert('insert into product (id_category_branch,name,description,image,amount,price,isActive,rate,ratequantity,
+                market_price,id_customer,id_province,outlook,repair_history,times_rent) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
+                , [$id_category_branch, $product_name, $product_descr, $product_image, $product_amount, $product_price, $product_status, 0, 0,
+                    $market_price,Session::get('id_lease'),$id_province,$outlook,$repair_history,0]);
             return back();
         } else {
             return redirect('login');

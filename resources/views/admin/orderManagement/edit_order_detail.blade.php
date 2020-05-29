@@ -41,6 +41,21 @@
                                        value="{{$oder_detail->months}}">
                             </div>
 
+                            <div class="form-group">
+                                <label>Đối tác vận chuyển</label>
+                                <?php
+                                $delivery = DB::table('partner_delivery')->where('id_partner_delivery',$oder_detail->id_partner_delivery)->get()->first();
+                                ?>
+                                <input type="text" name="id_partner_delivery" class="form-control" id="id_partner_delivery"
+                                       value="{{$delivery->id_partner_delivery}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Cọc</label>
+                                <input type="text" name="deposit" class="form-control" id="deposit"
+                                       value="{{$oder_detail->deposit}}">
+                            </div>
+
                             <button type="submit" name="edit_submit" class="btn btn-info">Xác nhận sửa</button>
                         </form>
                     </div>
