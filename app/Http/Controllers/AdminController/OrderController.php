@@ -103,4 +103,22 @@ class OrderController extends Controller
             return redirect('login');
         }
     }
+
+    public function viewAllExipredOrderDetail()
+    {    //admin xem lại các đơn hàng đã hết hạn
+        if (Session::get('id_admin')) {
+            $allExpiredOrderDetail = array();
+            $deltaMonth = DB::table('oder_detail')
+                ->join('oder','oder_detail.id_oder','=','oder.id_oder')->get();
+            foreach ($deltaMonth as $eachDeltaMonth){
+                if(ceil(abs(strtotime(date('Y-m-d H:i:s')) -
+                            strtotime($eachDeltaMonth->date))/(60*60*24*30)) > $eachDeltaMonth->months){//nếu hết hạn
+                    $allExpiredOrderDetail[] = $eachDeltaMonth;
+                }
+            }
+            return view('admin.orderManagement.allExpiredOrderDetail')->with('allExpiredOrderDetail',$allExpiredOrderDetail);
+        } else {
+            return redirect('login');
+        }
+    }
 }

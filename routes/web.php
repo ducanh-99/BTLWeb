@@ -77,6 +77,7 @@ Route::get('/lease-active-product/{id_product}','LeaseController@activeProduct')
 Route::get('/lease-unactive-product/{id_product}','LeaseController@unactiveProduct');
 Route::get('/lease-recent-returned-list','LeaseController@showRecentReturnedList');
 Route::get('/lease-update-outlook','LeaseController@updateOutlook');
+Route::get('/lease-all-expired-order-detail','LeaseController@viewAllExipredOrderDetail');
 
 //xem lại những ai đã và đang thuê đồ của mình
 Route::get('/lease-view-order-detail','LeaseController@viewOrderDetail');
@@ -120,6 +121,9 @@ Route::get('/save-partner-delivery','AdminController\PartnerController@savePartn
 Route::get('/view-order-detail/{id_oder}','AdminController\OrderController@viewOrderDetail');
 Route::get('/edit-order-detail/{id_oder_detail}','AdminController\OrderController@editOrderDetail');
 Route::get('/submit-edit-order-detail','AdminController\OrderController@submitEditOrderDetail');
+//xem các đơn hàng đã hết hạn
+Route::get('/all-expired-order-detail','AdminController\OrderController@viewAllExipredOrderDetail');
+
 //đơn hàng tổng quát
 Route::get('/view-order','AdminController\OrderController@viewOrder');
 Route::get('/approve-order/{id_oder}','AdminController\OrderController@approveOrder');

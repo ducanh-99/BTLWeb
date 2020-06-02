@@ -285,6 +285,112 @@
                     <?php
                     }
                     ?>
+                <h1>So sánh giá giữa các bên cho thuê</h1>
+                <div class="row portfolio text-center">
+                    <?php
+                    $equalProduct = DB::table('product')
+                        ->where('name', $queryy->name)
+                        ->orderBy('price','DESC')
+                        ->take(8)
+                        ->get();    //xem các sp giá cạnh tranh nhất
+                    $url = $categoryMainOnly->name . '/' . $categoryBranchOnly->name . '/';
+
+                    foreach ($equalProduct as $eachOfEqualProduct){
+                    ?>
+
+                    <div class="col-md-3">
+                        <div class="box-image">
+                            <div class="image"><img
+                                    src="{{ URL::to('/') }}/public/image/{{$url}}{{$eachOfEqualProduct->image}}" alt=""
+                                    class="img-fluid">
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <div class="content">
+                                        <div class="name">
+                                            <h3><a href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}"
+                                                   class="color-white">{{$eachOfEqualProduct->name}}</a></h3>
+                                        </div>
+                                        <div class="text">
+                                            <p class="buttons"><a
+                                                    href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}"
+                                                    class="btn btn-template-outlined-white">Show Detail</a>
+                                                <form action="{{URL::to('/save-cart')}}" method="GET">
+                                                    <input type="hidden" name="quantity" value="1"/>
+                                                    <input name="productid_hidden" type="hidden"
+                                                           value="{{$eachOfEqualProduct->id_product}}"/>
+                                            <p class="bottons">
+                                                <button type="submit" class="btn btn-template-outlined-white"><i
+                                                        class="fa fa-shopping-cart"></i> Add to cart
+                                                </button>
+                                            </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>{{$eachOfEqualProduct->name}}</h5>
+                        </div>
+                    </div>
+
+                    <?php
+                    }
+                    ?>
+                </div>
+                <h1>Mới nhất đến cũ nhất</h1>
+                <div class="row portfolio text-center">
+                    <?php
+                    $equalProduct = DB::table('product')
+                        ->where('name', $queryy->name)
+                        ->orderBy('outlook','DESC')
+                        ->take(8)
+                        ->get();    //xem các sp mới nhất
+                    $url = $categoryMainOnly->name . '/' . $categoryBranchOnly->name . '/';
+
+                    foreach ($equalProduct as $eachOfEqualProduct){
+                    ?>
+
+                    <div class="col-md-3">
+                        <div class="box-image">
+                            <div class="image"><img
+                                    src="{{ URL::to('/') }}/public/image/{{$url}}{{$eachOfEqualProduct->image}}" alt=""
+                                    class="img-fluid">
+                                <div class="overlay d-flex align-items-center justify-content-center">
+                                    <div class="content">
+                                        <div class="name">
+                                            <h3><a href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}"
+                                                   class="color-white">{{$eachOfEqualProduct->name}}</a></h3>
+                                        </div>
+                                        <div class="text">
+                                            <p class="buttons"><a
+                                                    href="{{URL::to('/detail/'.$eachOfEqualProduct->id_product) }}"
+                                                    class="btn btn-template-outlined-white">Show Detail</a>
+                                                <form action="{{URL::to('/save-cart')}}" method="GET">
+                                                    <input type="hidden" name="quantity" value="1"/>
+                                                    <input name="productid_hidden" type="hidden"
+                                                           value="{{$eachOfEqualProduct->id_product}}"/>
+                                            <p class="bottons">
+                                                <button type="submit" class="btn btn-template-outlined-white"><i
+                                                        class="fa fa-shopping-cart"></i> Add to cart
+                                                </button>
+                                            </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>{{$eachOfEqualProduct->name}}</h5>
+                        </div>
+                    </div>
+
+                    <?php
+                    }
+                    ?>
+                </div>
+                <hr>
+                <hr>
             </div>
         </div>
     </div>

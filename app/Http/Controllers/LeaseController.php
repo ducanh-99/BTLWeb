@@ -113,4 +113,25 @@ class LeaseController extends Controller
             return redirect('login');
         }
     }
+
+    public function viewAllExipredOrderDetail(){    //người cho thuê xem các đơn hàng đã hết hạn
+        if (Session::get('id_lease')) {
+            $allExpiredOrderDetail = array();
+            $deltaMonth = DB::table('oder_detail')
+                ->join('oder','oder_detail.id_oder','=','oder.id_oder')->get();
+            foreach ($deltaMonth as $eachDeltaMonth) {
+                if (ceil(abs(strtotime(date('Y-m-d H:i:s')) -
+                            strtotime($eachDeltaMonth->date)) / (60 * 60 * 24 * 30)) > $eachDeltaMonth->months) {//nếu hết hạn
+                    $sp = DB::table('product')->where('id_product',$eachDeltaMonth->id_product)->get()->first();
+                    $ngChoThue = DB::table('customer')->where('id_customer',$sp->id_customer)->get()->first();
+                    if(Session::get('id_lease') == $ngChoThue->id_customer) {
+                        $allExpiredOrderDetail[] = $eachDeltaMonth;
+                    }
+                }
+            }
+            return view('users.lease.allExpiredOrderDetail')->with('allExpiredOrderDetail',$allExpiredOrderDetail);
+        } else {
+            return redirect('login');
+        }
+    }
 }

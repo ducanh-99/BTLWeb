@@ -55,7 +55,7 @@ class OrderController extends Controller
             $chiTiet = DB::table('oder_detail')->where('id_oder_detail',$id_oder_detail)->get()->first();
             $tongQuat = DB::table('oder')->where('id_oder',$chiTiet->id_oder)->get()->first();
             $goods = DB::table('product')->where('id_product',$chiTiet->id_product)->get()->first();
-
+    //thời gian đã thuê = hôm nay - ngày đặt order (tháng)
             $thoiGianDaThue = ceil(abs(strtotime(date('Y-m-d H:i:s')) - strtotime($tongQuat->date))/(60*60*24*30));
 
             if($thoiGianDaThue - $chiTiet->months > $chiTiet->months /3){//trả đồ trễ hơn 1/3 thời gian thuê -> ko nhận nữa
