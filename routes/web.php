@@ -55,6 +55,9 @@ Route::get('/rating','ProductController@rating');
 //đơn hàng
 //đơn hàng chi tiết của user
 Route::get('/user-view-order-detail/{id_oder}','OrderController@viewUserOrderDetail');
+//các đơn hàng đã hết hạn
+Route::get('/user-all-expired-order-detail','OrderController@viewAllExipredOrderDetail');
+
 //đơn hàng tổng quát của user
 Route::get('/user-view-order','OrderController@viewUserOrder');
 Route::get('/user-cancel-order/{id_oder}','OrderController@cancelUserOrder');

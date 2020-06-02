@@ -80,4 +80,23 @@ class OrderController extends Controller
         DB::table('oder_detail')->where('id_oder_detail',$request->chiTietID)->update(['returned_date'=>date('Y-m-d H:i:s')]);
         return view('users.order.successfullyReturned');
     }
+
+    public function viewAllExipredOrderDetail(){    //người cho thuê xem các đơn hàng đã hết hạn
+        if (Session::get('id_customer')) {
+            $allExpiredOrderDetail = array();
+            $deltaMonth = DB::table('oder_detail')
+                ->join('oder','oder_detail.id_oder','=','oder.id_oder')->get();
+            foreach ($deltaMonth as $eachDeltaMonth) {
+                if (ceil(abs(strtotime(date('Y-m-d H:i:s')) -
+                            strtotime($eachDeltaMonth->date)) / (60 * 60 * 24 * 30)) > $eachDeltaMonth->months) {//nếu hết hạn
+                    if(Session::get('id_customer') == $eachDeltaMonth->id_customer) {
+                        $allExpiredOrderDetail[] = $eachDeltaMonth;
+                    }
+                }
+            }
+            return view('users.order.allExpiredOrderDetail')->with('allExpiredOrderDetail',$allExpiredOrderDetail);
+        } else {
+            return redirect('login');
+        }
+    }
 }
