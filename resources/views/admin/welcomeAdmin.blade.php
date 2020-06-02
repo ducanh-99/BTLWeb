@@ -102,7 +102,7 @@
               <p>
                 Management
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">10</span>
+                <span class="badge badge-info right">11</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -136,6 +136,12 @@
                     <a href="{{URL::to('/display-user')}}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>User Management</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{URL::to('/all-partner-delivery')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Partner Delivery Management</p>
                     </a>
                 </li>
                 <li class="nav-item">

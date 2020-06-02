@@ -59,12 +59,27 @@ Route::get('/user-view-order-detail/{id_oder}','OrderController@viewUserOrderDet
 Route::get('/user-view-order','OrderController@viewUserOrder');
 Route::get('/user-cancel-order/{id_oder}','OrderController@cancelUserOrder');
 
+//trả hàng
+Route::get('/user-return-product/{id_oder_detail}','OrderController@returnOrderDetail');
+Route::get('/user-submit-return-product','OrderController@submitReturnOrderDetail');
+
 //tin tức
 Route::get('/list-news-for-user','NewsController@listNewsForUser');
 Route::get('/detail-news-for-user/{id_news}','NewsController@detailNewsForUser');
 
-//realtime chat
-Route::get('/chat','ChatController@chat');
+//phía bên cho thuê
+//quản lý sản phẩm
+Route::get('/lease-all-product','LeaseController@showAllProduct');
+Route::get('/lease-save-product','LeaseController@saveProduct');
+Route::get('/lease-edit-product/{id_product}','LeaseController@editProduct');
+Route::get('/lease-submit-edit-product','LeaseController@submitEditProduct');
+Route::get('/lease-active-product/{id_product}','LeaseController@activeProduct');
+Route::get('/lease-unactive-product/{id_product}','LeaseController@unactiveProduct');
+Route::get('/lease-recent-returned-list','LeaseController@showRecentReturnedList');
+Route::get('/lease-update-outlook','LeaseController@updateOutlook');
+
+//xem lại những ai đã và đang thuê đồ của mình
+Route::get('/lease-view-order-detail','LeaseController@viewOrderDetail');
 //Phía Admin
 //welcome
 Route::get('/welcome-admin','LoginController@welcomeAdmin');
@@ -93,6 +108,13 @@ Route::get('/unactive-product/{id_product}','AdminController\DeleteController@un
 Route::get('/active-product/{id_product}','AdminController\DeleteController@activeProduct');
 Route::get('/edit-product/{id_product}','AdminController\EditController@editProduct');
 Route::get('/submit-edit-product','AdminController\EditController@submitEditProduct');
+
+//đối tác giao hàng
+Route::get('/all-partner-delivery','AdminController\PartnerController@showAllPartnerDelivery');
+Route::get('/edit-partner-delivery/{id_partner_delivery}','AdminController\PartnerController@editPartnerDelivery');
+Route::get('/submit-partner-delivery','AdminController\PartnerController@submitPartnerDelivery');
+Route::get('/save-partner-delivery','AdminController\PartnerController@savePartnerDelivery');
+
 //đơn hàng
 //đơn hàng chi tiết
 Route::get('/view-order-detail/{id_oder}','AdminController\OrderController@viewOrderDetail');

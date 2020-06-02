@@ -1,0 +1,1 @@
+- tất cả các chức năng chênh lệnh giữa người mua và người cho thuê nằm ở thư mục lease

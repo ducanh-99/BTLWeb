@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
+    //quản lý đơn hàng của người đi thuê
     public function viewOrder()
     {
         if (Session::get('id_admin')) {

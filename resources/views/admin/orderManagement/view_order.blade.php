@@ -41,7 +41,7 @@
                                         <?php
                                         }else if($eachOrder->isapproved == 1){ //đã duyệt
                                         ?>
-
+                                        <h3>Đang giao</h3>
                                         <a href="{{URL::to('/succeed-order/'.$eachOrder->id_oder)}}">Giao thành công</a>
 
                                         <?php

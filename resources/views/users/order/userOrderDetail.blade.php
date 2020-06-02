@@ -15,6 +15,7 @@
             <th>Đối tác vận chuyển</th>
             <th>Cọc</th>
             <th>Ngày trả hàng</th>
+            <th>Trả hàng</th>
         </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
                 <td>{{$delivery ->name }}</td>
                 <td>{{ $eachUserOrderDetail->deposit }}</td>
                 <td>{{ $eachUserOrderDetail->returned_date }}</td>
+                <td><a href="{{URL::to('/user-return-product/'.$eachUserOrderDetail->id_oder_detail)}}">Đăng ký trả đồ</a></td>
             </tr>
         @endforeach
         </tbody>

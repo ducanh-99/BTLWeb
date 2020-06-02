@@ -1,12 +1,28 @@
 @extends('admin.welcomeAdmin')
 @section('all_branch_category')
+
     <section class="content">
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">View All Users</h3>
+
+                        <p><a href="#users" class="scroll-to text-uppercase">Scroll to All Users</a>
+                            <a href="#lease" class="scroll-to text-uppercase">Scroll to All Lease</a></p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h3 id="users" class="card-title">View All Users</h3>
+                    </div>
+
                     <!-- /.card-header -->
                     <div class="card-body">
                         <br></br>
@@ -51,11 +67,85 @@
                                         <?php
                                         if($eachUser->isprovider == 0){ //chưa được phép cho thuê đồ
                                         ?>
-                                        <a href="{{URL::to('/make-provider-user/'.$eachUser->id_customer)}}">Make Provider</a>
+                                        <a href="{{URL::to('/make-provider-user/'.$eachUser->id_customer)}}">Make
+                                            Provider</a>
                                         <?php
                                         }else{ //if ($eachUser->isprovider==1) //được phép đăng sản phẩm cho thuê
                                         ?>
-                                        <a href="{{URL::to('/unmake-provider-user/'.$eachUser->id_customer)}}">Unmake Provider</a>
+                                        <a href="{{URL::to('/unmake-provider-user/'.$eachUser->id_customer)}}">Unmake
+                                            Provider</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 id="lease" class="card-title">View All Lease</h3>
+                    </div>
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <br></br>
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>id_customer</th>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>password</th>
+                                <th>phone_number</th>
+                                <th>address</th>
+                                <th>credit</th>
+                                <th>status</th>
+                                <th>isProvider?</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($allLease as $eachLease)
+                                <tr>
+                                    <td>{{ $eachLease->id_customer }}</td>
+                                    <td>{{ $eachLease->name }}</td>
+                                    <td>{{ $eachLease->email }}</td>
+                                    <td>{{ $eachLease->password }}</td>
+                                    <td>{{ $eachLease->phone_number }}</td>
+                                    <td>{{ $eachLease->address }}</td>
+                                    <td>{{ $eachLease->credit }}</td>
+                                    <td>{{ $eachLease->status }}
+                                        <?php
+                                        if($eachLease->status == 0){ //bị block
+                                        ?>
+                                        <a href="{{URL::to('/unblock-user/'.$eachLease->id_customer)}}">Unblock</a>
+                                        <?php
+                                        }else{ //if ($eachUser->_status==1) // active
+                                        ?>
+                                        <a href="{{URL::to('/block-user/'.$eachLease->id_customer)}}">Block</a>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>{{ $eachLease->isprovider }}
+                                        <?php
+                                        if($eachLease->isprovider == 0){ //chưa được phép cho thuê đồ
+                                        ?>
+                                        <a href="{{URL::to('/make-provider-user/'.$eachLease->id_customer)}}">Make
+                                            Provider</a>
+                                        <?php
+                                        }else{ //if ($eachUser->isprovider==1) //được phép đăng sản phẩm cho thuê
+                                        ?>
+                                        <a href="{{URL::to('/unmake-provider-user/'.$eachLease->id_customer)}}">Unmake
+                                            Provider</a>
                                         <?php
                                         }
                                         ?>

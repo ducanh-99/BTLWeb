@@ -11,9 +11,13 @@ class UserController extends Controller
     public function displayUser()
     {
         if (Session::get('id_admin')) {
-            $allUser = DB::table('customer')
+                $allUser = DB::table('customer')
+                    ->where('isprovider',0)
+                    ->get();
+            $allLease = DB::table('customer')
+                ->where('isprovider',1)
                 ->get();
-            return view('admin.userManagement.view_all_users')->with('allUser', $allUser);
+            return view('admin.userManagement.view_all_users')->with('allUser', $allUser)->with('allLease',$allLease);
         } else {
             return redirect('login');
         }
@@ -48,7 +52,7 @@ class UserController extends Controller
             DB::table('customer')
                 ->where('id_customer', $id_customer)
                 ->update(['isprovider' => 1]);
-            return back();
+            return redirect('display-user');
         } else {
             return redirect('login');
         }
@@ -60,7 +64,7 @@ class UserController extends Controller
             DB::table('customer')
                 ->where('id_customer', $id_customer)
                 ->update(['isprovider' => 0]);
-            return back();
+            return redirect('display-user');
         } else {
             return redirect('login');
         }

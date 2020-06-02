@@ -1,6 +1,6 @@
 @extends('admin.welcomeAdmin')
 @section('all_product')
-    <section class="content">
+<section class="content">
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -80,6 +80,13 @@
                                                                         <input type="text" name="market_price" class="form-control" id="market_price"
                                                                                placeholder="Giá thị trường: ">
                                                                     </div>
+
+                                                                    <div class="form-group">
+                                                                        <label>Id người cho thuê: </label>
+                                                                        <input type="text" name="id_customer" class="form-control" id="id_customer"
+                                                                               placeholder="Id người cho thuê: ">
+                                                                    </div>
+
                                                                     <div class="form-group">
                                                                         <label>id_province: </label>
                                                                         <input type="text" name="id_province" class="form-control" id="id_province"

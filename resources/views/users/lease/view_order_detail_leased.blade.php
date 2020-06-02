@@ -1,11 +1,13 @@
-@extends('admin.welcomeAdmin')
-@section('all_branch_category')
-    <section class="content">
+<?php
+    //hiển thị tất cả các sản phẩm bên cho thuê có id_customer đã và đang cho thuê
+?>
+ <section class="content">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">View All Users' Orders</h3>
+                        <h3 class="card-title">View All {{DB::table('customer')->where('id_customer',Session::get('id_lease'))->get()->first()->name}}'
+                            Lease Orders</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -14,8 +16,8 @@
                             <tr>
                                 <th>id_oder_detail</th>
                                 <th>STT</th>
-                                <th>id_oder</th>
-                                <th>id_product</th>
+                                <th>Người đặt hàng</th>
+                                <th>product</th>
                                 <th>Số lượng</th>
                                 <th>Giảm giá</th>
                                 <th>Số tháng thuê</th>
@@ -23,8 +25,6 @@
                                 <th>Đặt Cọc</th>
                                 <th>Ngày trả đồ</th>
                                 <th>Phí ship</th>
-                                <th>Sửa</th>
-
                             </tr>
                             </thead>
                             <tbody>
@@ -32,8 +32,15 @@
                                 <tr>
                                     <td>{{ $eachOrderDetail->id_oder_detail }}</td>
                                     <td>{{ $eachOrderDetail->item_order }}</td>
-                                    <td>{{ $eachOrderDetail->id_oder }}</td>
-                                    <td>{{ $eachOrderDetail->id_product }}</td>
+                                    <?php
+                                    $Order = DB::table('oder')->where('id_oder',$eachOrderDetail->id_oder)->get()->first();
+                                    $Custome = DB::table('customer')->where('id_customer',$Order->id_customer)->get()->first();
+                                    ?>
+                                    <td>{{ $Custome->name }}</td>
+                                    <?php
+                                    $sp = DB::table('product')->where('id_product',$eachOrderDetail->id_product)->get()->first();
+                                    ?>
+                                    <td>{{ $sp->name }}</td>
                                     <td>{{ $eachOrderDetail->quantity }}</td>
                                     <td>{{ $eachOrderDetail->discount }}</td>
                                     <td>{{ $eachOrderDetail->months }}</td>
@@ -44,8 +51,6 @@
                                     <td>{{ $eachOrderDetail->deposit }}</td>
                                     <td>{{ $eachOrderDetail->returned_date }}</td>
                                     <td>{{ $eachOrderDetail->shipping_fee }}</td>
-                                    <td><a href="{{URL::to('/edit-order-detail/'.$eachOrderDetail->id_oder_detail)}}">Sửa
-                                            mặt hàng</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -55,4 +60,3 @@
             </div>
         </div>
     </section>
-@endsection

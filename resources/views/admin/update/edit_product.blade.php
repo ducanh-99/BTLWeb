@@ -60,6 +60,13 @@
                                 <input type="text" name="market_price" class="form-control" id="market_price"
                                        value="{{$edit_product->market_price}}">
                             </div>
+
+                            <div class="form-group">
+                                <label>ID người cho thuê: </label>
+                                <input type="text" name="id_customer" class="form-control" id="id_customer"
+                                       value="{{$edit_product->id_customer}}">
+                            </div>
+
                             <div class="form-group">
                                 <label>id_province: </label>
                                 <input type="text" name="id_province" class="form-control" id="id_province"
