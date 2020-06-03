@@ -30,7 +30,7 @@
                     <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                     <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
                   </ul>
-                    @if(Session::get('login') == false && Session::has('login') == false)
+                    @if(Session::get('login') == false)
                   <div class="login">
                       <a href="{{URL::to('/login')}}" class="login-btn">
                           <i class="fa fa-sign-in"></i>
@@ -49,12 +49,19 @@
                                 ->where('id_admin',Session::get('id_admin'))
                                 ->get()->first();
                             ?>
-                                <span style="color: red" class="d-none d-md-inline-block">Hello {{$nameAdmin->name}} - Admin</span>
                         </div>
-                        <div class="log out">
                           
-                          <a href="{{URL::to('/logout')}}">Log out</a>
-                        </div>
+                          <div class="dropdown">
+                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {{$nameAdmin->name}}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="{{URL::to('/logout')}}">Log out</a>
+                              <a class="dropdown-item" href="{{URL::to('/change-information')}}">Profile</a>
+                            </div>
+                          </div>
+                          
+                        
                     @elseif(Session::get('id_customer'))
                         <div class="login">
                             <?php
@@ -63,11 +70,24 @@
                                 ->where('id_customer',Session::get('id_customer'))
                                 ->get()->first();
                             ?>
-                            <span class="d-none d-md-inline-block">{{$nameCustomer->name}}</span>
+                  
                         </div>
                         <div class="log out">
-                          <i class="fa fa-log-out"></i>
-                          <a href="{{URL::to('/logout')}}">Log out</a>
+                          <div class="dropdown">
+                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              {{$nameCustomer->name}}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="{{URL::to('/logout')}}">Log out</a>
+                              <a class="dropdown-item" href="{{URL::to('/change-information')}}">Profile</a>
+                              <a class="dropdown-item" href="{{URL::to('/user-view-order')}}">Your Order </a>
+                            </div>
+                          </div>
+                          <!-- <ul class="social-custom list-inline">
+                            <li><a href="{{URL::to('/logout')}}">Log out</a></li>
+                            <li><a href="{{URL::to('/change-information')}}" class="nav-link">Profile</a></li>
+                            <li><a href="{{URL::to('/user-view-order')}}" class="nav-link">Your Order</a></li>   
+                          </ul> -->
                         </div>
                     @endif
                   <ul class="social-custom list-inline">
@@ -147,8 +167,8 @@
                         <li class="dropdown-item"><a href="contact2.html" class="nav-link">Questions</a></li>
                       </ul>
                     </li> -->
-                    @if(Session::has('login') && Session::get('login') == true)
-                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Account <b class="caret"></b></a>
+                    <!-- @if(Session::has('login') && Session::get('login') == true)
+                    <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown" class="dropdown-toggle">Acc <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                         <li class="dropdown-item"><a href="{{URL::to('/change-information')}}" class="nav-link">Profile</a></li>
                           @if(Session::get('id_customer'))
@@ -157,7 +177,7 @@
                         <li class="dropdown-item"><a href="{{URL::to('/logout')}}" class="nav-link">Log Out</a></li>
                       </ul>
                     </li>
-                    @endif
+                    @endif -->
                     <!-- ========== Contact dropdown end ==================-->
                   </ul>
                 </div>
