@@ -54,15 +54,15 @@
                                 @endif
                             </div>
                             <input name="productid_hidden" type="hidden" value="{{$queryy->id_product}}"/>
-                            <p class="price">Giá thuê: {{$queryy->price}} $ / tháng</p>
-                            <h6>Giá thị trường: {{$queryy->market_price}} $</h6>
+                            <p class="price">rental price: {{$queryy->price}} $ / months</p>
+                            <!-- <h6>Giá thị trường: {{$queryy->market_price}} $</h6> -->
                             <?php
                             $provin = DB::table('province')->where('id_province', $queryy->id_province)->get()->first();
                             ?>
-                            <p>Tình trạng: {{$queryy->outlook}}%</p>
-                            <p>Lịch sử sửa chữa: {{$queryy->repair_history}}</p>
-                            <p>Số lần đã được thuê: {{$queryy->times_rent}}</p>
-                            <p>Có sẵn tại: {{$provin->name}}</p>
+                            <div>Status: {{$queryy->outlook}}%</div>
+                            <div>Repair history: {{$queryy->repair_history}}</p>
+                            <div>Number of rentals: {{$queryy->times_rent}}</div>
+                            <div>Available at: {{$provin->name}}</div>
                             <p class="text-center">
                                 <button type="submit" class="btn btn-template-outlined"><i
                                         class="fa fa-shopping-cart"></i> Add to cart
@@ -74,17 +74,17 @@
                         <?php
                         $cus = DB::table('customer')->where('id_customer', $queryy->id_customer)->get()->first();
                         ?>
-                        <div>Cho thuê bởi: {{$cus->name}}</div>
-                        <div>Địa chỉ chủ sở hữu: {{$cus->address}}</div>
-                        <div>Số điện thoại: {{$cus->phone_number}}</div>
+                        <div>Rented by: {{$cus->name}}</div>
+                        <div>Owener address: {{$cus->address}}</div>
+                        <div>Phone numbers: {{$cus->phone_number}}</div>
                         @if($queryy->amount == 0)
-                            <div>Tình trạng: Đã được cho thuê hết</div>
+                            <div>Status: Has been leased out</div>
                         @endif
                         @if($queryy->isactive == 0)
-                            <div>Tình trạng: Ngừng cho thuê</div>
+                            <div>Status: Stop renting</div>
                         @endif
                         @if($queryy->isactive == 1)
-                            <div>Tình trạng: Còn hàng</div>
+                            <div>Status: Available</div>
                     @endif
                     <!-- </div> -->
                     </div>
