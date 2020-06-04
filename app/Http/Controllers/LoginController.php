@@ -13,8 +13,10 @@ class LoginController extends Controller
         $isAdmin = $request->isAdmin;
         if(!$isAdmin) { //nếu ko phải admin
             $resultUser = DB::table('customer')->where('email', $email)->where('password', $password)->first();
-            $check = $resultUser;
-            if($check){    //nếu người dùng đăng nhập đúng
+            if($resultUser==null)
+                $check=false;
+            else $check=true;
+            if($resultUser){    //nếu người dùng đăng nhập đúng
                 Session::put('login', true);
                 Session::put('id_customer',$resultUser->id_customer);
                 Session::remove('id_admin');
@@ -23,20 +25,23 @@ class LoginController extends Controller
                 }
                 return view('users.home');
             } else{
-                $alert = 'Wrong password. Try again or click Forgot password to reset it.';
+                $alert = 'Email or password is wrong';
                 return view('users.login', compact('check', 'alert'));
             }
         }
         else { //nếu là admin
             $resultAdmin = DB::table('admininfo')->where('email', $email)->where('password', $password)->first();
             $check = $resultAdmin;
-            if($check){   //nếu admin đăng nhập đúng
+            if($resultAdmin==null)
+                $check=false;
+            else $check=true;
+            if($resultAdmin){   //nếu admin đăng nhập đúng
                 Session::put('login', true);
                 Session::put('id_admin',$resultAdmin->id_admin);
                 Session::remove('id_customer');
                 return view('admin.welcomeAdmin');
             } else{
-                $alert = 'Wrong password. Try again or click Forgot password to reset it.';
+               $alert = 'Wrong password. Try again or click Forgot password to reset it.';
                 return view('users.login', compact('check', 'alert'));
             }
         }

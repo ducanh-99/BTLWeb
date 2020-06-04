@@ -39,20 +39,21 @@
       <div id="content">
         <div class="container">
           @if(isset($check))
+          <br/>
           <div class="row">
-            <div class="col-12">
-              @if($check == true)
-              <div class="alert alert-success alert-dismissible">
+            <div class="col-4"></div>
+            <div class="col-4">
+              <!-- <div class="alert alert-warning">
                 <button type="button" class="close" data-dismiss="alert">x</button>
-                <strong id="alert-header">{{$alert}}</strong>
-              </div>
-              @else
+                <strong id="alert-header">Chưa lấy được</strong>
+              </div> -->
+              @if($check == false)
               <div class="alert alert-warning">
                 <button type="button" class="close" data-dismiss="alert">x</button>
-                <strong id="alert-header">{{$alert}}</strong>
+                <strong style="text-align: center">{{$alert}}</strong>
               </div>
               @endif
-            </div>
+              </div>
           </div>
           @endif
          <div class="row">
