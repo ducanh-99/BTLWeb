@@ -41,7 +41,7 @@ class LoginController extends Controller
                 Session::remove('id_customer');
                 return view('admin.welcomeAdmin');
             } else{
-               $alert = 'Wrong password. Try again or click Forgot password to reset it.';
+               $alert = 'Email or password is wrong. Are you admin?';
                 return view('users.login', compact('check', 'alert'));
             }
         }

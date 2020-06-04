@@ -134,7 +134,7 @@
                                     <th>ID Category Branch</th>
                                     <th>ID Category Main</th>
                                     <th>Name</th>
-                                    <th>Descriptionf</th>
+                                    <th>Description</th>
                                     <th>Image</th>
                                     <th>Status</th>
                                     <th>Edit</th>
@@ -167,13 +167,19 @@
                                             ?>
                                         </td>
                                         <td>
-                                            <a href="{{URL::to('/edit-branch-category/'.$eachCategoryBranch->id_category_branch)}}">Sửa thông tin branch</a>
+                                            <a href="{{URL::to('/edit-branch-category/'.$eachCategoryBranch->id_category_branch)}}">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach
 
                             </tbody>
                         </table>
+                        <div>
+                            <br/>
+                            <div style="float: right">
+                                {!! $allCategoryBranch->links() !!}
+                            </div>
+                        </div>
                     </div>
             <!-- /.card-body -->
                 </div>

@@ -12,7 +12,7 @@ class ShowController extends Controller
     {
         if (Session::get('id_admin')) {
             $allCategoryBranch = DB::table('category_branch')
-                ->get();
+                ->paginate(10);
             return view('admin.show.all_branch_category')->with('allCategoryBranch', $allCategoryBranch);
         } else {
             return redirect('login');
@@ -23,7 +23,7 @@ class ShowController extends Controller
     {
         if (Session::get('id_admin')) {
             $allCategoryMain = DB::table('category_main')
-                ->get();
+                ->paginate(10);
             return view('admin.show.all_main_category')->with('allCategoryMain', $allCategoryMain);
         } else {
             return redirect('login');
@@ -34,7 +34,7 @@ class ShowController extends Controller
     {
         if (Session::get('id_admin')) {
             $allProduct = DB::table('product')
-                ->get();
+                ->paginate(10);
 
             return view('admin.show.all_product')->with('allProduct', $allProduct);
         } else {

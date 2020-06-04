@@ -115,6 +115,12 @@
                 
                             </tbody>
                         </table>
+                        <div>
+                            <br/>
+                            <div style="float: right">
+                                {!! $allCategoryMain->links() !!}
+                            </div>
+                        </div>
                     </div>
             <!-- /.card-body -->
                 </div>
