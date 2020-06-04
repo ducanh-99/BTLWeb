@@ -38,14 +38,28 @@
 </div>
       <div id="content">
         <div class="container">
+          @if(isset($check))
+          <div class="row">
+            <div class="col-12">
+              @if($check == true)
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong id="alert-header">{{$alert}}</strong>
+              </div>
+              @else
+              <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong id="alert-header">{{$alert}}</strong>
+              </div>
+              @endif
+            </div>
+          </div>
+          @endif
          <div class="row">
          <div class="col-lg-4"></div>
          <div class="col-lg-4">
-              <div class="box">
-               
-                
-                <h2 class="text-uppercase text-center">Login</h2>
-                
+              <div class="box">               
+                <h2 class="text-uppercase text-center">Login</h2>              
                 <form action="{{URL::to('/login-check')}}" method="get">
                 <div class="form-group">
                     <label for="email">Email</label>
