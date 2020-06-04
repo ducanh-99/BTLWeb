@@ -45,7 +45,7 @@
                
                 
                 <h2 class="text-uppercase text-center">Login</h2>
-        
+                
                 <form action="{{URL::to('/login-check')}}" method="get">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -64,7 +64,7 @@
                     <button type="submit" class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
                   </div>
                 </form>
-</div>
+                </div>
               </div>
             </div>
           </div>

@@ -48,25 +48,16 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    <div style=" margin-left:70%">
+      <a href="{{URL::to('/logout')}}" class="nav-link" style="text-align: right">Log out</a>
+    </div>
   </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ URL::to('/') }}" class="brand-link">
+    <a href="{{ URL::to('/welcome-admin') }}" class="brand-link">
       <!-- <img src="{{ URL::to('/') }}/public/frontend/img/rsz_5logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8"> -->
       <span style="text-align: center">Aleasa</span>
