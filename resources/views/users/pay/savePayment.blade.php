@@ -5,24 +5,24 @@
             <div class="container">
 
                 <div class="review-payment">
-                    Cảm ơn quý khách {{$shipping_name}} đã cho ALEASE cơ hội được phục vụ. Trong 10 phút, nhân viên
-                    ALEASE sẽ gửi tin nhắn hoặc gọi
-                    điện xác nhận giao hàng cho quý khách</h2>
+                    <h2>
+                        Thank you {{$shipping_name}} for giving ALEASE the opportunity to serve. In 10 minutes, ALEASE staff will send you a message or call to confirm delivery of the goods to you
+                    </h2>
                 </div>
 
-                <h3>Thông tin đặt hàng:</h3>
+                <h3>Order information:</h3>
                 <ul>
-                    <li>Địa chỉ nhận hàng: <span>{{$shipping_address}}</span></li>
+                    <li>Shipping address: <span>{{$shipping_address}}</span></li>
                     <?php
                     $custome = DB::table('customer')->where('id_customer', $id_customer)->get()->first();
                     ?>
-                    <li>Người đặt hàng: <span>{{$custome->name}}</span></li>
-                    <li>Email người nhận hàg: <span>{{$shipping_email}}</span></li>
-                    <li>Số điện thoại người nhận hàng: <span>{{$shipping_phone}}</span></li>
-                    <li>Ghi chú: <span>{{$shipping_notes}}</span></li>
-                    <li>Phương thức thanh toán: <span>{{$payment_option}}</span></li>
+                    <li>Receiver Name: <span>{{$custome->name}}</span></li>
+                    <li>Receiver Email: <span>{{$shipping_email}}</span></li>
+                    <li>Phone Number: <span>{{$shipping_phone}}</span></li>
+                    <li>Note: <span>{{$shipping_notes}}</span></li>
+                    <li>Payment method: <span>{{$payment_option}}</span></li>
                 </ul>
-                <h1>Sản phẩm đã mua</h1>
+                <h1>Purchased product:</h1>
 
                 <?php
                 $content = Cart::content(); //lấy nội dung của giỏ hàng

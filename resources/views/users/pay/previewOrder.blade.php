@@ -40,25 +40,32 @@
                         <td>{{'$'.number_format($eachContentItem->price)}}</td>
                         <td></td>
                         <td>{{'$'.number_format($eachContentItem->price * $eachContentItem->qty)}}</td>
-                        <td><input required type="number" min="1" name="months[{{$i}}]" id="months[{{$i}}]"
-                                   placeholder="Số tháng"></td>
                         <td>
-                            <select id="partner_delivery[{{$i}}]" name="partner_delivery[{{$i}}]" style="float: left;">
+{{--                            <input required type="number" min="1" name="months[{{$i}}]" id="months[{{$i}}]"--}}
+{{--                                   placeholder="Số tháng">--}}
+                            <select class="form-control form-control-sm" name="months[{{$i}}]" id="months[{{$i}}]">
+                                @for ($j = 1; $j <= 24; $j++)
+                                    <option>{{$j}}</option>
+                                @endfor
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-control form-control-sm"  id="partner_delivery[{{$i}}]" name="partner_delivery[{{$i}}]" style="float: left;">
                                 <?php
                                 $delivery = DB::table('partner_delivery')->get();
                                 ?>
                                 @foreach($delivery as $eachOfDelivery)
-                                    <option>
-                                        {{$eachOfDelivery->id_partner_delivery}}
+                                    <option value="{{$eachOfDelivery->id_partner_delivery}}">
+                                        {{$eachOfDelivery->name}}
                                     </option>
                                 @endforeach
                             </select>
                         </td>
                         <td>
-                            <select id="shipping_method[{{$i}}]" name="shipping_method[{{$i}}]" style="float: left;">
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2</option>
+                            <select  class="form-control form-control-sm" id="shipping_method[{{$i}}]" name="shipping_method[{{$i}}]" style="float: left;">
+                                <option value="0">Chỉ giao hàng đến</option>
+                                <option value="1">Yêu cầu shipper đến lấy hàng đi khi thuê xong</option>
+                                <option value="2">Cả 2 yêu cầu trên</option>
                             </select>
                         </td>
                     </tr>

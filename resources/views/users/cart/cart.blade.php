@@ -54,7 +54,7 @@
                                             <td>{{$eachContentItem->name}}</td>
                                         <td>
                                             <form action="{{URL::to('/update-cart-quantity')}}" method="GET">
-                                                <input type="number" name="quantity" value="{{$eachContentItem->qty}}">
+                                                <input type="number" name="quantity" value="{{$eachContentItem->qty}} "  max="{{$produc->amount}}">
                                                 <input type="hidden" value="{{$eachContentItem->rowId}}" name="id" class="form-control">
                                                 <input type="submit" value="Update Qty" name="update_qty" class="btn btn-default btn-sm">
                                             </form>
