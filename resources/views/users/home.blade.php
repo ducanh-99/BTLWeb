@@ -1,23 +1,22 @@
-
 @extends('welcome')
-@section('content')    
-      <section style="background: url('public/frontend/img/photogrid.jpg') center center repeat; background-size: cover;" class="bar background-white relative-positioned">
-            <div class="container">
-              <!-- Carousel Start-->
-              <div class="home-carousel">
-                <div class="dark-mask mask-primary"></div>
-                <div class="container">
-                  <div class="homepage owl-carousel">
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-md-5 text-right">
-                          <h1>Essential family furniture</h1>
-                          <p>Essential household items</p>
-                        </div>
-                        <div class="col-md-7"><img src="img/1-main-image-PAR01.jpg" alt="" class="img-fluid  "></div>
-                      </div>
-                    </div>
-                    <!-- <div class="item">
+@section('content')
+<section style="background: url('public/frontend/img/photogrid.jpg') center center repeat; background-size: cover;" class="bar background-white relative-positioned">
+  <div class="container">
+    <!-- Carousel Start-->
+    <div class="home-carousel">
+      <div class="dark-mask mask-primary"></div>
+      <div class="container">
+        <div class="homepage owl-carousel">
+          <div class="item">
+            <div class="row">
+              <div class="col-md-5 text-right">
+                <h1>Essential family furniture</h1>
+                <p>Essential household items</p>
+              </div>
+              <div class="col-md-7"><img src="img/1-main-image-PAR01.jpg" alt="" class="img-fluid  "></div>
+            </div>
+          </div>
+          <!-- <div class="item">
                       <div class="row">
                         <div class="col-md-7 text-center"><img src="img/template-mac.png" alt="" class="img-fluid"></div>
                         <div class="col-md-5">
@@ -31,19 +30,19 @@
                         </div>
                       </div>
                     </div> -->
-                    <div class="item">
-                      <div class="row">
-                        <div class="col-md-5 text-right">
-                          <h1>Easily decorate your home</h1>
-                          <ul class="list-unstyled">
-                            <li>Diverse products</li>
-                            <li>Many different prices</li>
-                          </ul>
-                        </div>
-                        <div class="col-md-7"><img src="img/template-easy-customize.png" alt="" class="img-fluid"></div>
-                      </div>
-                    </div>
-                    <!-- <div class="item">
+          <div class="item">
+            <div class="row">
+              <div class="col-md-5 text-right">
+                <h1>Easily decorate your home</h1>
+                <ul class="list-unstyled">
+                  <li>Diverse products</li>
+                  <li>Many different prices</li>
+                </ul>
+              </div>
+              <div class="col-md-7"><img src="img/template-easy-customize.png" alt="" class="img-fluid"></div>
+            </div>
+          </div>
+          <!-- <div class="item">
                       <div class="row">
                         <div class="col-md-7"><img src="img/template-easy-code.png" alt="" class="img-fluid"></div>
                         <div class="col-md-5">
@@ -55,77 +54,77 @@
                         </div>
                       </div>
                     </div> -->
-                  </div>
-                </div>
-              </div>
-              <!-- Carousel End-->
-            </div>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel End-->
+  </div>
 
 
-        </section>
-        <section class="bar background-white">
-          <div class="container text-center">
-            <div class="heading text-center">
-              <h2>Why choose us?</h2>
-            </div>
-              <p class="lead">6 Good reasons & exceptional service with a smile!</p>
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="box-simple">
-                  <div class="icon-outlined"><i class="	fa fa-dollar"></i></div>
-                  <h3 class="h4">Saving</h3>
-                  <p>Save money on buying goods and still be able to experience the latest gadgets and technology</p>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="box-simple">
-                  <div class="icon-outlined"><i class="fa fa-home"></i></div>
-                  <h3 class="h4">Home</h3>
-                  <p>We come to you. Home rental support, customers do not need to go to the store to order. Customers can order online on the web.</p>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="box-simple">
-                  <div class="icon-outlined"><i class="fa fa-globe"></i></div>
-                  <h3 class="h4">International</h3>
-                  <p>The company has many stores in many countries. Customers can order in different countries.</p>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-4 col-md-6">
-                <div class="box-simple">
-                  <div class="icon-outlined"><i class="fa fa-ambulance"></i></div>
-                  <h3 class="h4">Delivery</h3>
-                  <p>Economical, intelligent delivery service. Ensure goods are delivered to customers as quickly as possible and cheap</p>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="box-simple">
-                  <div class="icon-outlined"><i class="fa fa-phone"></i></div>
-                  <h3 class="h4">Support</h3>
-                  <p>The company supports direct advice to customers 24/7. Customers can call directly, or send mail to receive support</p>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="box-simple">
-                  <div class="icon-outlined"><i class="fa fa-user"></i></div>
-                  <h3 class="h4">People</h3>
-                  <p>The company's staff are enthusiastic people, dedicated to the job. Serving satisfied customers is our pleasure</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- ============================== -->
-        <section class="bar background-pentagon no-mb text-md-center">
-          <div class="container">
-            <!-- <div class="heading text-center">
+</section>
+<section class="bar background-white">
+  <div class="container text-center">
+    <div class="heading text-center">
+      <h2>Why choose us?</h2>
+    </div>
+    <p class="lead">6 Good reasons & exceptional service with a smile!</p>
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="box-simple">
+          <div class="icon-outlined"><i class="	fa fa-dollar"></i></div>
+          <h3 class="h4">Saving</h3>
+          <p>Save money on buying goods and still be able to experience the latest gadgets and technology</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="box-simple">
+          <div class="icon-outlined"><i class="fa fa-home"></i></div>
+          <h3 class="h4">Home</h3>
+          <p>We come to you. Home rental support, customers do not need to go to the store to order. Customers can order online on the web.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="box-simple">
+          <div class="icon-outlined"><i class="fa fa-globe"></i></div>
+          <h3 class="h4">International</h3>
+          <p>The company has many stores in many countries. Customers can order in different countries.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="box-simple">
+          <div class="icon-outlined"><i class="fa fa-ambulance"></i></div>
+          <h3 class="h4">Delivery</h3>
+          <p>Economical, intelligent delivery service. Ensure goods are delivered to customers as quickly as possible and cheap</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="box-simple">
+          <div class="icon-outlined"><i class="fa fa-phone"></i></div>
+          <h3 class="h4">Support</h3>
+          <p>The company supports direct advice to customers 24/7. Customers can call directly, or send mail to receive support</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="box-simple">
+          <div class="icon-outlined"><i class="fa fa-user"></i></div>
+          <h3 class="h4">People</h3>
+          <p>The company's staff are enthusiastic people, dedicated to the job. Serving satisfied customers is our pleasure</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============================== -->
+<section class="bar background-pentagon no-mb text-md-center">
+  <div class="container">
+    <!-- <div class="heading text-center">
               <h2>Testimonials</h2>
             </div>
             <p class="lead">We have worked with many clients and we always like to hear they come out from the cooperation happy and satisfied. Have a look what our clients said about us.</p> -->
-            <!-- Carousel Start-->
-            <!-- <ul class="owl-carousel testimonials list-unstyled equal-height">
+    <!-- Carousel Start-->
+    <!-- <ul class="owl-carousel testimonials list-unstyled equal-height">
               <li class="item">
                 <div class="testimonial d-flex flex-wrap">
                   <div class="text">
@@ -213,11 +212,11 @@
                 </div>
               </li>
             </ul> -->
-            <!-- Carousel End-->
-          </div>
+    <!-- Carousel End-->
+  </div>
 
-        </section>
-        <!-- <section style="background: url(img/fixed-background-2.jpg) center top no-repeat; background-size: cover;" class="bar no-mb color-white text-center bg-fixed relative-positioned">
+</section>
+<!-- <section style="background: url(img/fixed-background-2.jpg) center top no-repeat; background-size: cover;" class="bar no-mb color-white text-center bg-fixed relative-positioned">
           <div class="dark-mask"></div>
           <div class="container">
             <div class="icon icon-outlined icon-lg"><i class="fa fa-file-code-o"></i></div>
@@ -226,88 +225,72 @@
             <p class="text-center"><a href="index2.html" class="btn btn-template-outlined-white btn-lg">See another homepage</a></p>
           </div>
         </section> -->
-        <section class="bg-white bar">
-          <div class="container">
-            <div class="heading text-center">
-              <h2>Products</h2>
-            </div>
-            <!-- <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. <a href="blog.html">Check our blog</a></p> -->
-            <div class="row">
-              <div class="col-lg-3">
-                <div class="home-blog-post">
-                  <div class="image"><img src="{{ URL::to('/') }}/public/image/tv & audio/TVs/n5500_si_hisense_television_01_l-1.jpg" alt="..." class="img-fluid">
-                    <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
-                  </div>
-                  <div class="text">
-                    <h4><a href="#">TV & Audio </a></h4>
-                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
-                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="home-blog-post">
-                  <div class="image"><img src="{{ URL::to('/') }}/public/image/technology/Computing/ASUS-Chromebook-Flip-C213-1.jpg" alt="..." class="img-fluid">
-                    <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
-                  </div>
-                  <div class="text">
-                    <h4><a href="#">Technology</a></h4>
-                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
-                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="home-blog-post">
-                  <div class="image"><img src="{{ URL::to('/') }}/public/image/Furniture/Dining Room/Carina-Dining-Set.jpg" height="172px" alt="..." class="img-fluid">
-                    <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
-                  </div>
-                  <div class="text">
-                    <h4><a href="#">Furniture</a></h4>
-                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
-                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="home-blog-post">
-                  <div class="image"><img src="{{ URL::to('/') }}/public/image/Applications/Cookers & Microwaves/Daewoo-KOC9Q4T-e1518714988146.jpg"  height="172px" alt="..." class="img-fluid">
-                    <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
-                  </div>
-                  <div class="text">
-                    <h4><a href="#">Application</a></h4>
-                    <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
-                    <p class="intro">Hello everybody</p><a href="#" class="btn btn-template-outlined">Continue Reading</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+<section class="bg-white bar">
+  <div class="container">
+    <div class="heading text-center">
+      <h2>Products</h2>
+    </div>
+    <!-- <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. <a href="blog.html">Check our blog</a></p> -->
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="home-blog-post">
+          <div class="image"><img src="{{ URL::to('/') }}/public/image/tv & audio/TVs/n5500_si_hisense_television_01_l-1.jpg" alt="..." class="img-fluid">
+            <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
           </div>
-        </section>
-        <!-- <section class="bar bg-gray">
-          <div class="container">
-            <div class="heading text-center">
-              <h2>Our Clients</h2>
-            </div>
-            <ul class="list-unstyled owl-carousel customers no-mb">
-              <li class="item"><img src="img/customer-1.png" alt="" class="img-fluid"></li>
-              <li class="item"><img src="img/customer-2.png" alt="" class="img-fluid"></li>
-              <li class="item"><img src="img/customer-3.png" alt="" class="img-fluid"></li>
-              <li class="item"><img src="img/customer-4.png" alt="" class="img-fluid"></li>
-              <li class="item"><img src="img/customer-5.png" alt="" class="img-fluid"></li>
-              <li class="item"><img src="img/customer-6.png" alt="" class="img-fluid"></li>
-            </ul>
-          </div>
-        </section> -->
-        <!-- GET IT-->
-        <div class="get-it">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 text-center p-3">
-                <h3>Do you want a fully furnished home?</h3>
-              </div>
-              <div class="col-lg-4 text-center p-3">   <a href="#" class="btn btn-template-outlined-white">Please come with us</a></div>
-            </div>
+          <div class="text">
+            <h4><a href="#">TV & Audio </a></h4>
+            <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+            <p class="intro"></p><a href="{{ URL::to('/branch-result/2') }}" class="btn btn-template-outlined">Show all</a>
           </div>
         </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="home-blog-post">
+          <div class="image"><img src="{{ URL::to('/') }}/public/image/technology/Computing/ASUS-Chromebook-Flip-C213-1.jpg" alt="..." class="img-fluid">
+            <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
+          </div>
+          <div class="text">
+            <h4><a href="#">Technology</a></h4>
+            <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+            <p class="intro"></p></p><a href="{{ URL::to('/branch-result/3') }}" class="btn btn-template-outlined">Show all</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="home-blog-post">
+          <div class="image"><img src="{{ URL::to('/') }}/public/image/Furniture/Dining Room/Carina-Dining-Set.jpg" height="172px" alt="..." class="img-fluid">
+            <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
+          </div>
+          <div class="text">
+            <h4><a href="#">Furniture</a></h4>
+            <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+            <p class="intro"></p><a href="{{ URL::to('/branch-result/4') }}" class="btn btn-template-outlined">Show all</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="home-blog-post">
+          <div class="image"><img src="{{ URL::to('/') }}/public/image/Applications/Cookers & Microwaves/Daewoo-KOC9Q4T-e1518714988146.jpg" height="172px" alt="..." class="img-fluid">
+            <div class="overlay d-flex align-items-center justify-content-center"><a href="#" class="btn btn-template-outlined-white"><i class="fa fa-chain"> </i> Read More</a></div>
+          </div>
+          <div class="text">
+            <h4><a href="#">Application</a></h4>
+            <!-- <p class="author-category">By <a href="#">John Snow</a> in <a href="blog.html">Webdesign</a></p> -->
+            <p class="intro"></p><a href="{{ URL::to('/branch-result/1') }}" class="btn btn-template-outlined">Show all</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="get-it">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 text-center p-3">
+        <h3>Do you want a fully furnished home?</h3>
+      </div>
+      <div class="col-lg-4 text-center p-3"> <a href="#" class="btn btn-template-outlined-white">Please come with us</a></div>
+    </div>
+  </div>
+</div>
 @endsection

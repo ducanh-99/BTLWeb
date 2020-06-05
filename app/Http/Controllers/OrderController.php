@@ -24,7 +24,7 @@ class OrderController extends Controller
             $allUserOrder = DB::table('oder')
                 ->where('id_customer',Session::get('id_customer'))
                 ->get();
-            if(!empty($allUserOrder)) {
+            if(count($allUserOrder) > 0) {
                 return view('users.order.userOrder')->with('allUserOrder', $allUserOrder);
             }
             else {
@@ -66,7 +66,7 @@ class OrderController extends Controller
                 $msg = "Bạn đã thuê ".$goods->name." trong ".$thoiGianDaThue." tháng. Số tiền được hoàn trả là: ";
                 $returnFee =$chiTiet->deposit - $chiTiet->quantity * $goods->price * $chiTiet->months;
             } else{
-                $msg = "Bạn đã thuê ".$goods->name." trong ".$thoiGianDaThue." tháng, quá ".$thoiGianDaThue - $chiTiet->months." tháng. Số tiền được hoàn trả là: ";
+                $msg = "Bạn đã thuê ".$goods->name." trong ".$thoiGianDaThue." tháng, quá ".($thoiGianDaThue - $chiTiet->months)." tháng. Số tiền được hoàn trả là: ";
                 $returnFee =$chiTiet->deposit - $chiTiet->quantity * $goods->price * $chiTiet->months;
             }
             return view('users.order.returnOrderDetail')->with('returnFee', $returnFee)->with('msg',$msg)->with('chiTiet',$chiTiet)->with('goods',$goods)
