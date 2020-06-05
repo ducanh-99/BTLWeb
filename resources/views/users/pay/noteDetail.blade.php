@@ -3,6 +3,7 @@
 <!-- <div class="register-req">
     <p>Làm ơn đăng ký hoặc đăng nhập để thanh toán giỏ hàng và xem lại lịch sử mua hàng</p>
 </div>/register-req -->
+
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row d-flex align-items-center flex-wrap">
@@ -28,74 +29,39 @@
                         <div>
                             <input type="hidden" value="{{$customerInformation->id_customer}}" name="id_customer">
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input class="form-control" type="text" name="shipping_email" placeholder="Email" value="{{$customerInformation->email}}">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input class="form-control" type="text" name="shipping_name" placeholder="Name" value="{{$customerInformation->name}}">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div>
+                        <div>
                             Email người nhận
                             <input type="text" name="shipping_email" placeholder="Email" value="{{$customerInformation->email}}">
-                        </div> -->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <input class="form-control" type="text" name="shipping_address" placeholder="Address" value="{{$customerInformation->address}}">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="phone">Phone Numbers</label>
-                                    <input class="form-control" type="text" name="shipping_phone" placeholder="Phone" value="{{$customerInformation->phone_number}}">
-                                </div>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="province">Province</label>
-                                    <select class="form-control" name="shipping_province">
-                                        <option value="0">Viet Nam</option>
-                                        <option value="2">Ha Noi</option>
-                                        <option value="3">Sai Gon</option>
-                                        <option value="4">Da Nang</option>
-                                    </select>
-                                    <!-- <input class="form-control" name="shipping_province" type="text" placeholder="Province"> -->
-                                </div>
-                            </div>
+                        <div>
+                            Tên người nhận
+                            <input type="text" name="shipping_name" placeholder="Họ và tên" value="{{$customerInformation->name}}">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Example textarea</label>
-                            <textarea class="form-control" name="shipping_notes" placeholder="Note" rows="8" cols="50"></textarea>
+                        <div>
+                            Địa chỉ nhận hàng (Không điền nếu quý khách nhận tại cửa hàng):
+                            <input type="text" name="shipping_address" placeholder="Địa chỉ" value="{{$customerInformation->address}}">
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" name="payment_option" value="1" type="checkbox" id="check1">
-                            <label class="form-check-label" for="check1">
-                                ATM
-                            </label>
+                        <div>
+                            Số điện thoại
+                            <input type="text" name="shipping_phone" placeholder="Phone" value="{{$customerInformation->phone_number}}">
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" name="payment_option" value="2" type="checkbox" id="check2">
-                            <label class="form-check-label" for="check2">
-                                Get cash
-                            </label>
+                        <div>
+                            Ghi chú
+                            <textarea name="shipping_notes" placeholder="Ghi chú đơn hàng của bạn" rows="8" cols="50"></textarea>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" name="payment_option" value="3" type="checkbox" id="check3">
-                            <label class="form-check-label" for="check3">
-                                Pay by credit card
-                            </label>
+                        <div>
+                            Tỉnh thành
+                            <input readonly value="{{$dest}}" required name="shipping_province" type="text" placeholder="Tỉnh thành">
                         </div>
+                        <span>
+                            <label><input name="payment_option" value="1" type="checkbox"> Trả bằng thẻ ATM</label>
+                        </span>
+                        <span>
+                            <label><input name="payment_option" value="2" type="checkbox"> Nhận tiền mặt</label>
+                        </span>
+                        <span>
+                            <label><input name="payment_option" value="3" type="checkbox"> Thanh toán thẻ ghi nợ</label>
+                        </span>
 
                         <div class="table-responsive">
                             <table class="table">
@@ -106,18 +72,16 @@
                                     <th>Quantity</th>
                                     <th>Unit price</th>
                                     <th>Discount</th>
-                                    <th>Temp Total</th>
+                                    <th>Total</th>
                                     <th>Months</th>
                                     <th>Partner Delivery</th>
+                                    <th>Phí giao hàng</th>
                                     <th>Shipping Method</th>
                                     </tr>
                                 </thead>
                                 <?php $content = Cart::content();
                                 $i = 0; ?>
                                 @foreach($content as $eachContentItem)
-                                <?php
-                                $i++;
-                                ?>
                                 <tr>
                                     <?php
                                     $produc = DB::table('product')->where('id_product', $eachContentItem->id)->get()->first();
@@ -128,41 +92,43 @@
                                     <td>{{$eachContentItem->name}}</td>
                                     <td>{{$eachContentItem->qty}}</td>
                                     <td>{{'$'.number_format($eachContentItem->price)}}</td>
-                                    <td>$0.00</td>
-                                    <td>{{'$'.number_format($eachContentItem->price * $eachContentItem->qty)}}</td>
+                                    <td>0</td>
+                                    <td>{{$totalEachCost[$i]}}</td>
                                     <td>
-                                        <select class="form-control form-control-sm" name="months[{{$i}}]" id="months[{{$i}}]">
-                                            @for ($j = 1; $j <= 24; $j++) 
-                                                <option>{{$j}}</option>
-                                            @endfor
-                                        </select>
+                                        {{$month[$i]}}
+                                        <input hidden id="months[{{$i}}]" name="months[{{$i}}]" style="float: left;" value="{{$month[$i]}}">
                                     </td>
-                                    <!-- <td><input type="number" min="1" name="months[{{$i}}]" id="months[{{$i}}]" placeholder="Số tháng"></td> -->
                                     <td>
-                                        <select class="form-control form-control-sm" id="partner_delivery" name="partner_delivery">
                                             <?php
-                                            $delivery = DB::table('partner_delivery')->get();
+                                            $delivery = DB::table('partner_delivery')->where('id_partner_delivery',$id_partner_delivery[$i])->get()->first();
                                             ?>
-                                            @foreach($delivery as $eachOfDelivery)
-                                            <option value="{{$eachOfDelivery->id_partner_delivery}}">
-                                                {{$eachOfDelivery->name}}
-                                            </option>
-                                            @endforeach
-                                        </select>
+                                        {{$delivery->name}}
+                                        <input hidden id="partner_delivery[{{$i}}]" name="partner_delivery[{{$i}}]" style="float: left;" value="{{$id_partner_delivery[$i]}}">
                                     </td>
+                                        <td>
+                                        {{$shipping_fee[$i]}}
+                                        </td>
                                     <td>
-                                        <select class="form-control form-control-sm" id="shipping_method" name="shipping_method">
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                        </select>
+                                        @if($shipping_method[$i] == 0)
+                                            <div>Giao hàng đến tận nơi</div>
+                                        @elseif($shipping_method[$i] == 1)
+                                            <div>Yêu cầu shipper đến lấy hàng khi trả đồ</div>
+                                        @elseif($shipping_method[$i] == 2)
+                                            <div>Giao hàng đến tận nơi Yêu cầu shipper đến lấy hàng khi trả đồ</div>
+                                        @endif
+                                            <input hidden id="shipping_method[{{$i}}]" name="partner_delivery[{{$i}}]" style="float: left;" value="{{$shipping_method[$i]}}">
                                     </td>
+
                                 </tr>
+                                    <?php
+                                    $i++;
+                                    ?>
                                 @endforeach
                             </table>
                         </div>
-
+                        @if(count($content) > 0)
                         <input type="submit" value="Đặt hàng" name="send_order_place" class="btn btn-primary btn-sm">
+                            @endif
                     </form>
                 </div>
             </div>
@@ -181,16 +147,12 @@
                                     <th>{{"$".Cart::subTotal()}}</th>
                                 </tr>
                                 <tr>
-                                    <td>Shipping fee</td>
-                                    <th>{{"$."}}</th>
-                                </tr>
-                                <tr>
                                     <td>Tax</td>
                                     <th>{{"$".Cart::tax()}}</th>
                                 </tr>
                                 <tr class="total">
                                     <td>Total</td>
-                                    <th>{{"$".Cart::total()}}</th>
+                                    <th>{{"$".$totalcost}}</th>
                                 </tr>
                             </tbody>
                         </table>
@@ -316,5 +278,5 @@
     </div>
 </div> -->
 
-=======
+
 @endsection

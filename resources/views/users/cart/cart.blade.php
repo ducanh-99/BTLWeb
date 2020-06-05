@@ -38,7 +38,7 @@
                                 <th>Unit price</th>
                                 <th>Discount</th>
                                 <th>Temp Total</th>
-                                <th>Delete</th>
+                                <th>Xóa</th>
                                 </tr>
                                 </thead>
                                 @foreach($content as $eachContentItem)
@@ -54,7 +54,7 @@
                                             <td>{{$eachContentItem->name}}</td>
                                         <td>
                                             <form action="{{URL::to('/update-cart-quantity')}}" method="GET">
-                                                <input type="number" name="quantity" value="{{$eachContentItem->qty}}" max="{{$produc->amount}}">
+                                                <input type="number" name="quantity" value="{{$eachContentItem->qty}}">
                                                 <input type="hidden" value="{{$eachContentItem->rowId}}" name="id" class="form-control">
                                                 <input type="submit" value="Update Qty" name="update_qty" class="btn btn-default btn-sm">
                                             </form>
@@ -77,13 +77,15 @@
                                 $href = "";
                                 $id_customer = Session::get('id_customer');
                                 if ($id_customer != NULL) {
-                                    $href = "pay";
+                                    $href = "previewOrder";
                                 } else {
                                     $href = "login";
                                 }
                                 ?>
+                                @if($numberOfItems > 0)
                                 <a class="btn btn-template-outlined" href= {{URL::to($href)}}>Proceed to checkout <i
                                         class="fa fa-chevron-right"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>

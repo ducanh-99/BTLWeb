@@ -41,6 +41,7 @@ Route::get('/update-cart-quantity','CartController@updateCartQuantity');
 Route::get('/delete-from-cart/{rowID}','CartController@deleteFromCart');
 
 //pay
+Route::get('/previewOrder','PayController@previewOrder');
 Route::get('/pay','PayController@noteDetail');
 Route::get('/save-customer-payment','PayController@saveCustomerPayment');
 
