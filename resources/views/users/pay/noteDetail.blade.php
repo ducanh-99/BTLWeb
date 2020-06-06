@@ -97,57 +97,48 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="province">Province</label>
-                                        <select class="form-control" name="shipping_province">
-                                            <option value="0">Viet Nam</option>
-                                            <option value="2">Ha Noi</option>
-                                            <option value="3">Sai Gon</option>
-                                            <option value="4">Da Nang</option>
-                                        </select>
-                                        <!-- <input class="form-control" name="shipping_province" type="text" placeholder="Province"> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Notes: </label>
                                         <textarea class="form-control" name="shipping_notes" placeholder="Note" rows="8"
                                                   cols="50"></textarea>
                                     </div>
                                 </div>
                             </div>
+{{--                            <div class="row">--}}
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="ReveiverAddress">Receiver Address (Not typing unless using delivery service):</label>--}}
+{{--                                        <input type="text" name="shipping_address" placeholder="Receiver Address"--}}
+{{--                                               value="{{$customerInformation->address}}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="PhoneNumber">--}}
+{{--                                        Phone number--}}
+{{--                                        </label>--}}
+{{--                                        <input type="text" name="shipping_phone" placeholder="Phone"--}}
+{{--                                               value="{{$customerInformation->phone_number}}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="ReveiverAddress">Receiver Address (Not typing unless using delivery service):</label>
-                                        <input type="text" name="shipping_address" placeholder="Receiver Address"
-                                               value="{{$customerInformation->address}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="PhoneNumber">
-                                        Phone number
-                                        </label>
-                                        <input type="text" name="shipping_phone" placeholder="Phone"
-                                               value="{{$customerInformation->phone_number}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        Province
-                                        <input readonly value="{{$dest}}" required name="shipping_province" type="text"
+
+                                        <?php
+                                        $prov = DB::table('province')->where('id_province',$dest)->get()->first();
+                                        ?>
+                                            Province: {{$prov->name}}
+                                        <input readonly hidden value="{{$dest}}" required name="shipping_province" type="text"
                                                placeholder="Province">
+
                                     </div>
                                 </div>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" name="payment_option" value="1" type="checkbox"
+                                <input class="form-check-input" name="payment_option" value="ATM" type="radio"
                                        id="check1">
                                 <label class="form-check-label" for="check1">
                                     ATM
@@ -155,15 +146,15 @@
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" name="payment_option" value="2" type="checkbox"
+                                <input class="form-check-input" name="payment_option" value="Get cash" type="radio"
                                        id="check2">
                                 <label class="form-check-label" for="check2">
                                     Get cash
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" name="payment_option" value="3"
-                                       type="checkbox" id="check3">
+                                <input class="form-check-input" name="payment_option" value="Pay by credit card"
+                                       type="radio" id="check3">
                                 <label class="form-check-label" for="check3">
                                     Pay by credit card
                                 </label>

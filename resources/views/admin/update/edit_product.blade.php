@@ -12,9 +12,19 @@
                         <form action="{{URL::to('/submit-edit-product')}}" method="GET">
                             <input type="hidden" name="id_product" value="{{$edit_product->id_product}}">
                             <div class="form-group">
-                                <label>ID category branch</label>
-                                <input type="text" name="id_category_branch" class="form-control" id="id_main"
-                                       value="{{$edit_product->id_category_branch}}">
+                                <label>Category branch</label>
+{{--                                <input type="text" name="id_category_branch" class="form-control" id="id_main"--}}
+{{--                                       value="{{$edit_product->id_category_branch}}">--}}
+                                <?php
+                                $bra = DB::table('category_branch')->get();
+                                ?>
+                                <select  class="form-control input-sm m-bot15" name="id_category_branch" id="id_category_branch" >
+                                    @foreach($bra as $indexbra)
+                                        <option
+                                            <?php if($indexbra->id_category_branch ==  $edit_product->id_category_branch) echo "selected" ?>
+                                            value="{{$indexbra->id_category_branch}}">{{$indexbra->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -62,15 +72,35 @@
                             </div>
 
                             <div class="form-group">
-                                <label>ID the lease </label>
-                                <input type="text" name="id_customer" class="form-control" id="id_customer"
-                                       value="{{$edit_product->id_customer}}">
+                                <label>lease </label>
+{{--                                <input type="text" name="id_customer" class="form-control" id="id_customer"--}}
+{{--                                       value="{{$edit_product->id_customer}}">--}}
+                                <?php
+                                $cus = DB::table('customer')->where('isprovider',1)->get();
+                                ?>
+                                <select  class="form-control input-sm m-bot15" name="id_customer" id="id_customer" >
+                                    @foreach($cus as $indexcus)
+                                        <option
+                                            <?php if($indexcus->id_customer ==  $edit_product->id_customer) echo "selected" ?>
+                                            value="{{$indexcus->id_customer}}">{{$indexcus->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
-                                <label>ID Province </label>
-                                <input type="text" name="id_province" class="form-control" id="id_province"
-                                       value="{{$edit_product->id_province}}">
+                                <label>Province </label>
+{{--                                <input type="text" name="id_province" class="form-control" id="id_province"--}}
+{{--                                       value="{{$edit_product->id_province}}">--}}
+                                <?php
+                                $prov = DB::table('province')->get();
+                                ?>
+                                <select  class="form-control input-sm m-bot15" name="id_province" id="id_province" >
+                                    @foreach($prov as $indexprov)
+                                        <option
+                                            <?php if($indexprov->id_province ==  $edit_product->id_province) echo "selected" ?>
+                                            value="{{$indexprov->id_province}}">{{$indexprov->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Status </label>

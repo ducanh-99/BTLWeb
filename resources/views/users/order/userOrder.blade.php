@@ -24,7 +24,7 @@
             <thead>
                 <tr>
                     <th>id_oder</th>
-                    <th>id_customer</th>
+                    <th>customer</th>
                     <th>Order date</th>
                     <th>Approved</th>
                     <th>Note</th>
@@ -38,7 +38,12 @@
                 @foreach($allUserOrder as $eachUserOrder)
                 <tr>
                     <td>{{ $eachUserOrder->id_oder }}</td>
-                    <td>{{ $eachUserOrder->id_customer }}</td>
+                    <td>
+                        <?php
+                        $cus = DB::table('customer')->where('id_customer',$eachUserOrder->id_customer)->get()->first();
+                        ?>
+                        {{$cus->name}}
+                    </td>
                     <td>{{ $eachUserOrder->date }}</td>
                     <td>{{ $eachUserOrder->isapproved }}
                         <?php

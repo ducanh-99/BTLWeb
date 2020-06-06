@@ -24,7 +24,7 @@
                     <!-- <th>id_oder_detail</th> -->
                     <th>Index</th>
                     <!-- <th>id_oder</th> -->
-                    <!-- <th>id_product</th> -->
+                    <th>product</th>
                     <th>Amount</th>
                     <th>Discount</th>
                     <th>Number of month rent</th>
@@ -38,7 +38,11 @@
                     <!-- <td>{{ $chiTiet->id_oder_detail }}</td> -->
                     <td>{{ $chiTiet->item_order }}</td>
                     <!-- <td>{{ $chiTiet->id_oder }}</td> -->
-                    <!-- <td>{{ $chiTiet->id_product }}</td> -->
+                    <td>
+                        <?php
+                        $tensp = DB::table('product')->where('id_product',$chiTiet->id_product )->get()->first();
+                        ?>
+                        {{ $tensp->name }}</td>
                     <td>{{ $chiTiet->quantity }}</td>
                     <td>{{ $chiTiet->discount }}</td>
                     <td>{{ $chiTiet->months }}</td>
@@ -52,14 +56,15 @@
             </tbody>
         </table>
         <p>{{$msg}}</p>
-        <p>{{$returnFee}}</p>
-
+        @if(!stripos($msg,"chúng tôi không nhận sản phẩm đó nữa"))
+            <p>{{$returnFee}}</p>
         <form action="{{URL::to('/user-submit-return-product')}}" method="GET">
             <button type="submit" value="Submit" name="btnSubmit" id="btnSubmit">Xác nhận</button>
             <input type="hidden" name="chiTietID" value="{{$chiTiet->id_oder_detail}}">
             <input type="hidden" name="tongQuatID" value="{{$tongQuat->id_oder}}">
             <input type="hidden" name="goodsID" value="{{$goods->id_product}}">
         </form>
+        @endif
     </div>
 </div>
 @endsection

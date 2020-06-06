@@ -32,10 +32,6 @@
                                                                 {{ csrf_field() }}
                                                                 <div class="card-body">
                                                                     <div class="form-group">
-                                                                        <label >ID partner delivery</label>
-                                                                        <input type="text" class="form-control" name="id_partner_delivery" id="id_partner_delivery" placeholder="ID partner_delivery">
-                                                                    </div>
-                                                                    <div class="form-group">
                                                                         <label>partner delivery Name</label>
                                                                         <input type="text" class="form-control" name="name" id="name" placeholder="partner delivery name">
                                                                     </div>

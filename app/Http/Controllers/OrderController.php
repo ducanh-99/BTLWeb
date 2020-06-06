@@ -94,7 +94,11 @@ class OrderController extends Controller
                     }
                 }
             }
-            return view('users.order.allExpiredOrderDetail')->with('allExpiredOrderDetail',$allExpiredOrderDetail);
+            if(count($allExpiredOrderDetail)>0)
+                return view('users.order.allExpiredOrderDetail')->with('allExpiredOrderDetail',$allExpiredOrderDetail);
+            else {
+                echo '<script> alert("You have not got expired product yet")</script>';
+            }
         } else {
             return redirect('login');
         }

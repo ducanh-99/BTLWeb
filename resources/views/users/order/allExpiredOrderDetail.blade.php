@@ -10,7 +10,7 @@
                 <th>id_oder_detail</th>
                 <th>STT</th>
                 <th>id_oder</th>
-                <th>id_product</th>
+                <th>product</th>
                 <th>Số lượng</th>
                 <th>Khuyến mại</th>
                 <th>Số tháng thuê</th>
@@ -26,7 +26,11 @@
                 <td>{{ $eachExpiredUserOrderDetail->id_oder_detail }}</td>
                 <td>{{ $eachExpiredUserOrderDetail->item_order }}</td>
                 <td>{{ $eachExpiredUserOrderDetail->id_oder }}</td>
-                <td>{{ $eachExpiredUserOrderDetail->id_product }}</td>
+                <td>
+                    <?php
+                    $tensp = DB::table('product')->where('id_product',$eachExpiredUserOrderDetail->id_product )->get()->first();
+                    ?>
+                    {{ $tensp->name }}</td>
                 <td>{{ $eachExpiredUserOrderDetail->quantity }}</td>
                 <td>{{ $eachExpiredUserOrderDetail->discount }}</td>
                 <td>{{ $eachExpiredUserOrderDetail->months }}</td>

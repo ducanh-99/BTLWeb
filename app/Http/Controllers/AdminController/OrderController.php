@@ -116,7 +116,7 @@ class OrderController extends Controller
                     $allExpiredOrderDetail[] = $eachDeltaMonth;
                 }
             }
-            return view('admin.orderManagement.allExpiredOrderDetail')->with('allExpiredOrderDetail',$allExpiredOrderDetail);
+           return view('admin.orderManagement.allExpiredOrderDetail')->with('allExpiredOrderDetail',$allExpiredOrderDetail);
         } else {
             return redirect('login');
         }

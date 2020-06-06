@@ -13,20 +13,26 @@
                             <input type="hidden" name="id_oder_detail" value="{{$oder_detail->id_oder_detail}}">
                             <div class="form-group">
                                 <label>STT</label>
-                                <input type="text" name="item_order" class="form-control" id="item_order"
+                                <input readonly type="text" name="item_order" class="form-control" id="item_order"
                                        value="{{$oder_detail->item_order}}">
                             </div>
 
                             <div class="form-group">
                                 <label>Id_order </label>
-                                <input type="text" name="id_oder" class="form-control" id="id_oder"
+                                <input readonly type="text" name="id_oder" class="form-control" id="id_oder"
                                        value="{{$oder_detail->id_oder}}">
                             </div>
 
                             <div class="form-group">
-                                <label>Id_product</label>
-                                <input class="form-control" name="id_product" id="id_product"
+                                <label>product</label>
+                                <input hidden readonly class="form-control" name="id_product" id="id_product"
                                        value="{{$oder_detail->id_product}}">
+                                <?php
+                                $sp = DB::table('product')->where('id_product',$oder_detail->id_product)->get()->first();
+                                ?>
+                                <p class="form-control">
+                                {{$sp->name}}
+                                </p>
                             </div>
 
                             <div class="form-group">
@@ -46,8 +52,18 @@
                                 <?php
                                 $delivery = DB::table('partner_delivery')->where('id_partner_delivery',$oder_detail->id_partner_delivery)->get()->first();
                                 ?>
-                                <input type="text" name="id_partner_delivery" class="form-control" id="id_partner_delivery"
-                                       value="{{$delivery->id_partner_delivery}}">
+{{--                                <input type="text" name="id_partner_delivery" class="form-control" id="id_partner_delivery"--}}
+{{--                                       value="{{$delivery->id_partner_delivery}}">--}}
+                                <?php
+                                $deliv = DB::table('partner_delivery')->get();
+                                ?>
+                                <select class="form-control input-sm m-bot15" name="id_partner_delivery" id="id_partner_delivery" >
+                                    @foreach($deliv as $indexdeliv)
+                                        <option
+                                            <?php if($indexdeliv->id_partner_delivery ==  $delivery->id_partner_delivery) echo "selected" ?>
+                                            value="{{$indexdeliv->id_partner_delivery}}">{{$indexdeliv->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">

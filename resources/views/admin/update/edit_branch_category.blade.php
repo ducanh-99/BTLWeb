@@ -13,9 +13,19 @@
                             <input type="hidden" name="id_category_branch"
                                    value="{{$edit_branch_category->id_category_branch}}">
                             <div class="form-group">
-                                <label>ID category main</label>
-                                <input type="text" name="id_category_main" class="form-control" id="id_category_main"
-                                       value="{{$edit_branch_category->id_category_main}}">
+                                <label>category main</label>
+{{--                                <input type="text" name="id_category_main" class="form-control" id="id_category_main"--}}
+{{--                                       value="{{$edit_branch_category->id_category_main}}">--}}
+                                <?php
+                                $cat = DB::table('category_main')->get();
+                                ?>
+                                <select  class="form-control input-sm m-bot15" name="id_category_main" id="id_category_main" >
+                                    @foreach($cat as $indexcat)
+                                        <option
+                                            <?php if($indexcat->id_category_main ==  $edit_branch_category->id_category_main) echo "selected" ?>
+                                            value="{{$indexcat->id_category_main}}">{{$indexcat->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">

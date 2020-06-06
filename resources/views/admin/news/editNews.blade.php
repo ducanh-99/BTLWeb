@@ -24,9 +24,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label>id_product</label>
-                                <input type="text" name="id_product" class="form-control" id="id_product"
-                                       value="{{$edit_news->id_product}}">
+                                <label>product</label>
+{{--                                <input type="text" name="id_product" class="form-control" id="id_product"--}}
+{{--                                       value="{{$edit_news->id_product}}">--}}
+                                <?php
+                                $prod = DB::table('product')->get();
+                                ?>
+                                <select  class="form-control input-sm m-bot15" name="id_product" id="id_product" >
+                                    @foreach($prod as $indexprod)
+                                        <option
+                                            <?php if($indexprod->id_product == $edit_news ->id_product) echo "selected" ?>
+                                            value="{{$indexprod->id_product}}">{{$indexprod->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
 

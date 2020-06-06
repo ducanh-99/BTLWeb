@@ -15,7 +15,7 @@
                                 <th>Index</th>
                                 <th>ID Oder Detail</th>
                                 <th>ID Oder</th>
-                                <th>ID Product</th>
+                                <th>Product</th>
                                 <th>Amout</th>
                                 <th>Discount</th>
                                 <th>Rental period</th>
@@ -33,7 +33,12 @@
                                     <td>{{ $eachOrderDetail->item_order }}</td>
                                     <td>{{ $eachOrderDetail->id_oder_detail }}</td>
                                     <td>{{ $eachOrderDetail->id_oder }}</td>
-                                    <td>{{ $eachOrderDetail->id_product }}</td>
+                                    <td>
+                                        <?php
+                                        $sp = DB::table('product')->where('id_product',$eachOrderDetail->id_product)->get()->first();
+                                        ?>
+                                            {{$sp->name}}
+                                    </td>
                                     <td>{{ $eachOrderDetail->quantity }}</td>
                                     <td>{{ $eachOrderDetail->discount }}</td>
                                     <td>{{ $eachOrderDetail->months }} months</td>

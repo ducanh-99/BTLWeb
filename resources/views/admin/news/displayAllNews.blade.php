@@ -49,10 +49,19 @@
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <label>id product</label>
-                                                                        <input type="text" name="id_product"
-                                                                               class="form-control"
-                                                                               placeholder="id product" id="id_product">
+                                                                        <label>product</label>
+{{--                                                                        <input type="text" name="id_product"--}}
+{{--                                                                               class="form-control"--}}
+{{--                                                                               placeholder="id product" id="id_product">--}}
+                                                                        <?php
+                                                                        $sp = DB::table('product')->get();
+                                                                        ?>
+                                                                        <select  class="form-control input-sm m-bot15" name="id_product" id="id_product" >
+                                                                            @foreach($sp as $indexsp)
+                                                                                <option
+                                                                                    value="{{$indexsp->id_product}}">{{$indexsp->name}}</option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
 
                                                                     <div class="form-group">
@@ -89,8 +98,8 @@
                                 <th>title</th>
                                 <th>context</th>
                                 <th>publish_date</th>
-                                <th>id_product</th>
-                                <th>id_admin</th>
+                                <th>product</th>
+                                <th>author</th>
                                 <th>status</th>
                                 <th>edit</th>
                             </tr>
@@ -102,8 +111,18 @@
                                     <td>{{ $eachOfAllNews->title }}</td>
                                     <td>{{ $eachOfAllNews->context }}</td>
                                     <td>{{ $eachOfAllNews->publish_date }}</td>
-                                    <td>{{ $eachOfAllNews->id_product }}</td>
-                                    <td>{{ $eachOfAllNews->id_admin }}</td>
+                                    <td>
+                                        <?php
+                                        $sp = DB::table('product')->where('id_product',$eachOfAllNews->id_product)->get()->first();
+                                        ?>
+                                        {{$sp->name}}
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $author = DB::table('admininfo')->where('id_admin',$eachOfAllNews->id_admin)->get()->first();
+                                        ?>
+                                        {{$author->name}}
+                                    </td>
                                     <td>{{ $eachOfAllNews->status }}
                                         <?php
                                         if($eachOfAllNews->status == 1){

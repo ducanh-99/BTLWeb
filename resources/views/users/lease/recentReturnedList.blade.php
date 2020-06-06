@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">View All {{DB::table('customer')->where('id_customer',Session::get('id_lease'))->get()->first()->name}}'
-                        Lease Orders</h3>
+                        Recent Returned Orders List</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

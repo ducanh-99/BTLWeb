@@ -24,10 +24,10 @@
         <table class="table table-striped b-t b-light">
             <thead>
                 <tr>
-                    <th>id_oder_detail</th>
+{{--                    <th>id_oder_detail</th>--}}
                     <th>STT</th>
                     <!-- <th>id_oder</th> -->
-                    <!-- <th>id_product</th> -->
+                    <th>product</th>
                     <th>Amount</th>
                     <th>Discount</th>
                     <th>Number of months rented</th>
@@ -40,10 +40,14 @@
             <tbody>
                 @foreach($allUserOrderDetail as $eachUserOrderDetail)
                 <tr>
-                    <td>{{ $eachUserOrderDetail->id_oder_detail }}</td>
+{{--                    <td>{{ $eachUserOrderDetail->id_oder_detail }}</td>--}}
                     <td>{{ $eachUserOrderDetail->item_order }}</td>
                     <!-- <td>{{ $eachUserOrderDetail->id_oder }}</td> -->
-                    <!-- <td>{{ $eachUserOrderDetail->id_product }}</td> -->
+                    <td>
+                        <?php
+                        $tensp = DB::table('product')->where('id_product',$eachUserOrderDetail->id_product )->get()->first();
+                        ?>
+                        {{ $tensp->name }}</td>
                     <td>{{ $eachUserOrderDetail->quantity }}</td>
                     <td>{{ $eachUserOrderDetail->discount }}</td>
                     <td>{{ $eachUserOrderDetail->months }}</td>

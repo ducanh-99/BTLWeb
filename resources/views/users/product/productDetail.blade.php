@@ -56,7 +56,7 @@
                         $provin = DB::table('province')->where('id_province', $queryy->id_province)->get()->first();
                         ?>
                         <div>Status: {{$queryy->outlook}}%</div>
-                        <div>Repair history: {{$queryy->repair_history}}</p>
+                        <div>Repair history: {{$queryy->repair_history}}</div>
                             <div>Number of rentals: {{$queryy->times_rent}}</div>
                             <div>Available at: {{$provin->name}}</div>
                             <p class="text-center">

@@ -38,11 +38,22 @@
                                                             {{ csrf_field() }}
                                                             <div class="card-body">
                                                                 <div class="form-group">
-                                                                    <label for="Id_product">ID Branch</label>
-                                                                    <input type="text" class="form-control"
-                                                                           name="id_category_branch"
-                                                                           id="id_category_branch"
-                                                                           placeholder="ID của branch">
+                                                                    <label for="Id_product">Branch</label>
+{{--                                                                    <input type="text" class="form-control"--}}
+{{--                                                                           name="id_category_branch"--}}
+{{--                                                                           id="id_category_branch"--}}
+{{--                                                                           placeholder="ID của branch">--}}
+                                                                    <?php
+                                                                    $bra = DB::table('category_branch')->get();
+                                                                    ?>
+                                                                    <select class="form-control input-sm m-bot15"
+                                                                            name="id_category_branch"
+                                                                            id="id_category_branch">
+                                                                        @foreach($bra as $indexbra)
+                                                                            <option
+                                                                                value="{{$indexbra->id_category_branch}}">{{$indexbra->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="Product_name">Product Name</label>
@@ -102,10 +113,20 @@
                                                                            placeholder="Giá thị trường: ">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label>id_province: </label>
-                                                                    <input type="text" name="id_province"
-                                                                           class="form-control" id="id_province"
-                                                                           placeholder="ID_Tỉnh: ">
+                                                                    <label>province: </label>
+{{--                                                                    <input type="text" name="id_province"--}}
+{{--                                                                           class="form-control" id="id_province"--}}
+{{--                                                                           placeholder="ID_Tỉnh: ">--}}
+                                                                    <?php
+                                                                    $prov = DB::table('province')->get();
+                                                                    ?>
+                                                                    <select class="form-control input-sm m-bot15"
+                                                                            name="id_province" id="id_province">
+                                                                        @foreach($prov as $indexprov)
+                                                                            <option
+                                                                                value="{{$indexprov->id_province}}">{{$indexprov->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Tình trạng: </label>
@@ -142,7 +163,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Id_category_branch</th>
+                            <th>category_branch</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>image</th>
@@ -160,7 +181,7 @@
                             ?>
                             <tr>
                                 <td>{{ $eachProduct->id_product }}</td>
-                                <td>{{ $eachProduct->id_category_branch }} {{$categoryBranchOnly->name}}</td>
+                                <td>{{$categoryBranchOnly->name}}</td>
                                 <td>{{ $eachProduct->name }}</td>
                                 <td>{{ $eachProduct->description }}</td>
                                 <td><img

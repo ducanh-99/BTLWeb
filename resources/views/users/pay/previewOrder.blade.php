@@ -5,7 +5,18 @@
 
             <div>
                 Tỉnh thành:
-                <input required name="shipping_province" id="shipping_province" type="text" placeholder="Tỉnh thành">
+                <?php
+                $prov = DB::table('province')->get();
+                ?>
+                <select  class="form-control input-sm m-bot15" name="shipping_province" id="shipping_province" >
+                    @foreach($prov as $indexprov)
+                        <option
+                            value="{{$indexprov->id_province}}">{{$indexprov->name}}
+                        </option>
+                    @endforeach
+                </select>
+
+{{--                <input required name="shipping_province" id="shipping_province" type="text" placeholder="Tỉnh thành">--}}
             </div>
             <table class="table">
                 <thead>
@@ -44,7 +55,7 @@
 {{--                            <input required type="number" min="1" name="months[{{$i}}]" id="months[{{$i}}]"--}}
 {{--                                   placeholder="Số tháng">--}}
                             <select class="form-control form-control-sm" name="months[{{$i}}]" id="months[{{$i}}]">
-                                @for ($j = 1; $j <= 24; $j++)
+                                @for ($j = 1; $j <= 36; $j++)
                                     <option>{{$j}}</option>
                                 @endfor
                             </select>

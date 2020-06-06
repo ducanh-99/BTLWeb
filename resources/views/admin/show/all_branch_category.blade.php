@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($allCategoryBranch ?? '' as $eachCategoryBranch)
+        @foreach($allCategoryBranch as $eachCategoryBranch)
             <tr>
                 <td>{{ $eachCategoryBranch->id_category_branch }}</td>
                 <td>{{ $eachCategoryBranch->id_category_main }}</td>
@@ -89,10 +89,18 @@
                                                             {{ csrf_field() }}
                                                             <div class="card-body">
                                                                 <div class="form-group">
-                                                                    <label for="Id_category">ID category</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="id_category_main" id="id_category_main"
-                                                                        placeholder="ID Catergory Main">
+                                                                    <label for="Id_category">category</label>
+{{--                                                                    <input type="text" class="form-control"--}}
+{{--                                                                        name="id_category_main" id="id_category_main"--}}
+{{--                                                                        placeholder="ID Catergory Main">--}}
+                                                                    <?php
+                                                                    $cat = DB::table('category_main')->get();
+                                                                    ?>
+                                                                    <select  class="form-control input-sm m-bot15" name="id_category_main" id="id_category_main" >
+                                                                        @foreach($cat as $indexcat)
+                                                                            <option value="{{$indexcat->id_category_main}}">{{$indexcat->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Branch Name</label>
@@ -146,10 +154,10 @@
                     <div class="row">
                         <div class="col-12">
                             @if($checkedit == true)
-                            <div class="alert alert-success alert-dismissible"> 
+                            <div class="alert alert-success alert-dismissible">
                                 <button type="button" class="close" data-dismiss="alert">x</button>
                                 <strong id="alert-header">{{$alert}}</strong>
-                            </div> 
+                            </div>
                             @endif
                         </div>
                     </div>
@@ -169,7 +177,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($allCategoryBranch ?? '' as $eachCategoryBranch)
+                            @foreach($allCategoryBranch  as $eachCategoryBranch)
                             <?php
                                     $categoryMainOnly = DB::table('category_main')->where('id_category_main',$eachCategoryBranch->id_category_main)->get()->first();    //chứa 1 bản ghi trong bảng main
                                     ?>
@@ -207,7 +215,7 @@
                     <div>
                         <br />
                         <div style="float: right">
-                            {!! $allCategoryBranch ?? ''->links() !!}
+                            {!! $allCategoryBranch->links() !!}
                         </div>
                     </div>
                 </div>
