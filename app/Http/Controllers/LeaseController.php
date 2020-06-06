@@ -123,7 +123,7 @@ class LeaseController extends Controller
     }
 
     public function showRecentReturnedList(){   //hiển thị danh mục các sản phẩm người dùng đã trả nhưng đang trên đường trở về với người cho thuê
-        if (Session::get('id_lease')) {
+        if (Session::get('id_lease')) { //đơn hàng đã được trả bởi người dùng nhưng chưa nhận được bởi bên cho thuê
             $recentReturnedList = DB::table('oder_detail')->whereNotNull('returned_date')->where('isclosed',0)->get();
             return view('users.lease.recentReturnedList')->with('recentReturnedList',$recentReturnedList);
         } else {

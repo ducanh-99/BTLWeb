@@ -81,7 +81,7 @@ class OrderController extends Controller
         return view('users.order.successfullyReturned');
     }
 
-    public function viewAllExipredOrderDetail(){    //người cho thuê xem các đơn hàng đã hết hạn
+    public function viewAllExipredOrderDetail(){    //người đi thuê xem các đơn hàng của mình đã hết hạn
         if (Session::get('id_customer')) {
             $allExpiredOrderDetail = array();
             $deltaMonth = DB::table('oder_detail')
