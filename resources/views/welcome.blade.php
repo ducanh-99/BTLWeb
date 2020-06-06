@@ -24,10 +24,28 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 d-md-block d-none">
-            <p>Contact us on +111 222 333 444 or hello@alease.com.</p>
+            Contact us on +111 222 333 444 or hello@alease.com.
+
+              <?php
+              $prov = DB::table('province')->get();
+              ?>
+              <form method="GET" action="{{URL::to('/locate')}}">
+                  <select class="form-control input-sm m-bot15" name="id_province" id="id_province" >
+                      @foreach($prov as $indexprov)
+                          <option
+                              value="{{$indexprov->id_province}}">{{$indexprov->name}}
+                          </option>
+                      @endforeach
+                  </select>
+                  <button type="submit" class="btn-template-main">Xác nhận</button>
+              </form>
+              @if(Session::get('idprovince') == true)   {{--Người dùng Chưa nhập tỉnh thành--}}
+                  <p>Bạn đang ở {{DB::table('province')->where('id_province',Session::get('idprovince'))->get()->first()->name}}</p>
+              @endif
           </div>
           <div class="col-md-6">
             <div class="d-flex justify-content-md-end justify-content-between">
+
               <ul class="list-inline contact-info d-block d-md-none">
                 <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
@@ -91,7 +109,7 @@
                 <!-- <ul class="social-custom list-inline">
                             <li><a href="{{URL::to('/logout')}}">Log out</a></li>
                             <li><a href="{{URL::to('/change-information')}}" class="nav-link">Profile</a></li>
-                            <li><a href="{{URL::to('/user-view-order')}}" class="nav-link">Your Order</a></li>   
+                            <li><a href="{{URL::to('/user-view-order')}}" class="nav-link">Your Order</a></li>
                           </ul> -->
               </div>
               @endif

@@ -313,7 +313,7 @@
                 }
                 ?>
             </div>
-            <h1>Latest to oldest</h1>
+            <h1>Newest to oldest</h1>
             <div class="row portfolio text-center">
                 <?php
                 $equalProduct = DB::table('product')

@@ -134,7 +134,7 @@ class LeaseController extends Controller
     public function updateOutlook(Request $request){    //người cho thuê xem lại tình trạng sản phẩm trước khi cho vào danh mục product để cho thuê tiếp
         if (Session::get('id_lease')) {
             DB::table('product')->where('id_product',$request->id_product)->update(['outlook'=>$request->outlook]);
-            DB::table('oder_detail')->where('id_oder_detail',$request->id_oder_detail)->update(['isclosed'=>'1']);
+            DB::table('oder_detail')->where('id_oder_detail',$request->id_oder_detail)->update(['isclosed'=>1]);
         return redirect('/lease-all-product');
         } else {
             return redirect('login');

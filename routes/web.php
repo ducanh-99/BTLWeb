@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/locate','HomeController@locate');
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 //Đăng nhập
