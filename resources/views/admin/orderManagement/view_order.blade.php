@@ -13,14 +13,14 @@
 
                             <thead>
                             <tr>
-                                <th>id_oder</th>
-                                <th>id_customer</th>
-                                <th>Ngày đặt hàng</th>
-                                <th>Phê duyệt</th>
-                                <th>Ghi chú</th>
-                                <th>Xem chi tiết</th>
-                                <th>Tỉnh nơi nhận hàng</th>
-                                <th>Thành tiền</th>
+                                <th>ID Oder</th>
+                                <th>ID Customer</th>
+                                <th>Order Date</th>
+                                <th>Approve</th>
+                                <th>Note</th>
+                                <th>See Details</th>
+                                <th>Delivery Location</th>
+                                <th>Total Cost</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,40 +29,39 @@
                                     <td>{{ $eachOrder->id_oder }}</td>
                                     <td>{{ $eachOrder->id_customer }}</td>
                                     <td>{{ $eachOrder->date }}</td>
-                                    <td>{{ $eachOrder->isapproved }}
+                                    <td>
 
                                         <?php
                                         if($eachOrder->isapproved == 0){    //chưa duyệt
                                         ?>
 
-                                        <a href="{{URL::to('/approve-order/'.$eachOrder->id_oder)}}">Duyệt</a>
-                                        <a href="{{URL::to('/unapprove-order/'.$eachOrder->id_oder)}}">Hủy</a>
+                                        <a href="{{URL::to('/approve-order/'.$eachOrder->id_oder)}}">Approve</a>
+                                        <a href="{{URL::to('/unapprove-order/'.$eachOrder->id_oder)}}">Cancel</a>
 
                                         <?php
                                         }else if($eachOrder->isapproved == 1){ //đã duyệt
                                         ?>
-                                        <h3>Đang giao</h3>
-                                        <a href="{{URL::to('/succeed-order/'.$eachOrder->id_oder)}}">Giao thành công</a>
+                                        <h3>Delivering</h3>
+                                        <a href="{{URL::to('/succeed-order/'.$eachOrder->id_oder)}}">Successful Delivery</a>
 
                                         <?php
                                         } else if($eachOrder->isapproved == 2){ //giao thành công
                                         ?>
 
-                                        <p>Đã giao hàng thành công</p>
+                                        <p>Has Delivered successfully</p>
 
                                         <?php
                                         }  else if($eachOrder->isapproved == 3){ //bị hủy
                                         ?>
 
-                                        <p>Đơn hàng bị hủy</p>
+                                        <p>Order canceled</p>
 
                                         <?php
                                         }
                                         ?>
                                     </td>
                                     <td>{{ $eachOrder->note }}</td>
-                                    <td><a href="{{URL::to('/view-order-detail/'.$eachOrder->id_oder)}}">Xem chi
-                                            tiết</a></td>
+                                    <td><a href="{{URL::to('/view-order-detail/'.$eachOrder->id_oder)}}">See More</a></td>
                                     <?php
                                     $provin = DB::table('province')->where('id_province',$eachOrder->id_province)->get()->first();
                                     ?>

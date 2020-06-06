@@ -12,31 +12,31 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>id_oder_detail</th>
-                                <th>STT</th>
-                                <th>id_oder</th>
-                                <th>id_product</th>
-                                <th>Số lượng</th>
-                                <th>Giảm giá</th>
-                                <th>Số tháng thuê</th>
-                                <th>Đối tác vận chuyển</th>
-                                <th>Đặt Cọc</th>
-                                <th>Ngày trả đồ</th>
-                                <th>Phí ship</th>
-                                <th>Sửa</th>
+                                <th>Index</th>
+                                <th>ID Oder Detail</th>
+                                <th>ID Oder</th>
+                                <th>ID Product</th>
+                                <th>Amout</th>
+                                <th>Discount</th>
+                                <th>Rental period</th>
+                                <th>Delivery</th>
+                                <th>Deposit</th>
+                                <th>Due date</th>
+                                <th>Fee ship</th>
+                                <th>Edit</th>
 
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($allOrderDetail as $eachOrderDetail)
                                 <tr>
-                                    <td>{{ $eachOrderDetail->id_oder_detail }}</td>
                                     <td>{{ $eachOrderDetail->item_order }}</td>
+                                    <td>{{ $eachOrderDetail->id_oder_detail }}</td>
                                     <td>{{ $eachOrderDetail->id_oder }}</td>
                                     <td>{{ $eachOrderDetail->id_product }}</td>
                                     <td>{{ $eachOrderDetail->quantity }}</td>
                                     <td>{{ $eachOrderDetail->discount }}</td>
-                                    <td>{{ $eachOrderDetail->months }}</td>
+                                    <td>{{ $eachOrderDetail->months }} months</td>
                                     <?php
                                     $delivery =  DB::table('partner_delivery')->where('id_partner_delivery',$eachOrderDetail->id_partner_delivery)->get()->first();
                                     ?>
@@ -44,8 +44,7 @@
                                     <td>{{ $eachOrderDetail->deposit }}</td>
                                     <td>{{ $eachOrderDetail->returned_date }}</td>
                                     <td>{{ $eachOrderDetail->shipping_fee }}</td>
-                                    <td><a href="{{URL::to('/edit-order-detail/'.$eachOrderDetail->id_oder_detail)}}">Sửa
-                                            mặt hàng</a></td>
+                                    <td><a href="{{URL::to('/edit-order-detail/'.$eachOrderDetail->id_oder_detail)}}">Edit</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -32,8 +32,9 @@ class EditController extends Controller
 
             DB::table('category_branch')->where('id_category_branch', $id_category_branch)
                 ->update(['id_category_main' => $id_category_main, 'name' => $branch_name, 'descriptionf' => $branch_descr, 'image' => $branch_logo, 'status' => $branch_status]);
-
-            return Redirect::to('/all-branch-category');
+            $checkedit= true;
+            $alert= 'Edit Branch Success';
+            return Redirect::to('/all-branch-category')->with('checkedit', 'alert');
         } else {
             return redirect('login');
         }

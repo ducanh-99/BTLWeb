@@ -29,14 +29,14 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>id_customer</th>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>password</th>
-                                <th>phone_number</th>
-                                <th>address</th>
-                                <th>credit</th>
-                                <th>status</th>
+                                <th>ID Customer</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <!-- <th>password</th> -->
+                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>Credit</th>
+                                <th>Status</th>
                                 <th>isProvider?</th>
                             </tr>
                             </thead>
@@ -46,11 +46,11 @@
                                     <td>{{ $eachUser->id_customer }}</td>
                                     <td>{{ $eachUser->name }}</td>
                                     <td>{{ $eachUser->email }}</td>
-                                    <td>{{ $eachUser->password }}</td>
+                                    <!-- <td>{{ $eachUser->password }}</td> -->
                                     <td>{{ $eachUser->phone_number }}</td>
                                     <td>{{ $eachUser->address }}</td>
                                     <td>{{ $eachUser->credit }}</td>
-                                    <td>{{ $eachUser->status }}
+                                    <td>
                                         <?php
                                         if($eachUser->status == 0){ //bị block
                                         ?>
@@ -63,17 +63,17 @@
                                         }
                                         ?>
                                     </td>
-                                    <td>{{ $eachUser->isprovider }}
+                                    <td>
                                         <?php
                                         if($eachUser->isprovider == 0){ //chưa được phép cho thuê đồ
                                         ?>
                                         <a href="{{URL::to('/make-provider-user/'.$eachUser->id_customer)}}">Make
-                                            Provider</a>
+                                            </a>
                                         <?php
                                         }else{ //if ($eachUser->isprovider==1) //được phép đăng sản phẩm cho thuê
                                         ?>
                                         <a href="{{URL::to('/unmake-provider-user/'.$eachUser->id_customer)}}">Unmake
-                                            Provider</a>
+                                            r</a>
                                         <?php
                                         }
                                         ?>
@@ -101,14 +101,14 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>id_customer</th>
-                                <th>name</th>
-                                <th>email</th>
-                                <th>password</th>
-                                <th>phone_number</th>
-                                <th>address</th>
-                                <th>credit</th>
-                                <th>status</th>
+                                <th>ID Customer</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <!-- <th>password</th> -->
+                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>Credit</th>
+                                <th>Status</th>
                                 <th>isProvider?</th>
                             </tr>
                             </thead>
@@ -118,11 +118,11 @@
                                     <td>{{ $eachLease->id_customer }}</td>
                                     <td>{{ $eachLease->name }}</td>
                                     <td>{{ $eachLease->email }}</td>
-                                    <td>{{ $eachLease->password }}</td>
+                                    <!-- <td>{{ $eachLease->password }}</td> -->
                                     <td>{{ $eachLease->phone_number }}</td>
                                     <td>{{ $eachLease->address }}</td>
                                     <td>{{ $eachLease->credit }}</td>
-                                    <td>{{ $eachLease->status }}
+                                    <td>
                                         <?php
                                         if($eachLease->status == 0){ //bị block
                                         ?>
@@ -135,17 +135,17 @@
                                         }
                                         ?>
                                     </td>
-                                    <td>{{ $eachLease->isprovider }}
+                                    <td>
                                         <?php
                                         if($eachLease->isprovider == 0){ //chưa được phép cho thuê đồ
                                         ?>
                                         <a href="{{URL::to('/make-provider-user/'.$eachLease->id_customer)}}">Make
-                                            Provider</a>
+                                            </a>
                                         <?php
                                         }else{ //if ($eachUser->isprovider==1) //được phép đăng sản phẩm cho thuê
                                         ?>
                                         <a href="{{URL::to('/unmake-provider-user/'.$eachLease->id_customer)}}">Unmake
-                                            Provider</a>
+                                            </a>
                                         <?php
                                         }
                                         ?>

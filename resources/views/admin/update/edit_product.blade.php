@@ -18,13 +18,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Tên product</label>
+                                <label>Product Name</label>
                                 <input type="text" name="product_name" class="form-control" id="product_name"
                                        value="{{$edit_product->name}}">
                             </div>
 
                             <div class="form-group">
-                                <label>Mô tả product</label>
+                                <label>Description</label>
                                 <textarea style="resize: none" rows="8" class="form-control" name="product_descr"
                                           id="product_descr">{{$edit_product->description}}</textarea>
                             </div>
@@ -32,57 +32,57 @@
                             <div class="form-group">
                                 <label>Image</label>
                                 <input type="file" name="product_image" class="form-control" id="product_logo"
-                                       value="{{$edit_product->image}}">
+                                       value="{{$edit_product->image}}" required>
                             </div>
 
                             <div class="form-group">
-                                <label>Số lượng</label>
+                                <label>Amount</label>
                                 <input type="text" name="product_amount" class="form-control" id="product_amount"
                                        value="{{$edit_product->amount}}">
                             </div>
 
                             <div class="form-group">
-                                <label>Giá cả</label>
+                                <label>Price</label>
                                 <input type="text" name="product_price" class="form-control" id="product_price"
                                        value="{{$edit_product->price}}">
                             </div>
 
                             <div class="form-group">
-                                <label>Trạng thái</label>
+                                <label>Status</label>
                                 <select name="product_isActive" class="form-control input-sm m-bot15">
-                                    <option value="0">Ngừng kinh doanh</option>
-                                    <option value="1">Còn hàng</option>
+                                    <option value="0">Stop trading</option>
+                                    <option value="1">In stock</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label>Giá thị trường: </label>
+                                <label>Market price</label>
                                 <input type="text" name="market_price" class="form-control" id="market_price"
                                        value="{{$edit_product->market_price}}">
                             </div>
 
                             <div class="form-group">
-                                <label>ID người cho thuê: </label>
+                                <label>ID the lease </label>
                                 <input type="text" name="id_customer" class="form-control" id="id_customer"
                                        value="{{$edit_product->id_customer}}">
                             </div>
 
                             <div class="form-group">
-                                <label>id_province: </label>
+                                <label>ID Province </label>
                                 <input type="text" name="id_province" class="form-control" id="id_province"
                                        value="{{$edit_product->id_province}}">
                             </div>
                             <div class="form-group">
-                                <label>Tình trạng: </label>
+                                <label>Status </label>
                                 <input type="text" name="outlook" class="form-control" id="outlook"
                                        value="{{$edit_product->outlook}}">
                             </div>
                             <div class="form-group">
-                                <label>Lịch sử sửa chữa: </label>
+                                <label>Repair history</label>
                                 <textarea type="text" name="repair_history" class="form-control" id="repair_history">{{$edit_product->repair_history}}</textarea>
                             </div>
 
-                            <button type="submit" name="edit_submit" class="btn btn-info">Xác nhận sửa product</button>
+                            <button type="submit" name="edit_submit" class="btn btn-info">Edit product</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

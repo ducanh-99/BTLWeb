@@ -12,7 +12,7 @@
                         <form action="{{URL::to('/save-admin')}}" method="GET">
 
                             <div class="form-group">
-                                <label>Tên admin</label>
+                                <label>Name Admin</label>
                                 <input type="text" name="admin_name" class="form-control" id="admin_name"
                                        placeholder="Tên admin">
                             </div>
@@ -29,37 +29,37 @@
                             </div>
 
                             <div class="form-group">
-                                <label>password</label>
+                                <label>Password</label>
                                 <input type="password" name="admin_password" class="form-control" id="admin_password"
                                        placeholder="Password của admin">
                             </div>
 
                             <div class="form-group">
-                                <label>phone number</label>
+                                <label>Phone number</label>
                                 <input type="text" name="admin_phone_number" class="form-control"
                                        id="admin_phone_number"
-                                       placeholder="Số điện thoại của admin">
+                                       placeholder="Phone Number of Admin">
                             </div>
 
                             <div class="form-group">
-                                <label>address</label>
+                                <label>Address</label>
                                 <input type="text" name="admin_address" class="form-control" id="admin_address"
-                                       placeholder="Địa chỉ của admin">
+                                       placeholder="Address admin">
                             </div>
 
                             <div class="form-group">
-                                <label>credit</label>
+                                <label>Credit</label>
                                 <input type="text" name="admin_credit" class="form-control" id="admin_credit"
-                                       placeholder="Credit của admin">
+                                       placeholder="Credit admin">
                             </div>
 
                             <div class="form-group">
-                                <label>job</label>
+                                <label>Job</label>
                                 <input type="text" name="admin_job" class="form-control" id="admin_job"
-                                       placeholder="Vị trí của admin">
+                                       >
                             </div>
 
-                            <button type="submit" name="add_admin" class="btn btn-info">Thêm admin</button>
+                            <button type="submit" name="add_admin" class="btn btn-info">Add admin</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

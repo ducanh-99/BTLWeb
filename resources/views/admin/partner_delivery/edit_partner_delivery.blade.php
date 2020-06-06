@@ -19,18 +19,18 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Phí ship đến </label>
+                                <label>Ship Fee To </label>
                                 <input type="number" name="shipping_fee" class="form-control" id="shipping_fee"
                                        value="{{$edit_partner_delivery->shipping_fee}}">
                             </div>
 
                             <div class="form-group">
-                                <label>Phí lấy hàng </label>
+                                <label>Pickup Fee </label>
                                 <input type="number" name="return_fee" class="form-control" id="return_fee"
                                        value="{{$edit_partner_delivery->return_fee}}">
                             </div>
 
-                            <button type="submit" name="edit_submit" class="btn btn-info">Xác nhận sửa </button>
+                            <button type="submit" name="edit_submit" class="btn btn-info">Edit</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

@@ -19,13 +19,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Tên branch</label>
+                                <label>Branch name</label>
                                 <input type="text" name="branch_name" class="form-control" id="branch_name"
                                        value="{{$edit_branch_category->name}}">
                             </div>
 
                             <div class="form-group">
-                                <label>Mô tả branch</label>
+                                <label>Description</label>
                                 <textarea rows="8" class="form-control" name="branch_descr"
                                           id="branch_descr">{{$edit_branch_category->descriptionf}}</textarea>
                             </div>
@@ -33,18 +33,18 @@
                             <div class="form-group">
                                 <label>Logo</label>
                                 <input type="file" name="branch_logo" class="form-control" id="branch_logo"
-                                       value="{{$edit_branch_category->image}}">
+                                       value="{{$edit_branch_category->image}}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Status</label>
                                 <select name="branch_status" class="form-control input-sm m-bot15">
-                                    <option value="0">Ngừng kinh doanh</option>
-                                    <option value="1">Còn hàng</option>
+                                    <option value="0">Stop trading</option>
+                                    <option value="1">In stock</option>
                                 </select>
                             </div>
 
-                            <button type="submit" name="edit_submit" class="btn btn-info">Xác nhận sửa branch</button>
+                            <button type="submit" name="edit_submit" class="btn btn-info">Edit branch</button>
                         </form>
                     </div>
                     <!-- /.card-body -->

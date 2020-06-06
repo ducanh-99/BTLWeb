@@ -66,10 +66,10 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>id partner delivery</th>
-                                <th>name</th>
-                                <th>shipping fee</th>
-                                <th>return fee</th>
+                                <th>ID Partner Delivery</th>
+                                <th>Name</th>
+                                <th>Shipping fee</th>
+                                <th>Return fee</th>
                                 <th>Edit</th>
                             </tr>
                             </thead>
@@ -81,7 +81,7 @@
                                     <td>{{ $eachPartnerDelivery->shipping_fee }}</td>
                                     <td>{{ $eachPartnerDelivery->return_fee }}</td>
                                     <td>
-                                        <a href="{{URL::to('/edit-partner-delivery/'.$eachPartnerDelivery->id_partner_delivery)}}">Sửa thông tin Partner Delivery</a>
+                                        <a href="{{URL::to('/edit-partner-delivery/'.$eachPartnerDelivery->id_partner_delivery)}}">Edit Partner Delivery</a>
                                     </td>
                                 </tr>
                             @endforeach
