@@ -12,23 +12,6 @@
             </div>
         </div>
     </div>
-    <?php
-    //hiển thị các danh mục mà người dùng vừa mới trả lại, chưa được bên cho thuê kiểm duyệt chất lượng hàng hóa
-    //thông báo về số lượng mặt hàng đã được trả lại nhưng bên cho thuê chưa nhận
-    $cnt = count($recentReturnedList);
-    if ($cnt > 0) {
-        echo "<script type='text/javascript'>
-                        var r=confirm(\"có $cnt đồ mà bạn cho thuê đã được người dùng trả lại cho bạn, vui lòng đánh giá tình trạng sản phẩm trong thời gian sớm nhất có thể để người khác tiếp tục thuê, ấn OK để xem chi tiết\");
-                        if (r==true){
-
-                        } else{
-                        location.href = \"http://localhost/CNWeb/BTLWeb/lease-recent-returned-list\";
-                        }
-                      </script>";
-        //duyệt xong
-    }
-    //
-    ?>
     <section class="content">
         <div class="row">
             <div class="col-12">

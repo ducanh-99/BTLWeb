@@ -37,10 +37,26 @@ class LeaseController extends Controller
     public function showAllProduct()    //hiển thị tất cả sản phẩm của bên cho thuê
     {
         if (Session::get('id_lease')) {
+
+            //hiển thị các danh mục mà người dùng vừa mới trả lại, chưa được bên cho thuê kiểm duyệt chất lượng hàng hóa
+            //thông báo về số lượng mặt hàng đã được trả lại nhưng bên cho thuê chưa nhận
+            $recentReturnedList = DB::table('oder_detail')->whereNotNull('returned_date')->where('isclosed',0)->get();
+            $cnt = count($recentReturnedList);
+            if ($cnt > 0) {
+                echo "<script type='text/javascript'>
+                        var r=confirm(\"có $cnt đồ mà bạn cho thuê đã được người dùng trả lại cho bạn, vui lòng đánh giá tình trạng sản phẩm trong thời gian sớm nhất có thể để người khác tiếp tục thuê, ấn OK để xem chi tiết\");
+                        if (r==true){
+                        location.href = \"http://localhost/CNWeb/BTLWeb/lease-recent-returned-list\";
+                        }
+                      </script>";
+                //duyệt xong
+            }
+            //
+
+
             $allProduct = DB::table('product')
                 ->where('id_customer',Session::get('id_lease'))
                 ->get();
-
             return view('users.lease.all_product')->with('allProduct', $allProduct);
         } else {
             return redirect('login');
@@ -134,7 +150,9 @@ class LeaseController extends Controller
     public function updateOutlook(Request $request){    //người cho thuê xem lại tình trạng sản phẩm trước khi cho vào danh mục product để cho thuê tiếp
         if (Session::get('id_lease')) {
             for($index = 0;$index<$request->count;$index++) {
-                DB::table('product')->where('id_product', $request->id_product[$index])->update(['outlook' => $request->outlook[$index]]);
+                $oldprice = DB::table('product')->where('id_product', $request->id_product[$index])->get()->first()->price;
+                $newprice = $oldprice * $request->outlook[$index];
+                DB::table('product')->where('id_product', $request->id_product[$index])->update(['outlook' => $request->outlook[$index],'price'=>$newprice]);
                 DB::table('oder_detail')->where('id_oder_detail', $request->id_oder_detail[$index])->update(['isclosed' => 1]);
             }
         return redirect('/lease-all-product');
