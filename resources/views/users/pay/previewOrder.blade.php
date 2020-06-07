@@ -15,19 +15,19 @@
 <div class="container">
     <form action="{{URL::to('/pay')}}">
         <div class="table-responsive">
-
+            <br>
             <div>
-                Tỉnh thành:
+                Provice:
                 <?php
                 $prov = DB::table('province')->get();
                 ?>
-                <select class="form-control input-sm m-bot15" name="shipping_province" id="shipping_province">
+                <select class="form-control col-lg-6" name="shipping_province" id="shipping_province">
                     @foreach($prov as $indexprov)
                     <option value="{{$indexprov->id_province}}">{{$indexprov->name}}
                     </option>
                     @endforeach
                 </select>
-
+                <br>
                 {{-- <input required name="shipping_province" id="shipping_province" type="text" placeholder="Tỉnh thành">--}}
             </div>
             <table class="table">
@@ -83,9 +83,9 @@
                     </td>
                     <td>
                         <select class="form-control form-control-sm" id="shipping_method[{{$i}}]" name="shipping_method[{{$i}}]" style="float: left;">
-                            <option value="0">Chỉ giao hàng đến</option>
-                            <option value="1">Yêu cầu shipper đến lấy hàng đi khi thuê xong</option>
-                            <option value="2">Cả 2 yêu cầu trên</option>
+                            <option value="0">Only delivery to</option>
+                            <option value="1">Shipper pick up the goods</option>
+                            <option value="2">Both of 2 requirements</option>
                         </select>
                     </td>
                 </tr>
@@ -96,9 +96,13 @@
             </table>
 
         </div>
-        @if(count($content) > 0)
-        <input type="submit" value="Đặt hàng" name="send_order_place" class="btn btn-primary btn-sm">
-        @endif
+        <br>
+        <div style="text-align:center;">
+            @if(count($content) > 0)
+            <input type="submit" value="Order" name="send_order_place" class="btn btn-primary btn-sm">
+            @endif
+        </div>
+        <br>
     </form>
 </div>
 @endsection
