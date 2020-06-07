@@ -1,6 +1,20 @@
+@extends('welcome')
+@section('lease')
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+            <div class="breadcrumbs">
+                <ul class="breadcrumb d-flex justify-content-end">
+                    <li class="breadcrumb-item"><a href="{{URL::to('/')}}">Home</a></li>
+                    <li class="breadcrumb-item">Recent Returned</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
-    //hiển thị các danh mục mà người dùng vừa mới trả lại, chưa được bên cho thuê kiểm duyệt chất lượng hàng hóa
-    //thông báo về số lượng mặt hàng đã được trả lại nhưng bên cho thuê chưa nhận
+//hiển thị các danh mục mà người dùng vừa mới trả lại, chưa được bên cho thuê kiểm duyệt chất lượng hàng hóa
+//thông báo về số lượng mặt hàng đã được trả lại nhưng bên cho thuê chưa nhận
 $cnt = count($recentReturnedList);
 if ($cnt > 0) {
     echo "<script type='text/javascript'>
@@ -13,7 +27,7 @@ if ($cnt > 0) {
                       </script>";
     //duyệt xong
 }
-    //
+//
 ?>
 <section class="content">
     <div class="row">
@@ -25,42 +39,58 @@ if ($cnt > 0) {
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <a href="{{URL::to('/lease-view-order-detail')}}">
+                        <button type="button" class="btn btn-primary">Leased
+                        </button>
+                    </a>
+                    <a href="{{URL::to('/lease-recent-returned-list')}}">
+                        <button type="button" class="btn btn-primary">Recent Returned
+                        </button>
+                    </a>
+                    <a href="{{URL::to('/lease-update-outlook')}}">
+                        <button type="button" class="btn btn-primary">Update outlook
+                        </button>
+                    </a>
+                    <a href="{{URL::to('/lease-all-expired-order-detail')}}">
+                        <button type="button" class="btn btn-primary">Expired Order
+                        </button>
+                    </a>
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
-                        <tr>
-                            <th>id_oder_detail</th>
-                            <th>STT</th>
-                            <th>Người đặt hàng</th>
-                            <th>product</th>
-                            <th>Số lượng</th>
-                            <th>Giảm giá</th>
-                            <th>Số tháng thuê</th>
-                            <th>Đối tác vận chuyển</th>
-                            <th>Đặt Cọc</th>
-                            <th>Ngày trả đồ</th>
-                            <th>Phí ship</th>
-                            <th>Tình trạng sản phẩm</th>
-                        </tr>
+                            <tr>
+                                <th>id_oder_detail</th>
+                                <th>STT</th>
+                                <th>Orderer</th>
+                                <th>Product</th>
+                                <th>Amount</th>
+                                <th>Discount</th>
+                                <th>Number of months rented</th>
+                                <th>Shipping partner</th>
+                                <th>Deposit</th>
+                                <th>Date return</th>
+                                <th>Ship fee</th>
+                                <th>Status</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @foreach($recentReturnedList as $eachReturnedItem)
+                            @foreach($recentReturnedList as $eachReturnedItem)
                             <tr>
                                 <td>{{ $eachReturnedItem->id_oder_detail }}</td>
                                 <td>{{ $eachReturnedItem->item_order }}</td>
                                 <?php
-                                $Order = DB::table('oder')->where('id_oder',$eachReturnedItem->id_oder)->get()->first();
-                                $Custome = DB::table('customer')->where('id_customer',$Order->id_customer)->get()->first();
+                                $Order = DB::table('oder')->where('id_oder', $eachReturnedItem->id_oder)->get()->first();
+                                $Custome = DB::table('customer')->where('id_customer', $Order->id_customer)->get()->first();
                                 ?>
                                 <td>{{ $Custome->name }}</td>
                                 <?php
-                                $sp = DB::table('product')->where('id_product',$eachReturnedItem->id_product)->get()->first();
+                                $sp = DB::table('product')->where('id_product', $eachReturnedItem->id_product)->get()->first();
                                 ?>
                                 <td>{{ $sp->name }}</td>
                                 <td>{{ $eachReturnedItem->quantity }}</td>
                                 <td>{{ $eachReturnedItem->discount }}</td>
                                 <td>{{ $eachReturnedItem->months }}</td>
                                 <?php
-                                $delivery =  DB::table('partner_delivery')->where('id_partner_delivery',$eachReturnedItem->id_partner_delivery)->get()->first();
+                                $delivery =  DB::table('partner_delivery')->where('id_partner_delivery', $eachReturnedItem->id_partner_delivery)->get()->first();
                                 ?>
                                 <td>{{$delivery ->name }}</td>
                                 <td>{{ $eachReturnedItem->deposit }}</td>
@@ -71,11 +101,11 @@ if ($cnt > 0) {
                                         <input type="hidden" name="id_oder_detail" value="{{$eachReturnedItem->id_oder_detail}}">
                                         <input type="hidden" name="id_product" value="{{$sp->id_product}}">
                                         <input type="number" name="outlook" id="outlook" value="{{$sp->outlook}}">
-                                    <button type="submit" name="outlookSubmit" class="btn btn-info">Cập nhật tình trạng sản phẩm</button>
+                                        <button type="submit" name="outlookSubmit" class="btn btn-info">Update</button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -83,3 +113,4 @@ if ($cnt > 0) {
         </div>
     </div>
 </section>
+@endsection

@@ -87,6 +87,9 @@
                     <a class="dropdown-item" href="{{URL::to('/logout')}}">Log out</a>
                     <a class="dropdown-item" href="{{URL::to('/change-information')}}">Profile</a>
                     <a class="dropdown-item" href="{{URL::to('/user-view-order')}}">Your Order </a>
+                    @if (Session::get('id_lease'))
+                    <a class="dropdown-item" href="{{URL::to('/lease-all-product')}}">Your Product</a>
+                    @endif
                   </div>
                 </div>
                 <!-- <ul class="social-custom list-inline">
@@ -210,6 +213,7 @@
     @yield('noteDetail')
     @yield('savePayment')
     @yield('order')
+    @yield('lease')
     <!-- FOOTER -->
     <footer class="main-footer">
       <div class="container">
