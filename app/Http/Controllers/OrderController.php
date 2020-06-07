@@ -59,11 +59,11 @@ class OrderController extends Controller
             $thoiGianDaThue = ceil(abs(strtotime(date('Y-m-d H:i:s')) - strtotime($tongQuat->date))/(60*60*24*30));
 
             if($thoiGianDaThue - $chiTiet->months > $chiTiet->months /3){//trả đồ trễ hơn 1/3 thời gian thuê -> ko nhận nữa
-                $msg = "Bạn đã thuê ".$goods->name." quá thời hạn quy định, chúng tôi không nhận sản phẩm đó nữa. Xin lỗi quý khách vì sự bất tiện này.";
+                $msg = "You have hired ".$goods->name." Beyond the prescribed deadline, we no longer accept that product. Sorry for the inconvenience.";
                 $returnFee = 0;
             }
             else if ($thoiGianDaThue - $chiTiet->months <= 0){
-                $msg = "Bạn đã thuê ".$goods->name." trong ".$thoiGianDaThue." tháng. Số tiền được hoàn trả là: ";
+                $msg = "You have hired ".$goods->name." in ".$thoiGianDaThue." months. The amount to be refunded is:  ";
                 $returnFee =$chiTiet->deposit - $chiTiet->quantity * $goods->price * $chiTiet->months;
             } else{
                 $msg = "Bạn đã thuê ".$goods->name." trong ".$thoiGianDaThue." tháng, quá ".($thoiGianDaThue - $chiTiet)->months." tháng. Số tiền được hoàn trả là: ";

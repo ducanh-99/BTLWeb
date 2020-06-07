@@ -16,7 +16,8 @@
     </div>
 </div>
 <div class="container">
-    <div>Return Item</div>
+    <br/>
+    <div class="h2">Return Item</div>
     <div>
         <table class="table table-striped b-t b-light">
             <thead>
@@ -55,15 +56,16 @@
                 </tr>
             </tbody>
         </table>
-        <p>{{$msg}}</p>
+        <p >{{$msg}}</p>
         @if(!stripos($msg,"chúng tôi không nhận sản phẩm đó nữa"))
-            <p>{{$returnFee}}</p>
+            <p style="color: red">{{$returnFee}}</p>
         <form action="{{URL::to('/user-submit-return-product')}}" method="GET">
-            <button type="submit" value="Submit" name="btnSubmit" id="btnSubmit">Xác nhận</button>
+            <button type="submit" value="Submit" class="btn btn-primary" name="btnSubmit" id="btnSubmit">Confirm</button>
             <input type="hidden" name="chiTietID" value="{{$chiTiet->id_oder_detail}}">
             <input type="hidden" name="tongQuatID" value="{{$tongQuat->id_oder}}">
             <input type="hidden" name="goodsID" value="{{$goods->id_product}}">
         </form>
+        <br/>
         @endif
     </div>
 </div>
