@@ -34,8 +34,8 @@
                         <button type="button" class="btn btn-primary">Recent Returned
                         </button>
                     </a>
-                    <a href="{{URL::to('/lease-update-outlook')}}">
-                        <button type="button" class="btn btn-primary">Update outlook
+                    <a href="{{URL::to('/lease-all-product')}}">
+                        <button type="button" class="btn btn-primary">Manage Product
                         </button>
                     </a>
                     <a href="{{URL::to('/lease-all-expired-order-detail')}}">
