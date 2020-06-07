@@ -60,7 +60,7 @@
                                                                         <label>Description</label>
                                                                         <input type="text" class="form-control"
                                                                                name="product_descr" id="product_descr"
-                                                                               placeholder="Mô tả product">
+                                                                               placeholder="Description product">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="image">Image</label>
@@ -79,37 +79,37 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Số lượng</label>
+                                                                        <label>Amount</label>
                                                                         <input type="text" name="product_amount"
                                                                                class="form-control" id="product_amount"
-                                                                               placeholder="Số lượng">
+                                                                               placeholder="amount of product">
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <label>Giá: </label>
+                                                                        <label>Price </label>
                                                                         <input type="text" name="product_price"
                                                                                class="form-control" id="product_price"
-                                                                               placeholder="Giá: ">
+                                                                               placeholder="price ">
                                                                     </div>
 
                                                                     <div class="form-group">
                                                                         <label>Status</label>
                                                                         <select name="product_status"
                                                                                 class="form-control input-sm m-bot15">
-                                                                            <option value="0">Còn hàng</option>
-                                                                            <option value="1">Ngừng kinh doanh</option>
+                                                                            <option value="0">In stock</option>
+                                                                            <option value="1">Stop trading</option>
                                                                         </select>
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <label>Giá thị trường: </label>
+                                                                        <label>Market price </label>
                                                                         <input type="text" name="market_price"
                                                                                class="form-control" id="market_price"
-                                                                               placeholder="Giá thị trường: ">
+                                                                               placeholder="market price">
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <label>người cho thuê: </label>
+                                                                        <label>Lease </label>
                                                                         {{--                                                                        <input type="text" name="id_customer" class="form-control" id="id_customer"--}}
                                                                         {{--                                                                               placeholder="Id người cho thuê: ">--}}
                                                                         <?php
@@ -125,7 +125,7 @@
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <label>province: </label>
+                                                                        <label>Province</label>
                                                                         {{--                                                                        <input type="text" name="id_province" class="form-control" id="id_province"--}}
                                                                         {{--                                                                               placeholder="ID_Tỉnh: ">--}}
                                                                         <?php
@@ -140,17 +140,17 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Tình trạng: </label>
+                                                                        <label>Status </label>
                                                                         <input type="text" name="outlook"
                                                                                class="form-control" id="outlook"
-                                                                               placeholder="Tình trạng: ">
+                                                                               placeholder="Status: ">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label>Lịch sử sửa chữa: </label>
+                                                                        <label>Repair History </label>
                                                                         <textarea type="text" name="repair_history"
                                                                                   class="form-control"
                                                                                   id="repair_history"
-                                                                                  placeholder="Lịch sử sửa chữa"></textarea>
+                                                                                  placeholder="Repair history"></textarea>
                                                                     </div>
 
                                                                     <!-- /.card-body -->
