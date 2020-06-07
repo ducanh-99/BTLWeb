@@ -25,23 +25,6 @@
         <div class="row d-flex align-items-center">
           <div class="col-md-6 d-md-block d-none">
             Contact us on +111 222 333 444 or hello@alease.com.
-
-              <?php
-              $prov = DB::table('province')->get();
-              ?>
-              <form method="GET" action="{{URL::to('/locate')}}">
-                  <select class="form-control input-sm m-bot15" name="id_province" id="id_province" >
-                      @foreach($prov as $indexprov)
-                          <option
-                              value="{{$indexprov->id_province}}">{{$indexprov->name}}
-                          </option>
-                      @endforeach
-                  </select>
-                  <button type="submit" class="btn-template-main">Xác nhận</button>
-              </form>
-              @if(Session::get('idprovince') == true)   {{--Người dùng Chưa nhập tỉnh thành--}}
-                  <p>Bạn đang ở {{DB::table('province')->where('id_province',Session::get('idprovince'))->get()->first()->name}}</p>
-              @endif
           </div>
           <div class="col-md-6">
             <div class="d-flex justify-content-md-end justify-content-between">
@@ -235,15 +218,33 @@
             <h4 class="h6">About Us</h4>
             <p>If you have a problem, please contact us.</p>
             <hr>
-            <h4 class="h6">Join Our Monthly Newsletter</h4>
-            <form>
+            <h4 class="h6">Where are you now?</h4>
+            <?php
+              $prov = DB::table('province')->get();
+              ?>
+              <form method="GET" action="{{URL::to('/locate')}}">
+                  <div class="input-group">
+                    <select class="form-control" name="id_province" id="id_province" >
+                        @foreach($prov as $indexprov)
+                            <option
+                                value="{{$indexprov->id_province}}">{{$indexprov->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-secondary"><i class="fa fa-send"></i></button>
+                  </div>
+              </form>
+              @if(Session::get('idprovince') == true)   {{--Người dùng Chưa nhập tỉnh thành--}}
+                  <p>You are in {{DB::table('province')->where('id_province',Session::get('idprovince'))->get()->first()->name}}</p>
+              @endif
+            <!-- <form>
               <div class="input-group">
                 <input type="text" class="form-control">
                 <div class="input-group-append">
                   <button type="button" class="btn btn-secondary"><i class="fa fa-send"></i></button>
                 </div>
               </div>
-            </form>
+            </form> -->
             <hr class="d-block d-lg-none">
           </div>
           <div class="col-lg-3">
