@@ -56,6 +56,10 @@
           <div>
             <h5>{{$productSearchValue->name}}</h5>
               <h5 style="color: red">$.{{$productSearchValue->price}} /month</h5>
+              <?php
+              $tenNgChoThue = DB::table('customer')->where('id_customer',$productSearchValue->id_customer)->get()->first()->name;
+              ?>
+              <h5 style="color:green;">Được cho thuê bởi: {{$tenNgChoThue}}</h5>
           </div>
         </div>
         @endforeach
