@@ -145,6 +145,7 @@ class PayController extends Controller
                     'quantity' => $eachContentItem->qty, 'discount' => Cart::discount(), 'months' => $month[$i - 1], 'id_partner_delivery' => $id_partner_delivery[$i - 1], 'deposit' => $deposit]);
             $totalcost += $shipping_fees[$i - 1] + ($eachContentItem->qty) * $deposit;
             $i++;
+            DB::table('product')->where('id_product', $eachContentItem->id)->update(['isActive' => 0]);
         }
         DB::table('oder')
             ->where('id_oder', $id_oder)

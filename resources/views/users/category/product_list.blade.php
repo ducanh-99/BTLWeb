@@ -55,6 +55,7 @@
           </div>
           <div>
             <h5>{{$productSearchValue->name}}</h5>
+              <h5 style="color: red">$.{{$productSearchValue->price}} /month</h5>
           </div>
         </div>
         @endforeach

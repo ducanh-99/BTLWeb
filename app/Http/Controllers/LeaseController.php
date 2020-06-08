@@ -152,7 +152,7 @@ class LeaseController extends Controller
             for($index = 0;$index<$request->count;$index++) {
                 $oldprice = DB::table('product')->where('id_product', $request->id_product[$index])->get()->first()->price;
                 $newprice = $oldprice * $request->outlook[$index];
-                DB::table('product')->where('id_product', $request->id_product[$index])->update(['outlook' => $request->outlook[$index],'price'=>$newprice]);
+                DB::table('product')->where('id_product', $request->id_product[$index])->update(['outlook' => $request->outlook[$index],'price'=>$newprice,'isActive' => 1]);
                 DB::table('oder_detail')->where('id_oder_detail', $request->id_oder_detail[$index])->update(['isclosed' => 1]);
             }
         return redirect('/lease-all-product');

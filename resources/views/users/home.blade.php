@@ -209,6 +209,8 @@
                                 </div>
                                 <div>
                                     <h5>{{$eachOfEqualProduct->name}}</h5>
+                                    <h5 style="color: red">$.{{$eachOfEqualProduct->price}} /month</h5>
+
                                 </div>
                             </div>
 
@@ -267,6 +269,7 @@
                                 </div>
                                 <div>
                                     <h5>{{$eachOfEqualProduct->name}}</h5>
+                                    <h5 style="color: red">$.{{$eachOfEqualProduct->price}} /month</h5>
                                 </div>
                             </div>
 

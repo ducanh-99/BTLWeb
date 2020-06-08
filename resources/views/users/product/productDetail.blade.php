@@ -59,11 +59,17 @@
                         <div>Repair history: {{$queryy->repair_history}}</div>
                             <div>Number of rentals: {{$queryy->times_rent}}</div>
                             <div>Available at: {{$provin->name}}</div>
+                        @if($queryy->isactive == 0)
+                            <row>Status: <div style="color:red;">Stop renting</div></row>
+                        @endif
+                        @if($queryy->isactive == 1)
+                            <row>Status: <div style="color:red;">Available</div></row>
                             <p class="text-center">
                                 <button type="submit" class="btn btn-template-outlined"><i class="fa fa-shopping-cart"></i> Add to cart
                                 </button>
                                 <button type="submit" data-toggle="tooltip" data-placement="top" title="Add to wishlist" class="btn btn-default"><i class="fa fa-heart-o"></i></button>
                             </p>
+                        @endif
                     </form>
                     <?php
                     $cus = DB::table('customer')->where('id_customer', $queryy->id_customer)->get()->first();
@@ -73,12 +79,6 @@
                     <div>Phone numbers: {{$cus->phone_number}}</div>
                     @if($queryy->amount == 0)
                     <div>Status: Has been leased out</div>
-                    @endif
-                    @if($queryy->isactive == 0)
-                    <div>Status: Stop renting</div>
-                    @endif
-                    @if($queryy->isactive == 1)
-                    <div>Status: Available</div>
                     @endif
                     <!-- </div> -->
                 </div>
